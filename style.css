@@ -143,20 +143,20 @@ a img.aligncenter {
 
 
 .container-events {
-		display:inline-block;
+		display:flex;
+		flex-wrap: wrap;
 }
 
 /* Стилизация события. */
 .event-block {
-	display:inline-block;
-	width: 200px;
-	height: 200px;
+	min-width: 200px;
+	min-height: 200px;
 	border: 1px solid black;
 	border-radius: 5px;
 }
 
 .velta-background {
-	background-image: url(http://bike-racing.ru/public_html/wp-content/themes/bike-racing/img/velta-logo.jpg);
+	background-color: yellow;
 	background-size: 100% 100%;
 	background-repeat:no-repeat;
 }
