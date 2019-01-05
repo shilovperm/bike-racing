@@ -153,6 +153,7 @@ a img.aligncenter {
 
 /* Стилизация события. */
 .event-block {
+	display:block;
 	min-width: 200px;
 	min-height: 200px;
 	border: 1px solid black;
@@ -165,8 +166,12 @@ a img.aligncenter {
 	background-size: 100% 100%;
 	background-repeat:no-repeat;
 }
+.event-header {
+	text-align: center;
+	vertical-align: top;
+}
 
-/*.event-stage {
+.event-stage {
 	position:relative;
 	left:5px;
 	bottom: 5px;
@@ -176,7 +181,7 @@ a img.aligncenter {
 	position: relative;
 	right: 5px;
 	bottom: 5px;
-}*/
+}
 
 /* Стилизация события.Конец. */
 
