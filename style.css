@@ -172,12 +172,14 @@ a img.aligncenter {
 }
 
 .event-stage {
+	display:block;
 	position:relative;
 	left:5px;
 	bottom: 5px;
 }
 
 .event-date {
+	display:block;
 	position: relative;
 	right: 5px;
 	bottom: 5px;
