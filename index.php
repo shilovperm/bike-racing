@@ -13,11 +13,11 @@ get_header(); // подключаем header.php ?>
           <div class="block-label">next-events</div>
           <h2>Ближайшие события</h2>
           <div class="container-events">
-            <div class="event-block velta-background">
+            <article class="event-block velta-background" style="background-image: url("<?php bloginfo('template_directory'); ?>/images/veltasport.png");">
               <h4 class="event-header">Кубок Велта-спорт</h4>
               <p class="event-stage">I этап</p>
               <p class="event-date">04.03.2018</p>
-            </div>
+            </article>
             <article class="event-block velta-background">
               <h4 class="event-header">Кубок Велта-спорт</h4>
               <p class="event-stage">II этап</p>
