@@ -5,7 +5,8 @@
  * @subpackage bike-racing
  */
 ?>
-	<footer>
+	<footer class="bordered">
+		<div class="block-label">footer</div>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">

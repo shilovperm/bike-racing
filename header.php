@@ -26,7 +26,8 @@
 	<?php wp_head(); // необходимо для работы плагинов и функционала ?>
 </head>
 <body <?php body_class(); // все классы для body ?>>
-	<header>
+	<header class="bordered">
+		<div class="block-label">header</div>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
