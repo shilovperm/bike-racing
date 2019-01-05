@@ -15,7 +15,7 @@ get_header(); // подключаем header.php ?>
             <h3 class="event-header">Кубок Велта-спорт</h3>
             <p class="event-stage">I этап</p>
             <p class="event-date">04.03.2018</p>
-            <img class="event-logo" src="img\velta-logo.jpg" alt="логотип Велта-спорт" width="124" height="124">
+            <img class="event-logo" src="<?php bloginfo("template_url"); ?>\img\velta-logo.jpg" alt="логотип Велта-спорт" width="124" height="124">
           </article>
         </section>
         <section class="past-events bordered">
