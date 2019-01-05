@@ -145,6 +145,7 @@ a img.aligncenter {
 .container-events {
 		display:flex;
 		flex-wrap: wrap;
+		margin:10px;
 }
 
 /* Стилизация события. */
@@ -162,13 +163,13 @@ a img.aligncenter {
 }
 
 .event-stage {
-	position:absolute;
+	position:relative;
 	left:5px;
 	bottom: 5px;
 }
 
 .event-date {
-	position: absolute;
+	position: relative;
 	right: 5px;
 	bottom: 5px;
 }
