@@ -149,7 +149,9 @@ a img.aligncenter {
 }
 
 .velta-background {
-	background: url(..\img\velta-logo.jpg) 100% 100% no-repeat;
+	background-image: url(..\img\velta-logo.jpg);
+	background-size: 100% 100%;
+	background-repeat:no-repeat;
 }
 
 .event-stage {
