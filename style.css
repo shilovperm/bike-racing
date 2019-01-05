@@ -162,7 +162,7 @@ a img.aligncenter {
 
 .velta-background {
 	/*background-color: yellow;*/
-	background-image: url("img/veltasport.png");
+	background-image: url("img\veltasport.png");
 
 	background-size: 100% 100%;
 	background-repeat:no-repeat;
