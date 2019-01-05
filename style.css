@@ -140,13 +140,34 @@ a img.aligncenter {
 	top:0;
 	color:black;
 }
-
+/* Стилизация события. */
 .event-block {
 	width: 200px;
 	height: 200px;
 	border: 1px solid black;
 	border-radius: 5px;
 }
+
+.velta-background {
+	background: url(img\velta-logo.jpg) 100% 100% no-repeat;
+}
+
+.event-stage {
+	display: float;
+	left:5px;
+	bottom: 5px;
+}
+
+.event-date {
+	display: float;
+	right: 5px;
+	bottom: 5px;
+}
+
+/* Стилизация события.Конец. */
+
+
+
 
 .event-logo {
 	opacity: 0.3;
