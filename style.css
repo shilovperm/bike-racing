@@ -146,9 +146,7 @@ a img.aligncenter {
 		display:flex;
 		flex-wrap: wrap;
 		margin:10px;
-		justify-content: space-around;
-		align-content: space-around;
-		align-items: center;
+		justify-content: flex-start;		
 }
 
 /* Стилизация события. */
