@@ -43,6 +43,33 @@ get_header(); // подключаем header.php ?>
         <section class="past-events bordered">
           <div class="block-label">past-events</div>
           <h2>Прошедшие события</h2>
+          <div class="container-events">
+            <article class="event-block velta-background">
+              <h4 class="event-header">Кубок Велта-спорт</h4>
+              <p class="event-stage">I этап</p>
+              <p class="event-date">04.03.2018</p>
+            </article>
+            <article class="event-block velta-background">
+              <h4 class="event-header">Кубок Велта-спорт</h4>
+              <p class="event-stage">II этап</p>
+              <p class="event-date">04.03.2018</p>
+            </article>
+            <article class="event-block velta-background">
+              <h4 class="event-header">Кубок Велта-спорт</h4>
+              <p class="event-stage">III этап</p>
+              <p class="event-date">04.03.2018</p>
+            </article>
+            <article class="event-block velta-background">
+              <h4 class="event-header">Кубок Велта-спорт</h4>
+              <p class="event-stage">IV этап</p>
+              <p class="event-date">04.03.2018</p>
+            </article>
+            <article class="event-block velta-background">
+              <h4 class="event-header">Кубок Велта-спорт</h4>
+              <p class="event-stage">V этап</p>
+              <p class="event-date">04.03.2018</p>
+            </article>
+          </div>
         </section>
         <!--
         <div class="<?php content_class_by_sidebar(); // функция подставит класс в зависимости от того есть ли сайдбар, лежит в functions.php ?>">
