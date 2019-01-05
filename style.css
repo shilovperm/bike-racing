@@ -146,6 +146,7 @@ a img.aligncenter {
 		display:flex;
 		flex-wrap: wrap;
 		margin:10px;
+		justify-content: space-around;
 }
 
 /* Стилизация события. */
