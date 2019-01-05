@@ -10,11 +10,17 @@ get_header(); // подключаем header.php ?>
   		<div class="row">
         <section class="next-events bordered">
           <div class="block-label">next-events</div>
-          <h1>Ближайшие события</h1>
+          <h2>Ближайшие события</h2>
+          <article class="event-block">
+            <h3 class="event-header">Кубок Велта-спорт</h3>
+            <p class="event-stage">I этап</p>
+            <p class="event-date">04.03.2018</p>
+            <img class="event-logo" src="img\velta-logo.jpg" alt="логотип Велта-спорт" width="124" height="124">
+          </article>
         </section>
         <section class="past-events bordered">
           <div class="block-label">past-events</div>
-          <h1>Прошедшие события</h1>
+          <h2>Прошедшие события</h2>
         </section>
         <!--
         <div class="<?php content_class_by_sidebar(); // функция подставит класс в зависимости от того есть ли сайдбар, лежит в functions.php ?>">
