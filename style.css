@@ -143,11 +143,12 @@ a img.aligncenter {
 
 
 .container-events {
-		display:inline-block;		
+		display:inline-block;
 }
 
 /* Стилизация события. */
 .event-block {
+	display:inline-block;
 	width: 200px;
 	height: 200px;
 	border: 1px solid black;
