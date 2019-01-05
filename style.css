@@ -163,7 +163,9 @@ a img.aligncenter {
 }
 
 .velta-background {
-	background-color: yellow;
+	/*background-color: yellow;*/
+	background-image: url(img\veltasport.png);
+
 	background-size: 100% 100%;
 	background-repeat:no-repeat;
 }
@@ -177,6 +179,7 @@ a img.aligncenter {
 	position:absolute;
 	left:5px;
 	bottom: 5px;
+	margin:0;
 }
 
 .event-date {
@@ -184,6 +187,7 @@ a img.aligncenter {
 	position: absolute;
 	right: 5px;
 	bottom: 5px;
+	margin:0;
 }
 
 /* Стилизация события.Конец. */
