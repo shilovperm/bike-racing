@@ -8,14 +8,37 @@ get_header(); // подключаем header.php ?>
   <section>
   	<div class="container">
   		<div class="row">
+
         <section class="next-events bordered">
           <div class="block-label">next-events</div>
           <h2>Ближайшие события</h2>
-          <article class="event-block velta-background">
-            <h4 class="event-header">Кубок Велта-спорт</h4>
-            <p class="event-stage">I этап</p>
-            <p class="event-date">04.03.2018</p>           
-          </article>
+          <div class="container-events">
+            <article class="event-block velta-background">
+              <h4 class="event-header">Кубок Велта-спорт</h4>
+              <p class="event-stage">I этап</p>
+              <p class="event-date">04.03.2018</p>
+            </article>
+            <article class="event-block velta-background">
+              <h4 class="event-header">Кубок Велта-спорт</h4>
+              <p class="event-stage">II этап</p>
+              <p class="event-date">04.03.2018</p>
+            </article>
+            <article class="event-block velta-background">
+              <h4 class="event-header">Кубок Велта-спорт</h4>
+              <p class="event-stage">III этап</p>
+              <p class="event-date">04.03.2018</p>
+            </article>
+            <article class="event-block velta-background">
+              <h4 class="event-header">Кубок Велта-спорт</h4>
+              <p class="event-stage">IV этап</p>
+              <p class="event-date">04.03.2018</p>
+            </article>
+            <article class="event-block velta-background">
+              <h4 class="event-header">Кубок Велта-спорт</h4>
+              <p class="event-stage">V этап</p>
+              <p class="event-date">04.03.2018</p>
+            </article>
+          </div>
         </section>
         <section class="past-events bordered">
           <div class="block-label">past-events</div>
