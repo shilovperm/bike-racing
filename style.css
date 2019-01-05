@@ -129,3 +129,14 @@ a img.aligncenter {
 	width: auto;
 	z-index: 100000; /* Above WP toolbar. */
 }
+/* Text meant only for screen readers. */
+.bordered {
+	border:1px dashed black;
+}
+
+.block-label {
+	display:float;
+	left:0;
+	top:0;
+	color:black;
+}

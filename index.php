@@ -8,6 +8,14 @@ get_header(); // подключаем header.php ?>
   <section>
   	<div class="container">
   		<div class="row">
+        <section class="next-events bordered">
+          <div class="block-label">next-events</div>
+          <h1>Ближайшие события</h1>
+        </section>
+        <section class="past-events bordered">
+          <div class="block-label">past-events</div>
+          <h1>Прошедшие события</h1>
+        </section>
         <!--
         <div class="<?php content_class_by_sidebar(); // функция подставит класс в зависимости от того есть ли сайдбар, лежит в functions.php ?>">
   				<h1>Hello world<?php // заголовок архивов
