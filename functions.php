@@ -2,7 +2,7 @@
 /**
  * Функции шаблона (function.php)
  * @package WordPress
- * @subpackage your-clean-template-3
+ * @subpackage bike-racing
  */
 
 add_theme_support('title-tag'); // теперь тайтл управляется самим вп
@@ -84,7 +84,7 @@ if (!function_exists('pagination')) { // если ф-я уже есть в до�
 		    echo '<ul class="pagination">';
 		    foreach ( $links as $link ) {
 		    	if ( strpos( $link, 'current' ) !== false ) echo "<li class='active'>$link</li>"; // если это активная страница
-		        else echo "<li>$link</li>"; 
+		        else echo "<li>$link</li>";
 		    }
 		   	echo '</ul>';
 		 }
@@ -112,7 +112,7 @@ if (!function_exists('add_styles')) { // если ф-я уже есть в до�
 }
 
 if (!class_exists('bootstrap_menu')) {
-	class bootstrap_menu extends Walker_Nav_Menu { // внутри вывод 
+	class bootstrap_menu extends Walker_Nav_Menu { // внутри вывод
 		private $open_submenu_on_hover; // параметр который будет определять раскрывать субменю при наведении или оставить по клику как в стандартном бутстрапе
 
 		function __construct($open_submenu_on_hover = true) { // в конструкторе

@@ -2,7 +2,7 @@
 /**
  * Страница с кастомным шаблоном (page-custom.php)
  * @package WordPress
- * @subpackage your-clean-template-3
+ * @subpackage bike-racing
  * Template Name: Страница с кастомным шаблоном
  */
 get_header(); // подключаем header.php ?>

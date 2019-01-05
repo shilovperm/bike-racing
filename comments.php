@@ -3,7 +3,7 @@
  * Шаблон комментариев (comments.php)
  * Выводит список комментариев и форму добавления
  * @package WordPress
- * @subpackage your-clean-template-3
+ * @subpackage bike-racing
  */
 ?>
 <div id="comments"> <?php // див с этим id нужен для якорьных ссылок на комменты ?>
@@ -23,13 +23,13 @@
 				'next_text' => '»', // текст вперед
 				'type' => 'array',
 				'echo' => false
-			); 
+			);
 			$page_links = paginate_comments_links($args); // выводим пагинацию
 			if( is_array( $page_links ) ) { // если пагинация есть
 			    echo '<ul class="pagination comments-pagination">';
 			    foreach ( $page_links as $link ) {
 			    	if ( strpos( $link, 'current' ) !== false ) echo "<li class='active'>$link</li>"; // если это активная страница
-			        else echo "<li>$link</li>"; 
+			        else echo "<li>$link</li>";
 			    }
 			   	echo '</ul>';
 		 	}

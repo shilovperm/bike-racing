@@ -2,7 +2,7 @@
 /**
  * Шаблон подвала (footer.php)
  * @package WordPress
- * @subpackage your-clean-template-3
+ * @subpackage bike-racing
  */
 ?>
 	<footer>

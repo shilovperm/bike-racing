@@ -2,7 +2,7 @@
 /**
  * Шаблон обычной страницы (page.php)
  * @package WordPress
- * @subpackage your-clean-template-3
+ * @subpackage bike-racing
  */
 get_header(); // подключаем header.php ?>
 <section>

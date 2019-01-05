@@ -2,7 +2,7 @@
 /**
  * Шаблон сайдбара (sidebar.php)
  * @package WordPress
- * @subpackage your-clean-template-3
+ * @subpackage bike-racing
  */
 ?>
 <?php if (is_active_sidebar( 'sidebar' )) { // если в сайдбаре есть что выводить ?>

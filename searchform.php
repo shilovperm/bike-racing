@@ -2,7 +2,7 @@
 /**
  * Шаблон формы поиска (searchform.php)
  * @package WordPress
- * @subpackage your-clean-template-3
+ * @subpackage bike-racing
  */
 ?>
 <form role="search" method="get" class="search-form form-inline" action="<?php echo home_url( '/' ); ?>">

@@ -2,7 +2,7 @@
 /**
  * Главная страница (index.php)
  * @package WordPress
- * @subpackage your-clean-template-5
+ * @subpackage bike-racing
  */
 get_header(); // подключаем header.php ?>
   <section>
