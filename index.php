@@ -8,7 +8,8 @@ get_header(); // подключаем header.php ?>
   <section>
   	<div class="container">
   		<div class="row">
-  			<div class="<?php content_class_by_sidebar(); // функция подставит класс в зависимости от того есть ли сайдбар, лежит в functions.php ?>">
+        <!--
+        <div class="<?php content_class_by_sidebar(); // функция подставит класс в зависимости от того есть ли сайдбар, лежит в functions.php ?>">
   				<h1>Hello world<?php // заголовок архивов
   					if (is_day()) : printf('Daily Archives: %s', get_the_date()); // если по дням
   					elseif (is_month()) : printf('Monthly Archives: %s', get_the_date('F Y')); // если по месяцам
@@ -22,6 +23,7 @@ get_header(); // подключаем header.php ?>
   				<?php pagination(); // пагинация, функция нах-ся в function.php ?>
   			</div>
   			<?php get_sidebar(); // подключаем sidebar.php ?>
+      -->
   		</div>
   	</div>
   </section>
