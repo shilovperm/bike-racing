@@ -26,7 +26,7 @@ Author URI: http://bike-racing.ru
 /* =WordPress Core
 -------------------------------------------------------------- */
 .alignnone {
-    margin: 5px 20px 20px 0;111
+    margin: 5px 20px 20px 0;
 }
 
 .aligncenter,
@@ -160,6 +160,7 @@ a img.aligncenter {
 	position:relative;
 }
 
+
 .velta-background {
 	/*background-color: yellow;*/
 /*	background-image: url("/wp-content/themes/bike-racing/images/veltasport.png");*/
@@ -191,8 +192,26 @@ a img.aligncenter {
 /* Стилизация события.Конец. */
 
 
-
-
 .event-logo {
 	opacity: 0.3;
+}
+
+/* Блок с карточками событий */
+.card-deck-custom {
+		display:flex;
+		flex-wrap: wrap;
+		margin:10px;
+		justify-content: flex-start;
+}
+
+
+.card-custom {
+	display:block;
+	width: 250px;
+	Height: 300px;
+	margin: 10px;
+}
+
+.card-img-top-custom {
+		padding:10px;
 }
