@@ -39,33 +39,36 @@
 <body <?php body_class(); // все классы для body ?>>
 	<header class="bordered">
 		<div class="block-label">header</div>
-		<div class="container">
-			<div class="row">
+
+
 
 					<!--меню-->
-					<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
-					  <a class="navbar-brand" href="#">Navbar</a>
+					<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+					  <a class="navbar-brand" href="#">Bike-racing</a>
 					  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerMenu"
 					    aria-controls="navbarTogglerMenu" aria-expanded="false" aria-label="Toggle navigation">
 					    <span class="navbar-toggler-icon"></span>
 					  </button>
 
 					  <div class="collapse navbar-collapse" id="navbarTogglerMenu">
-					    <ul class="navbar-nav mr-auto mt-lg-0">
-					      <li class="nav-item active">
-					        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+					    <ul class="navbar-nav mr-auto smooth-scroll">
+					      <li class="nav-item">
+					        <a class="nav-link waves-effect waves-light" href="http://localhost/wp/">События <span class="sr-only">(current)</span></a>
 					      </li>
 					      <li class="nav-item">
-					        <a class="nav-link" href="#">Link</a>
+					        <a class="nav-link" href="http://localhost/wp/page-custom.php">Участники</a>
 					      </li>
 					      <li class="nav-item">
-					        <a class="nav-link disabled" href="#">Disabled</a>
+					        <a class="nav-link " href="http://localhost/wp/page-custom.php">Рейтинги</a>
+					      </li>
+								<li class="nav-item">
+					        <a class="nav-link " href="http://localhost/wp/page-custom.php">Организаторы</a>
 					      </li>
 					    </ul>
 					  </div>
 					</nav>
 
 
-			</div>
-		</div>
+
+		
 	</header>
