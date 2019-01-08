@@ -131,14 +131,16 @@ a img.aligncenter {
 }
 /* Text meant only for screen readers. */
 .bordered {
-	border:1px dashed black;
+	border:1px dashed #aaaaaa;
+	position: relative;
 }
 
 .block-label {
-	display:float;
-	left:0;
+	position: absolute;
+	right:0;
 	top:0;
-	color:black;
+	color:#aaaaaa;
+	background-color: #555555;
 }
 
 
@@ -206,12 +208,27 @@ a img.aligncenter {
 
 
 .card-custom {
-	display:block;
-	width: 250px;
-	Height: 300px;
+	min-width: 300px;
+	max-width: 300px;
+	min-height: 300px;
+	max-height: 600px;
 	margin: 10px;
+	color: dark;
 }
 
 .card-img-top-custom {
-		padding:10px;
+		padding:40px;
+}
+.yellow-background {
+	background-color: #FDFB00;
+}
+
+.absolute-top-left {
+	top:5px;
+	left:5px;
+}
+
+.absolute-top-right {
+	top: 5px;
+	right: 5px;
 }
