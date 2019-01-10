@@ -1,169 +1,102 @@
 <?php
 /**
- * Главная страница (index.php)
- * @package WordPress
- * @subpackage bike-racing
+ * The main template file
+ *
+ * This is the most generic template file in a WordPress theme
+ * and one of the two required files for a theme (the other being style.css).
+ * It is used to display a page when nothing more specific matches a query.
+ * E.g., it puts together the home page when no home.php file exists.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package WP_Bootstrap_4
  */
-get_header(); // подключаем header.php ?>
-  <section>
-  	<div class="container">
-  		<div class="row">
 
-        <section class="next-events bordered">
-          <div class="block-label">next-events</div>
-          <h2>Ближайшие события</h2>
-          <div class="container-events">
+get_header(); ?>
 
-            <!-- Card Wider -->
-            <div class="card card-cascade wider card-custom position-relative blue-grey-text">
-              <!-- sun image -->
-              <i class="fas fa-sun position-absolute absolute-top-left text-danger "></i>
-              <!-- bicycle image -->
-              <i class="fas fa-bicycle position-absolute absolute-top-right text-danger"></i>
-              <!-- Card image -->
-              <div class="view view-cascade overlay">
-                <img  class="card-img-top card-img-top-custom yellow-background" src="<?php echo get_template_directory_uri() . '/images/veltasport.png'; ?>" alt="Card image cap">
-                <a href="#!">
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
-              <!-- Card content -->
-              <div class="card-body card-body-cascade text-center">
-                <!-- Title -->
-                <h4 class="card-title"><strong>Кубок Велта-спорт</strong></h4>
-                <!-- Subtitle -->
-                <h5 class="blue-text pb-2"><strong>Этап №2 "Бодрый заряд"</strong></h5>
-                <!-- Date -->
-                <p class="mb-0"><i class="fas fa-calendar mr-2"></i>13.05.2018</p>
-                <!-- Text -->
-                <p class="card-text">Профсоюзка - это народный бренд</p>
-                <!-- Button -->
-                <button type="button" class="btn btn-outline-success waves-effect">Зарегистрироваться</button>
-              </div>
-            </div>
-            <!-- Card Wider -->
-            <!-- Card Wider -->
-            <div class="card card-cascade wider card-custom position-relative blue-grey-text">
-              <!-- cloud-sun image -->
-              <i class="fas fa-cloud-sun position-absolute absolute-top-left text-primary"></i>
-              <!-- bicycle image -->
-              <i class="fas fa-bicycle position-absolute absolute-top-right text-danger"></i>
-              <!-- Card image -->
-              <div class="view view-cascade overlay">
-                <img  class="card-img-top card-img-top-custom yellow-background" src="<?php echo get_template_directory_uri() . '/images/veltasport.png'; ?>" alt="Card image cap">
-                <a href="#!">
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
-              <!-- Card content -->
-              <div class="card-body card-body-cascade text-center">
-                <!-- Title -->
-                <h4 class="card-title"><strong>Кубок Велта-спорт</strong></h4>
-                <!-- Subtitle -->
-                <h5 class="blue-text pb-2"><strong>Этап №3 "РОВный пульс"</strong></h5>
-                <!-- Date -->
-                <p class="mb-0"><i class="fas fa-calendar mr-2"></i>17.06.2018</p>
-                <!-- Text -->
-                <p class="card-text">Рваный пульс на РОВной трассе</p>
-                <!-- Button -->
-                <button type="button" class="btn btn-outline-gray" disabled>Ожидание регистрации</button>
-              </div>
-            </div>
-            <!-- Card Wider -->
-            <!-- Card Wider -->
-            <div class="card card-cascade wider card-custom position-relative blue-grey-text">
-              <!-- umbrella image -->
-              <i class="fas fa-umbrella position-absolute absolute-top-left text-primary"></i>
-              <!-- bicycle image -->
-              <i class="fas fa-bicycle position-absolute absolute-top-right text-danger"></i>
-              <!-- Card image -->
-              <div class="view view-cascade overlay">
-                <img  class="card-img-top card-img-top-custom yellow-background" src="<?php echo get_template_directory_uri() . '/images/veltasport.png'; ?>" alt="Card image cap">
-                <a href="#!">
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
-              <!-- Card content -->
-              <div class="card-body card-body-cascade text-center">
-                <!-- Title -->
-                <h4 class="card-title"><strong>Кубок Велта-спорт</strong></h4>
-                <!-- Subtitle -->
-                <h5 class="blue-text pb-2"><strong>Этап №4 "ДИВное лето"</strong></h5>
-                <!-- Date -->
-                <p class="mb-0"><i class="fas fa-calendar mr-2"></i>29.07.2018</p>
-                <!-- Text -->
-                <p class="card-text">Лужа в твоих бошмаках зазвучит соль диезом</p>
-                <!-- Button -->
-                <button type="button" class="btn btn-outline-gray" disabled>Ожидание регистрации</button>
-              </div>
-            </div>
-            <!-- Card Wider -->
-            <!-- Card Wider -->
-            <div class="card card-cascade wider card-custom position-relative blue-grey-text">
-              <!-- piggy-bank image -->              
-              <i class="fas fa-piggy-bank position-absolute absolute-top-left text-black-50"></i>
-              <!-- bicycle image -->
-              <i class="fas fa-bicycle position-absolute absolute-top-right text-danger"></i>
-              <!-- Card image -->
-              <div class="view view-cascade overlay">
-                <img  class="card-img-top card-img-top-custom yellow-background" src="<?php echo get_template_directory_uri() . '/images/veltasport.png'; ?>" alt="Card image cap">
-                <a href="#!">
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
-              <!-- Card content -->
-              <div class="card-body card-body-cascade text-center">
-                <!-- Title -->
-                <h4 class="card-title"><strong>Кубок Велта-спорт</strong></h4>
-                <!-- Subtitle -->
-                <h5 class="blue-text pb-2"><strong>Этап №5 "Andronovo Mud Race"</strong></h5>
-                <!-- Date -->
-                <p class="mb-0"><i class="fas fa-calendar mr-2"></i>27.10.2018</p>
-                <!-- Text -->
-                <p class="card-text">Холодная грязь. Самовывоз. Дорого.</p>
-                <!-- Button -->
-                <button type="button" class="btn btn-outline-gray" disabled>Ожидание регистрации</button>
-              </div>
-            </div>
-            <!-- Card Wider -->
-          </div>
-        </section>
-        <section class="past-events bordered">
-          <div class="block-label">past-events</div>
-          <h2>Прошедшие события</h2>
-          <div class="container-events">
-            <!-- Card Wider -->
-            <div class="card card-cascade wider card-custom position-relative blue-grey-text">
-              <!-- snowflake image -->
-              <i class="fas fa-snowflake position-absolute absolute-top-left text-info"></i>
-              <!-- bicycle image -->
-              <i class="fas fa-bicycle position-absolute absolute-top-right text-danger"></i>
-              <!-- Card image -->
-              <div class="view view-cascade overlay">
-                <img  class="card-img-top card-img-top-custom yellow-background" src="<?php echo get_template_directory_uri() . '/images/veltasport.png'; ?>" alt="Card image cap">
-                <a href="#!">
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
-              <!-- Card content -->
-              <div class="card-body card-body-cascade text-center">
-                <!-- Title -->
-                <h4 class="card-title"><strong>Кубок Велта-спорт</strong></h4>
-                <!-- Subtitle -->
-                <h5 class="blue-text pb-2"><strong>Этап №1 "Открытие сезона"</strong></h5>
-                <!-- Date -->
-                <p class="mb-0"><i class="fas fa-calendar mr-2"></i>04.03.2018</p>
-                <!-- Text -->
-                <p class="card-text">Первая зимняя гонка от Сварочника и Димы Че</p>
-                <!-- Button -->
-                <button type="button" class="btn btn-success" disabled>Гонка завершена</button>
-              </div>
-            </div>
-            <!-- Card Wider -->
-          </div>
-        </section>
+<?php
+	$default_sidebar_position = get_theme_mod( 'default_sidebar_position', 'right' );
+?>
 
-  		</div>
-  	</div>
-  </section>
-<?php get_footer(); // подключаем footer.php ?>
+<?php if ( get_theme_mod( 'blog_display_cover_section', 1 ) ) : ?>
+	<?php if( get_theme_mod( 'blog_cover_title' ) || get_theme_mod( 'blog_cover_lead' ) || get_theme_mod( 'blog_cover_btn_text' ) ) : ?>
+		<section class="jumbotron bg-white text-center wp-bs-4-jumbotron border-bottom">
+			<div class="container">
+
+				<h1 class="jumbotron-heading"><?php echo wp_kses_post( get_theme_mod( 'blog_cover_title' ) ); ?></h1>
+				<p class="lead text-muted"><?php echo wp_kses_post( get_theme_mod( 'blog_cover_lead' ) ); ?></p>
+				<?php if( get_theme_mod( 'blog_cover_btn_text' ) ) : ?><a href="<?php echo esc_url( get_theme_mod( 'blog_cover_btn_link' ) ); ?>" class="btn btn-primary"><?php echo esc_html( get_theme_mod( 'blog_cover_btn_text' ) ); ?></a><?php endif; ?>
+			</div>
+			<!-- /.container -->
+		</section>
+		<!-- /.jumbotron text-center -->
+	<?php endif; ?>
+<?php endif; ?>
+
+	<div class="container">
+		<div class="row">
+
+			<?php if ( $default_sidebar_position === 'no' ) : ?>
+				<div class="col-md-12 wp-bp-content-width">
+			<?php else : ?>
+				<div class="col-md-8 wp-bp-content-width">
+			<?php endif; ?>
+				<div id="primary" class="content-area">
+					<main id="main" class="site-main">
+
+					<?php
+					if ( have_posts() ) :
+
+						if ( is_home() && ! is_front_page() ) : ?>
+							<header>
+								<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+							</header>
+
+						<?php
+						endif;
+
+						if( get_theme_mod( 'blog_display_posts_slider', '1' ) && is_home() && !is_paged() ) {
+							get_template_part( 'template-parts/posts-slider' );
+						}
+
+						/* Start the Loop */
+						while ( have_posts() ) : the_post();
+
+							// Include the Post-Format-specific template for the content.
+							get_template_part( 'template-parts/content', get_post_format() );
+
+						endwhile;
+
+						the_posts_navigation( array(
+							'next_text' => esc_html__( 'Newer Posts', 'wp-bootstrap-4' ),
+							'prev_text' => esc_html__( 'Older Posts', 'wp-bootstrap-4' ),
+						) );
+
+					else :
+
+						get_template_part( 'template-parts/content', 'none' );
+
+					endif; ?>
+
+					</main><!-- #main -->
+				</div><!-- #primary -->
+			</div>
+			<!-- /.col-md-8 -->
+
+			<?php if ( $default_sidebar_position != 'no' ) : ?>
+				<?php if ( $default_sidebar_position === 'right' ) : ?>
+					<div class="col-md-4 wp-bp-sidebar-width">
+				<?php elseif ( $default_sidebar_position === 'left' ) : ?>
+					<div class="col-md-4 order-md-first wp-bp-sidebar-width">
+				<?php endif; ?>
+						<?php get_sidebar(); ?>
+					</div>
+					<!-- /.col-md-4 -->
+			<?php endif; ?>
+		</div>
+		<!-- /.row -->
+	</div>
+	<!-- /.container -->
+
+<?php
+get_footer();

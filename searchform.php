@@ -1,14 +1,3 @@
-<?php
-/**
- * Шаблон формы поиска (searchform.php)
- * @package WordPress
- * @subpackage bike-racing
- */
-?>
-<form role="search" method="get" class="search-form form-inline" action="<?php echo home_url( '/' ); ?>">
-	<div class="form-group">
-		<label class="sr-only" for="search-field">Поиск</label>
-		<input type="search" class="form-control input-sm" id="search-field" placeholder="Строка для поиска" value="<?php echo get_search_query() ?>" name="s">
-	</div>
-	<button type="submit" class="btn btn-default btn-sm">Искать</button>
+<form role="search" method="get" class="searchform wp-bootstrap-4-searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+    <input type="text" class="s form-control" name="s" placeholder="<?php esc_attr_e( 'Search&hellip;', 'wp-bootstrap-4' ); ?>" value="<?php the_search_query(); ?>" >
 </form>

@@ -1,37 +1,74 @@
 <?php
 /**
- * Шаблон подвала (footer.php)
- * @package WordPress
- * @subpackage bike-racing
+ * The template for displaying the footer
+ *
+ * Contains the closing of the #content div and all content after.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package WP_Bootstrap_4
  */
+
 ?>
-	<footer class="bordered">
-		<div class="block-label">footer</div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<?php $args = array( // опции для вывода нижнего меню, чтобы они работали, меню должно быть создано в админке
-						'theme_location' => 'bottom', // идентификатор меню, определен в register_nav_menus() в function.php
-						'container'=> false, // обертка списка, false - это ничего
-						'menu_class' => 'nav nav-pills bottom-menu', // класс для ul
-				  		'menu_id' => 'bottom-nav', // id для ul
-				  		'fallback_cb' => false
-				  	);
-					wp_nav_menu($args); // выводим нижние меню
-					?>
+
+	</div><!-- #content -->
+
+	<footer id="colophon" class="site-footer text-center bg-white mt-4 text-muted">
+		<!--
+		<section class="footer-widgets text-left">
+			<div class="container">
+				<div class="row">
+					<?php if ( is_active_sidebar( 'footer-1' ) ) : ?>
+						<div class="col">
+							<aside class="widget-area footer-1-area mb-2">
+								<?php dynamic_sidebar( 'footer-1' ); ?>
+							</aside>
+						</div>
+					<?php endif; ?>
+
+					<?php if ( is_active_sidebar( 'footer-2' ) ) : ?>
+						<div class="col">
+							<aside class="widget-area footer-2-area mb-2">
+								<?php dynamic_sidebar( 'footer-2' ); ?>
+							</aside>
+						</div>
+					<?php endif; ?>
+
+					<?php if ( is_active_sidebar( 'footer-3' ) ) : ?>
+						<div class="col">
+							<aside class="widget-area footer-3-area mb-2">
+								<?php dynamic_sidebar( 'footer-3' ); ?>
+							</aside>
+						</div>
+					<?php endif; ?>
+
+					<?php if ( is_active_sidebar( 'footer-4' ) ) : ?>
+						<div class="col">
+							<aside class="widget-area footer-4-area mb-2">
+								<?php dynamic_sidebar( 'footer-4' ); ?>
+							</aside>
+						</div>
+					<?php endif; ?>
 				</div>
+
+			</div>
+		</section>
+
+		<div class="container">
+			<div class="site-info">
+				<a href="<?php echo esc_url( 'https://bootstrap-wp.com/' ); ?>"><?php esc_html_e( 'Bootstrap 4 WordPress Theme', 'wp-bootstrap-4' ); ?></a>
+				<span class="sep"> | </span>
+				<?php
+					/* translators: 1: Theme name. */
+					printf( esc_html__( 'Theme Name: %1$s.', 'wp-bootstrap-4' ), 'WP Bootstrap 4' );
+				?>
 			</div>
 		</div>
+		-->
 	</footer>
-	<?php wp_footer(); // необходимо для работы плагинов и функционала  ?>
-	<!-- SCRIPTS -->
-	<!-- JQuery -->
-	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-	<!-- Bootstrap tooltips -->
-	<script type="text/javascript" src="js/popper.min.js"></script>
-	<!-- Bootstrap core JavaScript -->
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<!-- MDB core JavaScript -->
-	<script type="text/javascript" src="js/mdb.min.js"></script>
+</div>
+
+<?php wp_footer(); ?>
+
 </body>
 </html>
