@@ -23,7 +23,7 @@ get_header(); ?>
                       </a>
                   </div>
                   <!-- Card content -->
-                  <div class="card-body card-body-cascade text-center">
+                  <div class="card-body card-body-cascade text-center card-body-custom">
                       <!-- Title -->
                       <h4 class="card-title"><strong>Кубок Велта-спорт</strong></h4>
                       <!-- Subtitle -->
@@ -33,7 +33,7 @@ get_header(); ?>
                       <!-- Text -->
                       <p class="card-text">Профсоюзка - это народный бренд</p>
                       <!-- Button -->
-                      <button type="button" class="btn btn-outline-success waves-effect ">Зарегистрироваться</button>
+                      <button type="button" class="btn btn-outline-success waves-effect btn-on-card">Зарегистрироваться</button>
                   </div>
               </div>
               <!-- Card Wider -->
@@ -79,7 +79,7 @@ get_header(); ?>
                 </a>
               </div>
               <!-- Card content -->
-              <div class="card-body card-body-cascade text-center">
+              <div class="card-body card-body-cascade text-center card-body-custom">
                 <!-- Title -->
                 <h4 class="card-title"><strong>Кубок Велта-спорт</strong></h4>
                 <!-- Subtitle -->
@@ -89,7 +89,7 @@ get_header(); ?>
                 <!-- Text -->
                 <p class="card-text">Лужа в твоих бошмаках зазвучит соль диезом</p>
                 <!-- Button -->
-                <button type="button" class="btn btn-outline-gray" disabled>Ожидание регистрации</button>
+                <button type="button" class="btn btn-outline-gray btn-on-card" disabled>Ожидание регистрации</button>
               </div>
             </div>
             <!-- Card Wider -->
@@ -107,7 +107,7 @@ get_header(); ?>
                 </a>
               </div>
               <!-- Card content -->
-              <div class="card-body card-body-cascade text-center">
+              <div class="card-body card-body-cascade text-center card-body-custom">
                 <!-- Title -->
                 <h4 class="card-title"><strong>Кубок Велта-спорт</strong></h4>
                 <!-- Subtitle -->
@@ -117,7 +117,7 @@ get_header(); ?>
                 <!-- Text -->
                 <p class="card-text">Холодная грязь. Самовывоз. Дорого.</p>
                 <!-- Button -->
-                <button type="button" class="btn btn-outline-gray" disabled>Ожидание регистрации</button>
+                <button type="button" class="btn btn-outline-gray btn-on-card" disabled>Ожидание регистрации</button>
               </div>
             </div>
             <!-- Card Wider -->
@@ -141,7 +141,7 @@ get_header(); ?>
                     </a>
                 </div>
                 <!-- Card content -->
-                <div class="card-body card-body-cascade text-center">
+                <div class="card-body card-body-cascade text-center card-body-custom">
                     <!-- Title -->
                     <h4 class="card-title"><strong>Кубок Велта-спорт</strong></h4>
                     <!-- Subtitle -->
@@ -151,7 +151,7 @@ get_header(); ?>
                     <!-- Text -->
                     <p class="card-text">Первая зимняя гонка от Сварочника и Димы Че</p>
                     <!-- Button -->
-                    <button type="button" class="btn btn-success" disabled>Гонка завершена</button>
+                    <button type="button" class="btn btn-success btn-on-card" disabled>Гонка завершена</button>
                 </div>
             </div>
           <!-- Card Wider -->
