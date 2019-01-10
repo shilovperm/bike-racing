@@ -387,3 +387,12 @@ body.custom-background .wp-bp-main-content .col-md-8 { background: #f8f9fa; padd
 	top: 5px;
 	right: 5px;
 }
+.card-body-custom {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-on-card {
+  margin-top: auto;
+  align-self: center;
+}

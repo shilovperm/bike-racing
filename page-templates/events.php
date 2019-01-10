@@ -33,7 +33,7 @@ get_header(); ?>
                       <!-- Text -->
                       <p class="card-text">Профсоюзка - это народный бренд</p>
                       <!-- Button -->
-                      <button type="button" class="btn btn-outline-success waves-effect align-bottom">Зарегистрироваться</button>
+                      <button type="button" class="btn btn-outline-success waves-effect ">Зарегистрироваться</button>
                   </div>
               </div>
               <!-- Card Wider -->
@@ -51,7 +51,7 @@ get_header(); ?>
                     </a>
                 </div>
                 <!-- Card content -->
-                <div class="card-body card-body-cascade text-center">
+                <div class="card-body card-body-cascade text-center card-body-custom">
                   <!-- Title -->
                   <h4 class="card-title"><strong>Кубок Велта-спорт</strong></h4>
                   <!-- Subtitle -->
@@ -61,7 +61,7 @@ get_header(); ?>
                   <!-- Text -->
                   <p class="card-text">Рваный пульс на РОВной трассе</p>
                   <!-- Button -->
-                  <button type="button" class="btn btn-outline-gray align-self-end" disabled>Ожидание регистрации</button>
+                  <button type="button" class="btn btn-outline-gray btn-on-card" disabled>Ожидание регистрации</button>
                 </div>
             </div>
             <!-- Card Wider -->
