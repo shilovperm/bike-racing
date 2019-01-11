@@ -130,6 +130,7 @@ get_header(); ?>
             <!-- Card Wider -->
             <div class="card card-cascade wider card-custom position-relative blue-grey-text">
                 <!-- snowflake image -->
+                <img  class="card-add-picture-1 position-absolute" src="<?php echo get_template_directory_uri() . '/images/snowflake.svg'; ?>" alt="wr" height="30" width="30">
                 <i class="fas fa-snowflake position-absolute absolute-top-left text-info"></i>
                 <!-- bicycle image -->
                 <i class="fas fa-bicycle position-absolute absolute-top-right text-danger"></i>
