@@ -405,3 +405,12 @@ body.custom-background .wp-bp-main-content .col-md-8 { background: #f8f9fa; padd
 	left:5px;
   padding:3px;
 }
+
+.card-add-picture-2 {
+  border: 1px solid #40B0F0;
+  border-radius: 5px;
+  background-color: #40B0F0;
+  top:5px;
+	left:5px;
+  padding:3px;
+}
