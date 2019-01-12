@@ -4,6 +4,8 @@
 */
 
 get_header(); ?>
+
+
     <section class="next-events bordered">
         <div class="block-label">next-events</div>
         <h2>Ближайшие события</h2>
