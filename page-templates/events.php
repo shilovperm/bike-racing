@@ -19,7 +19,7 @@ get_header(); ?>
                   <i class="fas fa-bicycle position-absolute absolute-top-right text-danger"></i>
                   <!-- Card image -->
                   <div class="view view-cascade overlay">
-                      <img  class="card-img-top card-img-top-custom yellow-background" src="<?php echo get_template_directory_uri() . '/images/veltasport.png'; ?>" alt="Card image cap">
+                      <img  class="card-img-top" src="<?php echo get_template_directory_uri() . '/images/velta1.jpg'; ?>" alt="Card image cap">
                       <a href="#!">
                           <div class="mask rgba-white-slight"></div>
                       </a>

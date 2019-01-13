@@ -429,8 +429,11 @@ html, body, header, #intro {
 	color: dark;
 }
 
-.card-img-top-custom {
-		padding:40px;
+.card-img-logo {
+  position: absolute;
+  width:100px;
+  top: 5px;
+	right: 5px;
 }
 .yellow-background {
 	background-color: #FDFB00;
