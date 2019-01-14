@@ -5,25 +5,27 @@
 
 get_header(); ?>
 
-
+  <div class="container">
     <section class="next-events bordered">
         <div class="block-label">next-events</div>
-        <h2>Ближайшие события</h2>
+        <h2 class="text-center">Ближайшие события</h2>
         <div class="container-events">
 
               <!-- Card Wider -->
               <div class="card card-cascade wider card-custom position-relative blue-grey-text">
-                  <!-- sun image -->
-                  <i class="fas fa-sun position-absolute absolute-top-left text-danger "></i>
-                  <!-- bicycle image -->
-                  <i class="fas fa-bicycle position-absolute absolute-top-right text-danger"></i>
-                  <!-- Card image -->
-                  <div class="view view-cascade overlay">
-                      <img  class="card-img-top" src="<?php echo get_template_directory_uri() . '/images/velta1.jpg'; ?>" alt="Card image cap">
-                      <a href="#!">
-                          <div class="mask rgba-white-slight"></div>
-                      </a>
-                  </div>
+                <!-- sun image -->
+                <img  class="card-add-picture-1 position-absolute" src="<?php echo get_template_directory_uri() . '/images/sun.svg'; ?>" alt="wr" height="25" width="25">
+                <!-- veltalogo image -->
+                <img  class="card-img-logo position-absolute yellow-background" src="<?php echo get_template_directory_uri() . '/images/veltasport.png'; ?>" alt="wr">
+                <!--XCO image -->
+                <p class="position-absolute race-type"> XCO </p>
+                <!-- Card image -->
+                <div class="view view-cascade overlay">
+                    <img  class="card-img-top" src="<?php echo get_template_directory_uri() . '/images/velta2.png'; ?>" alt="Card image cap">
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
                   <!-- Card content -->
                   <div class="card-body card-body-cascade text-center card-body-custom">
                       <!-- Title -->
@@ -41,13 +43,15 @@ get_header(); ?>
               <!-- Card Wider -->
             <!-- Card Wider -->
             <div class="card card-cascade wider card-custom position-relative blue-grey-text">
-                <!-- cloud-sun image -->
-                <i class="fas fa-cloud-sun position-absolute absolute-top-left text-primary"></i>
-                <!-- bicycle image -->
-                <i class="fas fa-bicycle position-absolute absolute-top-right text-danger"></i>
+                <!-- sun image -->
+                <img  class="card-add-picture-1 position-absolute" src="<?php echo get_template_directory_uri() . '/images/cloud-sun.svg'; ?>" alt="wr" height="25" width="25">
+                <!-- veltalogo image -->
+                <img  class="card-img-logo position-absolute yellow-background" src="<?php echo get_template_directory_uri() . '/images/veltasport.png'; ?>" alt="wr">
+                <!--XCO image -->
+                <p class="position-absolute race-type"> XCO </p>
                 <!-- Card image -->
                 <div class="view view-cascade overlay">
-                    <img  class="card-img-top card-img-top-custom yellow-background" src="<?php echo get_template_directory_uri() . '/images/veltasport.png'; ?>" alt="Card image cap">
+                    <img  class="card-img-top" src="<?php echo get_template_directory_uri() . '/images/velta3.png'; ?>" alt="Card image cap">
                     <a href="#!">
                         <div class="mask rgba-white-slight"></div>
                     </a>
@@ -69,16 +73,18 @@ get_header(); ?>
             <!-- Card Wider -->
             <!-- Card Wider -->
             <div class="card card-cascade wider card-custom position-relative blue-grey-text">
-              <!-- umbrella image -->
-              <i class="fas fa-umbrella position-absolute absolute-top-left text-primary"></i>
-              <!-- bicycle image -->
-              <i class="fas fa-bicycle position-absolute absolute-top-right text-danger"></i>
+              <!-- rain image -->
+              <img  class="card-add-picture-1 position-absolute" src="<?php echo get_template_directory_uri() . '/images/cloud-showers-heavy.svg'; ?>" alt="wr" height="25" width="25">
+              <!-- veltalogo image -->
+              <img  class="card-img-logo position-absolute yellow-background" src="<?php echo get_template_directory_uri() . '/images/veltasport.png'; ?>" alt="wr">
+              <!--XCO image -->
+              <p class="position-absolute race-type"> XCO </p>
               <!-- Card image -->
               <div class="view view-cascade overlay">
-                <img  class="card-img-top card-img-top-custom yellow-background" src="<?php echo get_template_directory_uri() . '/images/veltasport.png'; ?>" alt="Card image cap">
-                <a href="#!">
-                  <div class="mask rgba-white-slight"></div>
-                </a>
+                  <img  class="card-img-top" src="<?php echo get_template_directory_uri() . '/images/velta4.png'; ?>" alt="Card image cap">
+                  <a href="#!">
+                      <div class="mask rgba-white-slight"></div>
+                  </a>
               </div>
               <!-- Card content -->
               <div class="card-body card-body-cascade text-center card-body-custom">
@@ -97,16 +103,18 @@ get_header(); ?>
             <!-- Card Wider -->
             <!-- Card Wider -->
             <div class="card card-cascade wider card-custom position-relative blue-grey-text">
-              <!-- piggy-bank image -->
-              <i class="fas fa-piggy-bank position-absolute absolute-top-left text-black-50"></i>
-              <!-- bicycle image -->
-              <i class="fas fa-bicycle position-absolute absolute-top-right text-danger"></i>
+              <!-- mud image -->
+              <img  class="card-add-picture-1 position-absolute" src="<?php echo get_template_directory_uri() . '/images/poop.svg'; ?>" alt="wr" height="25" width="25">
+              <!-- veltalogo image -->
+              <img  class="card-img-logo position-absolute yellow-background" src="<?php echo get_template_directory_uri() . '/images/veltasport.png'; ?>" alt="wr">
+              <!--XCO image -->
+              <p class="position-absolute race-type"> XCO </p>
               <!-- Card image -->
               <div class="view view-cascade overlay">
-                <img  class="card-img-top card-img-top-custom yellow-background" src="<?php echo get_template_directory_uri() . '/images/veltasport.png'; ?>" alt="Card image cap">
-                <a href="#!">
-                  <div class="mask rgba-white-slight"></div>
-                </a>
+                  <img  class="card-img-top" src="<?php echo get_template_directory_uri() . '/images/velta5.png'; ?>" alt="Card image cap">
+                  <a href="#!">
+                      <div class="mask rgba-white-slight"></div>
+                  </a>
               </div>
               <!-- Card content -->
               <div class="card-body card-body-cascade text-center card-body-custom">
@@ -127,18 +135,19 @@ get_header(); ?>
     </section>
     <section class="past-events bordered">
         <div class="block-label">past-events</div>
-        <h2>Прошедшие события</h2>
+        <h2 class="text-center">Прошедшие события</h2>
         <div class="container-events">
             <!-- Card Wider -->
             <div class="card card-cascade wider card-custom position-relative blue-grey-text">
                 <!-- snowflake image -->
-                <img  class="card-add-picture-1 position-absolute" src="<?php echo get_template_directory_uri() . '/images/snowflake.svg'; ?>" alt="wr" height="30" width="30">
-                <i class="fas fa-snowflake position-absolute absolute-top-left text-info"></i>
-                <!-- bicycle image -->
-                <i class="fas fa-bicycle position-absolute absolute-top-right text-danger"></i>
+                <img  class="card-add-picture-1 position-absolute" src="<?php echo get_template_directory_uri() . '/images/snowflake.svg'; ?>" alt="wr" height="25" width="25">
+                <!-- veltalogo image -->
+                <img  class="card-img-logo position-absolute yellow-background" src="<?php echo get_template_directory_uri() . '/images/veltasport.png'; ?>" alt="wr">
+                <!--XCO image -->
+                <p class="position-absolute race-type"> XCO </p>
                 <!-- Card image -->
                 <div class="view view-cascade overlay">
-                    <img  class="card-img-top card-img-top-custom yellow-background" src="<?php echo get_template_directory_uri() . '/images/veltasport.png'; ?>" alt="Card image cap">
+                    <img  class="card-img-top" src="<?php echo get_template_directory_uri() . '/images/velta1.png'; ?>" alt="Card image cap">
                     <a href="#!">
                         <div class="mask rgba-white-slight"></div>
                     </a>
@@ -160,6 +169,6 @@ get_header(); ?>
           <!-- Card Wider -->
         </div>
     </section>
-
+  <div>
 <?php
 get_footer();

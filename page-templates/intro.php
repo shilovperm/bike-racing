@@ -34,7 +34,7 @@ get_header(); ?>
                     <h4 class="text-light">
                       Мы тебе гонки - ты нам свою душу
                     </h4>
-                    <button type="button" class="btn btn-outline-light align-self-center">Начать!</button>
+                    <a class="btn btn-outline-light align-self-center" href="<?php echo home_url() . '/events/';?>">Начать!</a>
                 </div>
             </div>
         </div>
