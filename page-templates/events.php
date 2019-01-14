@@ -7,7 +7,7 @@ get_header(); ?>
 
   <div class="container">
     <section class="next-events bordered">
-        <div class="block-label">next-events</div>
+      <!--  <div class="block-label">next-events</div>-->
         <h2 class="text-center">Ближайшие события</h2>
         <div class="container-events">
 
@@ -134,7 +134,7 @@ get_header(); ?>
         </div>
     </section>
     <section class="past-events bordered">
-        <div class="block-label">past-events</div>
+        <!--<div class="block-label">past-events</div>-->
         <h2 class="text-center">Прошедшие события</h2>
         <div class="container-events">
             <!-- Card Wider -->
