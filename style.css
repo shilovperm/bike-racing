@@ -421,7 +421,7 @@ html, body, header, #intro {
 /* Блок с карточками событий */
 
 .card-custom {
-	min-width: 300px;
+	min-width: 230px;
 	max-width: 300px;
 	min-height: 300px;
 	max-height: 600px;
@@ -469,8 +469,8 @@ html, body, header, #intro {
 }
 
 .race-type {
-  top: 170px;
-	right: 5px;
+  top: 5px;
+	left: 40px;
   z-index: 1;
   padding: 0px 10px;
   border-radius: 5px;
