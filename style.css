@@ -482,3 +482,13 @@ html, body, header, #intro {
 .dataTables_wrapper {
   margin-top:5px;
 }
+
+.rider-photo-link-position {
+  top:2px;
+  right:5px;
+}
+
+.team-photo-link-position {
+  top:2px;
+  right: 55px;
+}

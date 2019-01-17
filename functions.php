@@ -208,7 +208,7 @@ function get_rider_list()
 {
 	global $wpdb_bike;
 	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'select r.rider_id, r.rider_name, r.photo_link, r.strava_link, c.Category_id, c.Category_Name, c.Category_Short_Name, c.data_target, t.team_name, t.team_name_en, t.team_strava_link
+			'select r.rider_id, r.rider_name, r.photo_link, r.strava_link, c.Category_id, c.Category_Name, c.Category_Short_Name, c.data_target, t.team_name, t.team_name_en, t.team_strava_link, t.team_strava_logo_link
 				from tl_riders r
 				inner JOIN tl_rider_category_rel rjc on r.rider_id = rjc.rider_id
 				INNER JOIN tl_categories c on rjc.category_id = c.Category_id
