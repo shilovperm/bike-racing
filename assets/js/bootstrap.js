@@ -3942,3 +3942,7 @@
 
 })));
 //# sourceMappingURL=bootstrap.js.map
+
+$(document).ready(function() {
+    $('#example').DataTable();
+} );

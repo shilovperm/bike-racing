@@ -149,6 +149,7 @@ function wp_bootstrap_4_scripts() {
 	wp_enqueue_style( 'wp-bootstrap-4-style', get_stylesheet_uri(), array(), '1.0.2', 'all' );
 
 	wp_enqueue_script( 'bootstrap-4-js', get_template_directory_uri() . '/assets/js/bootstrap.js', array('jquery'), 'v4.0.0', true );
+  wp_enqueue_script( 'customizer-js', get_template_directory_uri() . '/assets/js/customizer.js', array('jquery'), 'v1.0', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -198,4 +199,35 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 // Load WooCommerce compatibility file.
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
+}
+
+/*
+Возвращает список участников с категориями
+*/
+function get_rider_list()
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'select r.rider_id, r.rider_name, r.photo_link, r.strava_link, c.Category_id, c.Category_Name, c.Category_Short_Name, c.data_target, t.team_name, t.team_name_en, t.team_strava_link
+				from tl_riders r
+				inner JOIN tl_rider_category_rel rjc on r.rider_id = rjc.rider_id
+				INNER JOIN tl_categories c on rjc.category_id = c.Category_id
+                INNER JOIN tl_teams t ON r.team_id = t.team_id
+				where
+					SYSDATE() > rjc.start_date
+					and (SYSDATE() < rjc.end_date or rjc.end_date IS null)
+			ORDER BY r.rider_name','rider_info') );
+	return $results;
+}
+
+/*
+Возвращает список категорий
+*/
+function get_category_list()
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'SELECT * FROM tl_categories c
+			where c.Parent_id = 1', 'category_info') );
+	return $results;
 }

@@ -478,3 +478,7 @@ html, body, header, #intro {
   background-color:#E9E9E9;
   font-weight: bold;
 }
+
+.dataTables_wrapper {
+  margin-top:5px;
+}
