@@ -492,3 +492,7 @@ html, body, header, #intro {
   top:2px;
   right: 55px;
 }
+.badge {
+  margin-top: 0.9rem;
+  margin-left: 0.75rem;
+}
