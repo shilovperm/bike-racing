@@ -42,7 +42,7 @@ get_header(); ?>
                 <tr>
                     <th>#</th>
                     <th>Имя</th>
-                    <th>Кате-гория</th>
+                    <th>Категория</th>
                     <th>Очки</th>
                 </tr>
             </thead>
