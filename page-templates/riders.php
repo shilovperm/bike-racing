@@ -25,9 +25,7 @@ get_header(); ?>
                 echo '      <span class="position-absolute team-photo-link-position"><a target="_blank" href="',$value->team_strava_link,'"><img class="rounded-circle m-0 p-0" src="',$value->team_strava_logo_link,'" width="44" height="44" alt="strava_team"></a></span>';
               };
               echo '  </td>';
-              echo '  <td class="badge ', $value->Category_Short_Name === "A"?'badge-danger':
-                                          ($value->Category_Short_Name === "B"?'badge-warning':
-                                          ($value->Category_Short_Name === "C"?'badge-success':'badge-info')), ' p-1">',$value->Category_Short_Name,'</td>';
+              echo '  <td class="badge ', $value->style , ' p-1">',$value->Category_Short_Name,'</td>';
               echo '</tr>';
             }
           ?>
