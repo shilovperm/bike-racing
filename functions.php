@@ -225,6 +225,7 @@ function get_category_list()
 }
 
 /*
+<<<<<<< HEAD
 Возвращает рейтинг по категориям
 */
 function get_rating_list_by_category()
@@ -232,5 +233,20 @@ function get_rating_list_by_category()
 	global $wpdb_bike;
 	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
 			'select * from v_rating_total where Category_Short_Name = "A" ', 'category_info') );
+=======
+Возвращает рейтинг участников в категории
+*/
+function get_rating_list_by_category($category)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'SELECT vrt.Num,
+        vrt.Category_Short_Name,
+        vrt.rider_name,
+        vrt.Style,
+        vrt.result_points
+  FROM v_rating_total vrt
+WHERE vrt.Category_Short_Name = %s',$category) );
+>>>>>>> bdef24c97d83188729a04b86fa78d562a717f5c4
 	return $results;
 }
