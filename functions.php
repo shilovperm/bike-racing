@@ -208,15 +208,7 @@ function get_rider_list()
 {
 	global $wpdb_bike;
 	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'select r.rider_id, r.rider_name, r.photo_link, r.strava_link, c.Category_id, c.Category_Name, c.Category_Short_Name, c.data_target, t.team_name, t.team_name_en, t.team_strava_link, t.team_strava_logo_link
-				from tl_riders r
-				inner JOIN tl_rider_category_rel rjc on r.rider_id = rjc.rider_id
-				INNER JOIN tl_categories c on rjc.category_id = c.Category_id
-                INNER JOIN tl_teams t ON r.team_id = t.team_id
-				where
-					SYSDATE() > rjc.start_date
-					and (SYSDATE() < rjc.end_date or rjc.end_date IS null)
-			ORDER BY r.rider_name','rider_info') );
+			'select * from v_riders_info','rider_info') );
 	return $results;
 }
 
@@ -229,5 +221,16 @@ function get_category_list()
 	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
 			'SELECT * FROM tl_categories c
 			where c.Parent_id = 1', 'category_info') );
+	return $results;
+}
+
+/*
+Возвращает рейтинг по категориям
+*/
+function get_rating_list_by_category()
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'select * from v_rating_total where Category_Short_Name = "A" ', 'category_info') );
 	return $results;
 }

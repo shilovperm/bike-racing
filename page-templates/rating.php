@@ -1,6 +1,6 @@
 <?php
 /*
-* Template Name: Riders
+* Template Name: Rating
 */
 
 get_header(); ?>
@@ -8,8 +8,10 @@ get_header(); ?>
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
+                <th>Рейтинг</th>
                 <th>Имя</th>
                 <th>Категория</th>
+                <th>Очки</th>
             </tr>
         </thead>
         <tbody>
@@ -29,11 +31,21 @@ get_header(); ?>
               echo '</tr>';
             }
           ?>
+          <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+            </tr>
         </tbody>
         <tfoot>
             <tr>
-                <th>Имя</th>
-                <th>Категория</th>
+              <th>Рейтинг</th>
+              <th>Имя</th>
+              <th>Категория</th>
+              <th>Очки</th>
             </tr>
         </tfoot>
     </table>
