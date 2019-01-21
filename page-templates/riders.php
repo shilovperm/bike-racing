@@ -8,8 +8,8 @@ get_header(); ?>
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
-                <th>Имя</th>
-                <th>Категория</th>
+                <th>Категория/Имя</th>
+                <th>Strava</th>
             </tr>
         </thead>
         <tbody>
@@ -17,23 +17,24 @@ get_header(); ?>
             $riders = get_rider_list();
             foreach ($riders as &$value) {
               echo '<tr>';
-              echo '  <td class="position-relative">', $value->rider_name;
+              echo '  <td class="position-relative"> <span class="badge ', $value->style,' d-inline">',$value->Category_Short_Name,'</span> ', $value->rider_name;
+              echo '  </td>';
+              echo '  <td>';
               if (substr($value->photo_link, 0, 4)=='http' and substr($value->strava_link, 0, 4)=='http') {
-                echo '      <span class="position-absolute rider-photo-link-position"><a target="_blank" href="',$value->strava_link,'"><img class="rounded-circle m-0 p-0" src="',$value->photo_link,'" width="44" height="44" alt="strava_rider"></a></span>';
+                echo '      <span class=""><a target="_blank" href="',$value->strava_link,'"><img class="rounded-circle m-0 p-0" src="',$value->photo_link,'" width="44" height="44" alt="strava_rider"></a></span>';
               };
               if (substr($value->team_strava_logo_link, 0, 4)=='http' and substr($value->team_strava_link, 0, 4)=='http') {
-                echo '      <span class="position-absolute team-photo-link-position"><a target="_blank" href="',$value->team_strava_link,'"><img class="rounded-circle m-0 p-0" src="',$value->team_strava_logo_link,'" width="44" height="44" alt="strava_team"></a></span>';
+                echo '      <span class=""><a target="_blank" href="',$value->team_strava_link,'"><img class="rounded-circle m-0 p-0" src="',$value->team_strava_logo_link,'" width="44" height="44" alt="strava_team"></a></span>';
               };
-              echo '  </td>';
-              echo '  <td class="badge ', $value->style , ' p-1">',$value->Category_Short_Name,'</td>';
+              echo '</td>';
               echo '</tr>';
             }
           ?>
         </tbody>
         <tfoot>
             <tr>
-                <th>Имя</th>
-                <th>Категория</th>
+                <th>Категория/Имя</th>
+                <th>Strava</th>
             </tr>
         </tfoot>
     </table>
