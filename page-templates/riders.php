@@ -34,7 +34,7 @@ get_header(); ?>
         <tfoot>
             <tr>
                 <th>Категория/Имя</th>
-                <th>Strava</th>
+                <th>Strava1</th>
             </tr>
         </tfoot>
     </table>
