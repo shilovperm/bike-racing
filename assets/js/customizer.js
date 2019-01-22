@@ -5,7 +5,7 @@
  *
  * Contains handlers to make Theme Customizer preview reload changes asynchronously.
  */
-
+/*
 ( function( $ ) {
 
 	// Site title and description.
@@ -40,3 +40,9 @@
 		} );
 	} );
 } )( jQuery );
+*/
+//menu action changes
+$( '#organization-menu .navbar-nav a' ).on( 'click', function () {
+	$( '#organization-menu .navbar-nav' ).find( 'li.active' ).removeClass( 'active' );
+	$( this ).parent( 'li' ).addClass( 'active' );
+});
