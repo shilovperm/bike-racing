@@ -240,3 +240,7 @@ function get_rating_list_by_category($category)
 WHERE vrt.Category_Short_Name = %s',$category) );
 	return $results;
 }
+
+// Add a custom user role
+
+$result = add_role( 'organization', 'Организатор' ,array( ) );
