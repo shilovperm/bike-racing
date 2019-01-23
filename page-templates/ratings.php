@@ -26,26 +26,7 @@ get_header(); ?>
             </ul>
         </div>
     </nav>
-<<<<<<< HEAD
-        <table id="example" class="table table-striped table-bordered" style="width:100%">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Имя</th>
-                    <th>Категория</th>
-                    <th>Очки</th>
-                </tr>
-            </thead>
-            <tbody>
-              <?php
-                if (isset($_GET["category"])) {
-                    $p_category = $_GET["category"];
-                } else {
-                    $p_category = 'A';
-                };
-=======
 </div>
->>>>>>> d3064cc41a6e12ca471e8517d74b4728b3613bb9
 
 <?php
     if (isset($_GET["category"])) {
