@@ -26,6 +26,8 @@
 
 <?php
 
+
+
 // Пути загрузки файлов
 
 $upload_dir = wp_upload_dir();
@@ -55,7 +57,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
      echo 'Что-то пошло не так. $datafile: ' . $datafile . ' $file: ' . $file . ' $fileurl ' . $fileurl . ' $upload_dir: ' . $upload_dir;
    }
      else {
-     echo 'Загрузка удачна <a href="' . $file . '">Посмотреть</a> <br> <p> $datafile: ' . $datafile . ' $file: ' . $file . ' $fileurl ' . $fileurl . ' $upload_dir: ' . $upload_dir . '</p>';
+     echo 'Загрузка удачна <a href="' . $fileurl . '">Посмотреть</a> <br> <p>';
+     /*$datafile: ' . $datafile . ' $file: ' . $file . ' $fileurl ' . $fileurl . ' $upload_dir: ' . $upload_dir['path'] . '</p>';*/
    }
 /*
  if (!@copy($_FILES['CSV']['tmp_name'], $tmp_path . $_FILES['CSV']['name']))

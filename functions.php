@@ -208,7 +208,7 @@ function get_rider_list()
 {
 	global $wpdb_bike;
 	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'select * from v_riders_info','rider_info') );
+			'CALL p_get_all_riders();','rider_info') );
 	return $results;
 }
 
@@ -219,8 +219,7 @@ function get_category_list()
 {
 	global $wpdb_bike;
 	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'SELECT * FROM tl_categories c
-			where c.Parent_id = 1', 'category_info') );
+			'CALL p_get_categories_by_parent_id(1)', 'category_info') );
 	return $results;
 }
 
@@ -231,13 +230,7 @@ function get_rating_list_by_category($category)
 {
 	global $wpdb_bike;
 	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'SELECT vrt.Num,
-        vrt.Category_Short_Name,
-        vrt.rider_name,
-        vrt.Style,
-        vrt.result_points
-  FROM v_rating_total vrt
-WHERE vrt.Category_Short_Name = %s',$category) );
+			'CALL p_get_rating_by_category(%s)',$category) );
 	return $results;
 }
 
