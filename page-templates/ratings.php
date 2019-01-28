@@ -43,7 +43,12 @@ get_header(); ?>
             <tr>
                 <th>#</th>
                 <th>Категория/Имя</th>
-                <th>Очки</th>
+                <th>Этап №1</th>
+                <th>Этап №2</th>
+                <th>Этап №3</th>
+                <th>Этап №4</th>
+                <th>Этап №5</th>
+                <th>Итого</th>
             </tr>
         </thead>
         <tbody>
@@ -53,6 +58,11 @@ get_header(); ?>
               echo '<tr>';
               echo '  <td>', $value->Num ,'</td>';
               echo '  <td> <span class="badge ', $value->Style,' d-inline">',$value->Category_Short_Name,'</span> ', $value->rider_name, '  </td>';
+              echo '  <td>', $value->result1,'</td>';
+              echo '  <td>', $value->result2,'</td>';
+              echo '  <td>', $value->result3,'</td>';
+              echo '  <td>', $value->result4,'</td>';
+              echo '  <td>', $value->result5,'</td>';
               echo '  <td>', $value->result_points ,'</td>';
               echo '</tr>';
             }
@@ -62,7 +72,12 @@ get_header(); ?>
             <tr>
                 <th>#</th>
                 <th>Категория/Имя</th>
-                <th>Очки</th>
+                <th>Этап №1</th>
+                <th>Этап №2</th>
+                <th>Этап №3</th>
+                <th>Этап №4</th>
+                <th>Этап №5</th>
+                <th>Итого</th>
             </tr>
         </tfoot>
     </table>
