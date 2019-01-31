@@ -234,6 +234,29 @@ function get_rating_list_by_category($category)
 	return $results;
 }
 
+/*
+Возвращает список всех прошедших и отмененных событий
+*/
+function get_all_past_events()
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_all_past_events();','events_info') );
+	return $results;
+}
+
+/*
+Возвращает список всех будущих событий
+*/
+function get_all_future_events()
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_all_future_events();','events_info') );
+	return $results;
+}
+
+
 // Add a custom user role
 
 $result = add_role( 'organization', 'Организатор' ,array( ) );

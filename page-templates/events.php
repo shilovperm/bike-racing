@@ -10,163 +10,86 @@ get_header(); ?>
       <!--  <div class="block-label">next-events</div>-->
         <h2 class="text-center">Ближайшие события</h2>
         <div class="container-events">
-
-              <!-- Card Wider -->
-              <div class="card card-cascade wider card-custom position-relative blue-grey-text">
-                <!-- sun image -->
-                <img  class="card-add-picture-1 position-absolute" src="<?php echo get_template_directory_uri() . '/images/sun.svg'; ?>" alt="wr" height="25" width="25">
-                <!-- veltalogo image -->
-                <img  class="card-img-logo position-absolute yellow-background" src="<?php echo get_template_directory_uri() . '/images/veltasport.png'; ?>" alt="wr">
-                <!--XCO image -->
-                <p class="position-absolute race-type"> XCO </p>
-                <!-- Card image -->
-                <div class="view view-cascade overlay">
-                    <img  class="card-img-top" src="<?php echo get_template_directory_uri() . '/images/velta2.png'; ?>" alt="Card image cap">
-                    <a href="#!">
-                        <div class="mask rgba-white-slight"></div>
-                    </a>
-                </div>
-                  <!-- Card content -->
-                  <div class="card-body card-body-cascade text-center card-body-custom">
-                      <!-- Title -->
-                      <h4 class="card-title"><strong>Кубок Велта-спорт</strong></h4>
-                      <!-- Subtitle -->
-                      <h5 class="blue-text pb-2"><strong>Этап №2 "Бодрый заряд"</strong></h5>
-                      <!-- Date -->
-                      <p class="mb-0"><i class="fas fa-calendar mr-2"></i>13.05.2018</p>
-                      <!-- Text -->
-                      <p class="card-text">Профсоюзка - это народный бренд</p>
-                      <!-- Button -->
-                      <button type="button" class="btn btn-outline-success waves-effect btn-on-card">Зарегистрироваться</button>
-                  </div>
-              </div>
-              <!-- Card Wider -->
-            <!-- Card Wider -->
-            <div class="card card-cascade wider card-custom position-relative blue-grey-text">
-                <!-- sun image -->
-                <img  class="card-add-picture-1 position-absolute" src="<?php echo get_template_directory_uri() . '/images/cloud-sun.svg'; ?>" alt="wr" height="25" width="25">
-                <!-- veltalogo image -->
-                <img  class="card-img-logo position-absolute yellow-background" src="<?php echo get_template_directory_uri() . '/images/veltasport.png'; ?>" alt="wr">
-                <!--XCO image -->
-                <p class="position-absolute race-type"> XCO </p>
-                <!-- Card image -->
-                <div class="view view-cascade overlay">
-                    <img  class="card-img-top" src="<?php echo get_template_directory_uri() . '/images/velta3.png'; ?>" alt="Card image cap">
-                    <a href="#!">
-                        <div class="mask rgba-white-slight"></div>
-                    </a>
-                </div>
-                <!-- Card content -->
-                <div class="card-body card-body-cascade text-center card-body-custom">
-                  <!-- Title -->
-                  <h4 class="card-title"><strong>Кубок Велта-спорт</strong></h4>
-                  <!-- Subtitle -->
-                  <h5 class="blue-text pb-2"><strong>Этап №3 "РОВный пульс"</strong></h5>
-                  <!-- Date -->
-                  <p class="mb-0"><i class="fas fa-calendar mr-2"></i>17.06.2018</p>
-                  <!-- Text -->
-                  <p class="card-text">Рваный пульс на РОВной трассе</p>
-                  <!-- Button -->
-                  <button type="button" class="btn btn-outline-gray btn-on-card" disabled>Ожидание регистрации</button>
-                </div>
-            </div>
-            <!-- Card Wider -->
-            <!-- Card Wider -->
-            <div class="card card-cascade wider card-custom position-relative blue-grey-text">
-              <!-- rain image -->
-              <img  class="card-add-picture-1 position-absolute" src="<?php echo get_template_directory_uri() . '/images/cloud-showers-heavy.svg'; ?>" alt="wr" height="25" width="25">
-              <!-- veltalogo image -->
-              <img  class="card-img-logo position-absolute yellow-background" src="<?php echo get_template_directory_uri() . '/images/veltasport.png'; ?>" alt="wr">
-              <!--XCO image -->
-              <p class="position-absolute race-type"> XCO </p>
-              <!-- Card image -->
-              <div class="view view-cascade overlay">
-                  <img  class="card-img-top" src="<?php echo get_template_directory_uri() . '/images/velta4.png'; ?>" alt="Card image cap">
-                  <a href="#!">
-                      <div class="mask rgba-white-slight"></div>
-                  </a>
-              </div>
-              <!-- Card content -->
-              <div class="card-body card-body-cascade text-center card-body-custom">
-                <!-- Title -->
-                <h4 class="card-title"><strong>Кубок Велта-спорт</strong></h4>
-                <!-- Subtitle -->
-                <h5 class="blue-text pb-2"><strong>Этап №4 "ДИВное лето"</strong></h5>
-                <!-- Date -->
-                <p class="mb-0"><i class="fas fa-calendar mr-2"></i>29.07.2018</p>
-                <!-- Text -->
-                <p class="card-text">Лужа в твоих бошмаках зазвучит соль диезом</p>
-                <!-- Button -->
-                <button type="button" class="btn btn-outline-gray btn-on-card" disabled>Ожидание регистрации</button>
-              </div>
-            </div>
-            <!-- Card Wider -->
-            <!-- Card Wider -->
-            <div class="card card-cascade wider card-custom position-relative blue-grey-text">
-              <!-- mud image -->
-              <img  class="card-add-picture-1 position-absolute" src="<?php echo get_template_directory_uri() . '/images/poop.svg'; ?>" alt="wr" height="25" width="25">
-              <!-- veltalogo image -->
-              <img  class="card-img-logo position-absolute yellow-background" src="<?php echo get_template_directory_uri() . '/images/veltasport.png'; ?>" alt="wr">
-              <!--XCO image -->
-              <p class="position-absolute race-type"> XCO </p>
-              <!-- Card image -->
-              <div class="view view-cascade overlay">
-                  <img  class="card-img-top" src="<?php echo get_template_directory_uri() . '/images/velta5.png'; ?>" alt="Card image cap">
-                  <a href="#!">
-                      <div class="mask rgba-white-slight"></div>
-                  </a>
-              </div>
-              <!-- Card content -->
-              <div class="card-body card-body-cascade text-center card-body-custom">
-                <!-- Title -->
-                <h4 class="card-title"><strong>Кубок Велта-спорт</strong></h4>
-                <!-- Subtitle -->
-                <h5 class="blue-text pb-2"><strong>Этап №5 "Andronovo Mud Race"</strong></h5>
-                <!-- Date -->
-                <p class="mb-0"><i class="fas fa-calendar mr-2"></i>27.10.2018</p>
-                <!-- Text -->
-                <p class="card-text">Холодная грязь. Самовывоз. Дорого.</p>
-                <!-- Button -->
-                <button type="button" class="btn btn-outline-gray btn-on-card" disabled>Ожидание регистрации</button>
-              </div>
-            </div>
-            <!-- Card Wider -->
+          <!-- Card Wider из БД-->
+          <?php
+            $events = get_all_future_events();
+            foreach ($events as &$value) {
+                echo '<div class="card card-cascade wider card-custom position-relative blue-grey-text">';
+                /*echo '    <!-- snowflake image -->';
+                echo '    <img  class="card-add-picture-1 position-absolute" src="' . get_template_directory_uri() . '/images/snowflake.svg" alt="wr" height="25" width="25">';*/
+                echo '    <!-- veltalogo image -->';
+                echo '    <img  class="card-img-logo position-absolute yellow-background" src="data:image/png;base64,'.base64_encode($value->org_logo).'" alt="wr">';                
+                echo '    <!--XCO image -->';
+                echo '    <p class="position-absolute race-type">' . $value->race_type_short_name . '</p>';
+                echo '    <!-- Card image -->';
+                echo '    <div class="view view-cascade overlay">';
+                echo '        <img  class="card-img-top" src="data:image/png;base64,'.base64_encode($value->image).'" height="200" width="300" alt="Card image cap">';
+                echo '        <a href="#!">';
+                echo '            <div class="mask rgba-white-slight"></div>';
+                echo '        </a>';
+                echo '    </div>';
+                echo '    <!-- Card content -->';
+                echo '    <div class="card-body card-body-cascade text-center card-body-custom">';
+                echo '        <!-- Title -->';
+                echo '        <h4 class="card-title"><strong>' . $value->event_title . '</strong></h4>';
+                echo '        <!-- Subtitle -->';
+                echo '        <h5 class="blue-text pb-2"><strong>' . $value->event_subtitle . '</strong></h5>';
+                echo '        <!-- Date -->';
+                echo '        <p class="mb-0"><i class="fas fa-calendar mr-2"></i>' . $value->event_date . '</p>';
+                echo '        <!-- Text -->';
+                echo '        <p class="card-text">' . $value->event_description . '</p>';
+                echo '        <!-- Button -->';
+                $btnstyle   = ($value->status_id == 2 or $value->status_id == 3) ? 'btn-success' :'btn-outline-gray';
+                $btndisable = ($value->status_id == 2) ? '':'disabled';
+                echo '        <button type="button" class="btn '. $btnstyle .' btn-on-card"' . $btndisable . '>' . $value->status_name . '</button>';
+                echo '    </div>';
+                echo '</div>';
+                echo '<!-- Card Wider -->';
+            }
+          ?>
         </div>
     </section>
     <section class="past-events bordered">
         <!--<div class="block-label">past-events</div>-->
         <h2 class="text-center">Прошедшие события</h2>
         <div class="container-events">
-            <!-- Card Wider -->
-            <div class="card card-cascade wider card-custom position-relative blue-grey-text">
-                <!-- snowflake image -->
-                <img  class="card-add-picture-1 position-absolute" src="<?php echo get_template_directory_uri() . '/images/snowflake.svg'; ?>" alt="wr" height="25" width="25">
-                <!-- veltalogo image -->
-                <img  class="card-img-logo position-absolute yellow-background" src="<?php echo get_template_directory_uri() . '/images/veltasport.png'; ?>" alt="wr">
-                <!--XCO image -->
-                <p class="position-absolute race-type"> XCO </p>
-                <!-- Card image -->
-                <div class="view view-cascade overlay">
-                    <img  class="card-img-top" src="<?php echo get_template_directory_uri() . '/images/velta1.png'; ?>" alt="Card image cap">
-                    <a href="#!">
-                        <div class="mask rgba-white-slight"></div>
-                    </a>
-                </div>
-                <!-- Card content -->
-                <div class="card-body card-body-cascade text-center card-body-custom">
-                    <!-- Title -->
-                    <h4 class="card-title"><strong>Кубок Велта-спорт</strong></h4>
-                    <!-- Subtitle -->
-                    <h5 class="blue-text pb-2"><strong>Этап №1 "Открытие сезона"</strong></h5>
-                    <!-- Date -->
-                    <p class="mb-0"><i class="fas fa-calendar mr-2"></i>04.03.2018</p>
-                    <!-- Text -->
-                    <p class="card-text">Первая зимняя гонка от Сварочника и Димы Че</p>
-                    <!-- Button -->
-                    <button type="button" class="btn btn-success btn-on-card" disabled>Гонка завершена</button>
-                </div>
-            </div>
-          <!-- Card Wider -->
+          <!-- Card Wider из БД-->
+          <?php
+            $events = get_all_past_events();
+            foreach ($events as &$value) {
+                echo '<div class="card card-cascade wider card-custom position-relative blue-grey-text">';
+                /*echo '    <!-- snowflake image -->';
+                echo '    <img  class="card-add-picture-1 position-absolute" src="' . get_template_directory_uri() . '/images/snowflake.svg" alt="wr" height="25" width="25">';*/
+                echo '    <!-- veltalogo image -->';
+                echo '    <img  class="card-img-logo position-absolute yellow-background" src="data:image/png;base64,'.base64_encode($value->org_logo).'" alt="wr">';
+                echo '    <!--XCO image -->';
+                echo '    <p class="position-absolute race-type">' . $value->race_type_short_name . '</p>';
+                echo '    <!-- Card image -->';
+                echo '    <div class="view view-cascade overlay">';
+                echo '        <img  class="card-img-top" src="data:image/png;base64,'.base64_encode($value->image).'" height="200" width="300" alt="Card image cap">';
+                echo '        <a href="#!">';
+                echo '            <div class="mask rgba-white-slight"></div>';
+                echo '        </a>';
+                echo '    </div>';
+                echo '    <!-- Card content -->';
+                echo '    <div class="card-body card-body-cascade text-center card-body-custom">';
+                echo '        <!-- Title -->';
+                echo '        <h4 class="card-title"><strong>' . $value->event_title . '</strong></h4>';
+                echo '        <!-- Subtitle -->';
+                echo '        <h5 class="blue-text pb-2"><strong>' . $value->event_subtitle . '</strong></h5>';
+                echo '        <!-- Date -->';
+                echo '        <p class="mb-0"><i class="fas fa-calendar mr-2"></i>' . $value->event_date . '</p>';
+                echo '        <!-- Text -->';
+                echo '        <p class="card-text">' . $value->event_description . '</p>';
+                echo '        <!-- Button -->';
+                $btnstyle   = ($value->status_id == 2 or $value->status_id == 3) ? 'btn-success' :'btn-outline-gray';
+                $btndisable = ($value->status_id == 2) ? '':'disabled';
+                echo '        <button type="button" class="btn '. $btnstyle .' btn-on-card"' . $btndisable . '>' . $value->status_name . '</button>';
+                echo '    </div>';
+                echo '</div>';
+                echo '<!-- Card Wider -->';
+            }
+          ?>
         </div>
     </section>
   <div>
