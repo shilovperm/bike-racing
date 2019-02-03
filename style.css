@@ -468,6 +468,12 @@ html, body, header, #intro {
   border-radius: 0.25rem;
 }
 
+.img-logo {
+  width:100px;
+  border-radius: 0.25rem;
+  padding: 2px;
+}
+
 .race-type {
   top: 5px;
 	left: 5px;

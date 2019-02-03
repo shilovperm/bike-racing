@@ -256,6 +256,50 @@ function get_all_future_events()
 	return $results;
 }
 
+/*
+Возвращает общую информацию о мероприятии
+*/
+function get_event_info_by_event_id($event_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_event_info_by_event_id(%d)',$event_id) );
+	return $results;
+}
+
+/*
+Возвращает категории мероприятия
+*/
+function get_event_categories_by_event_id($event_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_event_categories_by_event_id(%d)',$event_id) );
+	return $results;
+}
+
+/*
+Возвращает расписание мероприятия
+*/
+function get_event_timeline_by_event_id($event_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_event_timeline_by_event_id(%d)',$event_id) );
+	return $results;
+}
+
+/*
+Возвращает правила ценообразования
+*/
+function get_event_cost_rules_by_event_id($event_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_event_cost_rules_by_event_id(%d)',$event_id) );
+	return $results;
+}
+
 
 // Add a custom user role
 

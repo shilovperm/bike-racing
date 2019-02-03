@@ -53,7 +53,7 @@ get_header(); ?>
         </thead>
         <tbody>
           <?php
-            $riders = get_rating_list_by_category($p_category);
+            $riders = get_rating_list_by_category($p_category);            
             foreach ($riders as &$value) {
               echo '<tr>';
               echo '  <td>', $value->Num ,'</td>';
