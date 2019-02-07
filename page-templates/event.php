@@ -26,10 +26,18 @@ get_header(); ?>
           echo '<h6> Тип соревнования: '. $eventValue->race_type_name .' ('. $eventValue->race_type_short_name . ')</h6>';
           echo '<h6> Место регистрации на гонку:</h6>';
           echo $eventValue->event_place_map;
+          echo '<h6> Категории участников:</h6>';
+        }
 
-        };
+
+        echo '<ul>';
+          foreach ($categories as &$categoriesValue) {
+            echo '<li>';
+            echo '  <span class="'. $categoriesValue->style .' rounded">'.  $categoriesValue->category_name .'</span> '. $categoriesValue->description ;
+            echo '</li>';
+          }
+        echo '</ul>';
     ?>
-
-  <div>
+  </div>
 <?php
 get_footer();
