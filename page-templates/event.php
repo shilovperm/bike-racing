@@ -12,10 +12,11 @@ get_header(); ?>
             $par_event_id = $_GET["event_id"];
         };
 
-        $event = get_event_info_by_event_id($par_event_id);
+        $event      = get_event_info_by_event_id($par_event_id);
         $categories = get_event_categories_by_event_id($par_event_id);
-        $timeLine = get_event_timeline_by_event_id($par_event_id);
-        $costRules = get_event_cost_rules_by_event_id($par_event_id);
+        $timeLine   = get_event_timeline_by_event_id($par_event_id);
+        $costRules  = get_event_cost_rules_by_event_id($par_event_id);
+
         foreach ($event as &$eventValue)
         {
           echo '<h3>'. $eventValue->event_title .'</h3>';
@@ -23,8 +24,9 @@ get_header(); ?>
           echo '<h5> Организатор: '. $eventValue->org_name .'  '.'<img  class="img-logo position-absolute yellow-background" src="data:image/png;base64,'.base64_encode($eventValue->org_logo).'" alt="wr"></h5>';
           echo '<h5> Дата: '. date("d.m.Y", strtotime( $eventValue->event_date)) .'</h5>';
           echo '<h6> Тип соревнования: '. $eventValue->race_type_name .' ('. $eventValue->race_type_short_name . ')</h6>';
-          echo '<h6> Место регистрации на гонку:</h6><br>';
+          echo '<h6> Место регистрации на гонку:</h6>';
           echo $eventValue->event_place_map;
+
         };
     ?>
 
