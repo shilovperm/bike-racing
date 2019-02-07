@@ -26,14 +26,39 @@ get_header(); ?>
           echo '<h6> Тип соревнования: '. $eventValue->race_type_name .' ('. $eventValue->race_type_short_name . ')</h6>';
           echo '<h6> Место регистрации на гонку:</h6>';
           echo $eventValue->event_place_map;
-          echo '<h6> Категории участников:</h6>';
+
         }
 
-
+        echo '<h6> Категории участников:</h6>';
         echo '<ul>';
           foreach ($categories as &$categoriesValue) {
-            echo '<li>';
+            echo '<li class="list-style-type-none">';
             echo '  <span class="'. $categoriesValue->style .' rounded">'.  $categoriesValue->category_name .'</span> '. $categoriesValue->description ;
+            echo '</li>';
+          }
+        echo '</ul>';
+
+        echo '<h6> Расписание мероприятия:</h6>';
+        echo '<ul>';
+        foreach ($timeLine as &$timeLineValue) {
+          echo '<li class="list-style-type-none">';
+          echo    date("G:i", strtotime($timeLineValue->time_start))   .' ';
+
+          if (date("G:i", strtotime($timeLineValue->time_end))=='0:00') {
+              echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'. $timeLineValue->description;
+          } else {
+              echo date("G:i", strtotime($timeLineValue->time_end)).' '. $timeLineValue->description;
+          }
+
+          echo '</li>';
+        }
+        echo '</ul>';
+
+        echo '<h6> Стоимость участия:</h6>';
+        echo '<ul>';
+          foreach ($costRules as &$costRulesValue) {
+            echo '<li class="list-style-type-none">';
+            echo    $costRulesValue->rule_cost .' рублей. '. $costRulesValue->rule_description ;
             echo '</li>';
           }
         echo '</ul>';
