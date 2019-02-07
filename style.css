@@ -470,8 +470,10 @@ html, body, header, #intro {
 
 .img-logo {
   width:100px;
+  top: 15px;
+	right: 15px;
   border-radius: 0.25rem;
-  padding: 2px;
+  padding: 3px;
 }
 
 .race-type {

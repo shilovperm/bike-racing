@@ -5,7 +5,7 @@
 
 get_header(); ?>
 
-  <div class="container">
+  <div class="container position-relative">
 
     <?php
         if (isset($_GET["event_id"])) {
@@ -20,8 +20,11 @@ get_header(); ?>
         {
           echo '<h3>'. $eventValue->event_title .'</h3>';
           echo '<h4>'. $eventValue->event_subtitle .'</h4>';
-          echo '<h5> Организатор: '. $eventValue->org_name .'  '.'<img  class="img-logo yellow-background" src="data:image/png;base64,'.base64_encode($eventValue->org_logo).'" alt="wr"></h5>';
-          echo '';
+          echo '<h5> Организатор: '. $eventValue->org_name .'  '.'<img  class="img-logo position-absolute yellow-background" src="data:image/png;base64,'.base64_encode($eventValue->org_logo).'" alt="wr"></h5>';
+          echo '<h5> Дата: '. date("d.m.Y", strtotime( $eventValue->event_date)) .'</h5>';
+          echo '<h6> Тип соревнования: '. $eventValue->race_type_name .' ('. $eventValue->race_type_short_name . ')</h6>';
+          echo '<h6> Место регистрации на гонку:</h6><br>';
+          echo $eventValue->event_place_map;
         };
     ?>
 
