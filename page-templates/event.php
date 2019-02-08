@@ -26,14 +26,14 @@ get_header(); ?>
           echo '<h5> Дата: '. date("d.m.Y", strtotime( $eventValue->event_date)) .'</h5>';
           echo '<h6> Тип соревнования: '. $eventValue->race_type_name .' ('. $eventValue->race_type_short_name . ')</h6>';
           echo '<h6> Место регистрации на гонку:</h6>';
-          echo $eventValue->event_place_map;
+          echo '<div style="display: block; width: 100%; height: 450px;">'. $eventValue->event_place_map. '</div>';
         }
 
         echo '<h6> Категории участников:</h6>';
         echo '<ul>';
           foreach ($categories as &$categoriesValue) {
             echo '<li class="list-style-type-none">';
-            echo '  <span class="'. $categoriesValue->style .' rounded">'.  $categoriesValue->category_name .'</span> '. $categoriesValue->description ;
+            echo '  <span class="'. $categoriesValue->style .' rounded cp-1">'.  $categoriesValue->category_name .'</span> '. $categoriesValue->description ;
             echo '</li>';
           }
         echo '</ul>';
@@ -67,11 +67,12 @@ get_header(); ?>
 			<h6>Результат гонки</h6>
 
 
-							<div class="btn-group">
-								<button type="button" class="btn btn-danger   btn-filter" data-target="A" >Категория А</button>
-								<button type="button" class="btn btn-warning  btn-filter" data-target="B" >Категория B</button>
-								<button type="button" class="btn btn-success  btn-filter" data-target="C" >Категория C</button>
-								<button type="button" class="btn btn-info     btn-filter" data-target="D" >Категория D</button>
+							<div class="btn-group p-1">
+								<button type="button" class="btn btn-danger   btn-filter" data-target="A"   >Категория А</button>
+								<button type="button" class="btn btn-warning  btn-filter" data-target="B"   >Категория B</button>
+								<button type="button" class="btn btn-success  btn-filter" data-target="C"   >Категория C</button>
+								<button type="button" class="btn btn-info     btn-filter" data-target="D"   >Категория D</button>
+                <button type="button" class="btn btn-default  btn-filter" data-target="all" >Все категории</button>
 							</div>
 
 						<div class="table-container">
@@ -91,7 +92,8 @@ get_header(); ?>
                     foreach ($riderResult as &$riderResultValue) {
     									echo '<tr data-status="'.$riderResultValue->category_short_name.'">';
     									echo '   <td>'.$riderResultValue->result_category_place.' </td>';
-                      echo '   <td>'.$riderResultValue->rider_name.' </td>';
+                      echo '  <td class="position-relative"> <span class="badge ' . $riderResultValue->style . ' d-inline">' . $riderResultValue->category_short_name . '</span> ' . $riderResultValue->rider_name . '</td>';
+                      /*  echo '   <td>'.$riderResultValue->rider_name.' </td>';*/
                       echo '   <td>'.$riderResultValue->team_name.' </td>';
                       echo '   <td>'.$riderResultValue->result_time.' </td>';
                       echo '   <td>'.$riderResultValue->result_laps.' </td>';
