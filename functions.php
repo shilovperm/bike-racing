@@ -300,6 +300,19 @@ function get_event_cost_rules_by_event_id($event_id)
 	return $results;
 }
 
+/*
+Возвращает результаты гонки
+*/
+function get_event_result_by_event_id($event_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_event_result_by_event_id(%d)',$event_id) );
+	return $results;
+}
+
+
+
 
 // Add a custom user role
 
