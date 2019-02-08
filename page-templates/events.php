@@ -18,7 +18,7 @@ get_header(); ?>
                 /*echo '    <!-- snowflake image -->';
                 echo '    <img  class="card-add-picture-1 position-absolute" src="' . get_template_directory_uri() . '/images/snowflake.svg" alt="wr" height="25" width="25">';*/
                 echo '    <!-- veltalogo image -->';
-                echo '    <img  class="card-img-logo position-absolute yellow-background" src="data:image/png;base64,'.base64_encode($value->org_logo).'" alt="wr">';                
+                echo '    <img  class="card-img-logo position-absolute yellow-background" src="data:image/png;base64,'.base64_encode($value->org_logo).'" alt="wr">';
                 echo '    <!--XCO image -->';
                 echo '    <p class="position-absolute race-type">' . $value->race_type_short_name . '</p>';
                 echo '    <!-- Card image -->';
@@ -67,7 +67,7 @@ get_header(); ?>
                 echo '    <!-- Card image -->';
                 echo '    <div class="view view-cascade overlay">';
                 echo '        <img  class="card-img-top" src="data:image/png;base64,'.base64_encode($value->image).'" height="200" width="300" alt="Card image cap">';
-                echo '        <a href="#!">';
+                echo '        <a href="event/?event_id=1">';
                 echo '            <div class="mask rgba-white-slight"></div>';
                 echo '        </a>';
                 echo '    </div>';
