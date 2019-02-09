@@ -429,6 +429,13 @@ html, body, header, #intro {
 	color: dark;
 }
 
+.img-link-hover {
+  opacity: 1;
+}
+
+.img-link-hover:hover {
+  opacity: 0.75;
+}
 
 .yellow-background {
 	background-color: #FDFB00;

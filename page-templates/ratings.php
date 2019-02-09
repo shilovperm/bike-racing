@@ -53,11 +53,11 @@ get_header(); ?>
         </thead>
         <tbody>
           <?php
-            $riders = get_rating_list_by_category($p_category);            
+            $riders = get_rating_list_by_category($p_category);
             foreach ($riders as &$value) {
               echo '<tr>';
               echo '  <td>', $value->Num ,'</td>';
-              echo '  <td> <span class="badge ', $value->Style,' d-inline">',$value->Category_Short_Name,'</span> ', $value->rider_name, '  </td>';
+              echo '  <td> <span class="badge badge-', $value->Style,' d-inline">',$value->Category_Short_Name,'</span> ', $value->rider_name, '  </td>';
               echo '  <td>', $value->result1,'</td>';
               echo '  <td>', $value->result2,'</td>';
               echo '  <td>', $value->result3,'</td>';
