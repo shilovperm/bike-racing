@@ -4,15 +4,16 @@
 */
 
 get_header(); ?>
+
 <div class="container">
     <div class="container mt-5 mb-5">
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <h4>Будущие изменения</h4>
                 <ul class="timeline">
-                    <li>
-                        <a href="#">Страница гонки</a>
-                        <a href="#" class="float-right">Февраль, 2019</a>
+                    <li >
+                        <a href="#" class="resolved">Страница гонки (Сделано)</a>
+                        <a href="#" class="float-right resolved"> 10 Февраля, 2019</a>
                         <p>Страница гонки будет содержать основную информацию о планируемом событии. Например: дата события, место старта, категории участников и т.д. У завершенных событиях должен появиться протокол.</p>
                     </li>
                     <li>

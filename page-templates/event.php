@@ -25,10 +25,7 @@ get_header(); ?>
           echo '<h5> Организатор: '. $eventValue->org_name .'</h5>';
           echo '<h5> Дата: '. date("d.m.Y", strtotime( $eventValue->event_date)) .'</h5>';
           echo '<h6> Тип соревнования: '. $eventValue->race_type_name .' ('. $eventValue->race_type_short_name . ')</h6>';
-          if (strlen($eventValue->event_place_map)>0) {
-          echo '<h6> Место регистрации на гонку:</h6>';
-          echo '<div style="display: block; width: 100%; height: 450px;">'. $eventValue->event_place_map. '</div>';
-          }
+
         }
         if (count($categories)>0) {
             echo '<h6> Категории участников:</h6>';
@@ -69,47 +66,51 @@ get_header(); ?>
               }
             echo '</ul>';
         }
-    ?>
 
-		<h6>Результат гонки</h6>
-		<div class="btn-group p-1 d-inline-block ">
-			<button type="button" class="btn btn-danger   btn-filter m-1" data-target="A"   >Категория А</button>
-			<button type="button" class="btn btn-warning  btn-filter m-1" data-target="B"   >Категория B</button>
-			<button type="button" class="btn btn-success  btn-filter m-1" data-target="C"   >Категория C</button>
-			<button type="button" class="btn btn-info     btn-filter m-1" data-target="D"   >Категория D</button>
-      <button type="button" class="btn btn-default  btn-filter m-1" data-target="all" >Все категории</button>
-		</div>
+        if (strlen($eventValue->event_place_map)>0) {
+        echo '<h6> Место регистрации на гонку:</h6>';
+        echo '<div style="display: block; width: 100%; height: 450px;">'. $eventValue->event_place_map. '</div>';
+        }
 
-		<div class="table-container">
-			<table class="table table-striped table-bordered" style="width:100%">
-        <thead>
-            <tr>
-                <th>№</th>
-                <th>Имя</th>
-                <th>Время</th>
-                <th>Круги</th>
-                <th>Очки</th>
-            </tr>
-        </thead>
-        <tbody>
-          <?php
+        if (count($riderResult)>0) {
+    		    echo '<div class="btn-group p-1 d-inline-block ">';
+
+                foreach ($categories as &$categoriesValue) {
+            			 echo '<button type="button" class="btn btn-'. $categoriesValue->style .'   btn-filter m-1" data-target="'. $categoriesValue->category_short_name .'"   >Категория А</button>';
+                }
+                echo '<button type="button" class="btn btn-default  btn-filter m-1" data-target="all" >Все категории</button>';
+    		    echo '</div>';
+
+        		echo '<div class="table-container">';
+        		echo '	<table class="table table-striped table-bordered" style="width:100%">';
+            echo '    <thead>';
+            echo '        <tr>';
+            echo '            <th>№</th>';
+            echo '            <th>Имя</th>';
+            echo '            <th>Время</th>';
+            echo '            <th>Круги</th>';
+            echo '            <th>Очки</th>';
+            echo '        </tr>';
+            echo '    </thead>';
+            echo '    <tbody>';
             foreach ($riderResult as &$riderResultValue) {
-							echo '<tr data-status="'.$riderResultValue->category_short_name.'">';
-							echo '  <td>';
-              echo '    <span class="badge badge-default d-inline">' . $riderResultValue->result_absolute_place . '</span>';
-              echo '    <span class="badge badge-' . $riderResultValue->style . ' d-inline">' . $riderResultValue->result_category_place . '</span>';
-              echo '  </td>';
-              echo '  <td class="position-relative"> <span class="badge badge-' . $riderResultValue->style . ' d-inline">' . $riderResultValue->category_short_name . '</span> ' . $riderResultValue->rider_name . '</td>';
-              /*echo '   <td>'.$riderResultValue->team_name.' </td>';*/
-              echo '   <td>'.$riderResultValue->result_time.' </td>';
-              echo '   <td>'.$riderResultValue->result_laps.' </td>';
-              echo '   <td>'.$riderResultValue->result_points.' </td>';
-							echo '</tr>';
+        				echo '        <tr data-status="'.$riderResultValue->category_short_name.'">';
+        				echo '            <td>';
+                echo '                <span class="badge badge-default d-inline">' . $riderResultValue->result_absolute_place . '</span>';
+                echo '                <span class="badge badge-' . $riderResultValue->style . ' d-inline">' . $riderResultValue->result_category_place . '</span>';
+                echo '            </td>';
+                echo '            <td class="position-relative"> <span class="badge badge-' . $riderResultValue->style . ' d-inline">' . $riderResultValue->category_short_name . '</span> ' . $riderResultValue->rider_name . '</td>';
+                /*echo '   <td>'.$riderResultValue->team_name.' </td>';*/
+                echo '            <td>'.$riderResultValue->result_time.' </td>';
+                echo '            <td>'.$riderResultValue->result_laps.' </td>';
+                echo '            <td>'.$riderResultValue->result_points.' </td>';
+        				echo '        </tr>';
             }
-          ?>
-				</tbody>
-			</table>
-		</div>
+        		echo '		</tbody>';
+        		echo '	</table>';
+        		echo '</div>';
+        }
+    ?>
   </div>
 <?php
 get_footer();
