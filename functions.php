@@ -311,6 +311,17 @@ function get_event_result_by_event_id($event_id)
 	return $results;
 }
 
+/*
+Возвращает общуую информацию об участнике
+*/
+function get_rider_info($rider_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_rider_info(%d)',$rider_id) );
+	return $results;
+}
+
 
 
 
