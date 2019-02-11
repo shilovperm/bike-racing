@@ -35,7 +35,7 @@ get_header(); ?>
                 echo '        <!-- Subtitle -->';
                 echo '        <h5 class="blue-text pb-2"><strong>' . $value->event_subtitle . '</strong></h5>';
                 echo '        <!-- Date -->';
-                echo '        <p class="mb-0"><i class="fas fa-calendar mr-2"></i>' . $value->event_date . '</p>';
+                echo '        <p class="mb-0"><i class="fas fa-calendar mr-2"></i>' . date("d.m.Y", strtotime( $value->event_date)) . '</p>';
                 echo '        <!-- Text -->';
                 echo '        <p class="card-text">' . $value->event_description . '</p>';
                 echo '        <!-- Button -->';
@@ -78,7 +78,7 @@ get_header(); ?>
                     echo '        <!-- Subtitle -->';
                     echo '        <h5 class="blue-text pb-2"><strong>' . $value->event_subtitle . '</strong></h5>';
                     echo '        <!-- Date -->';
-                    echo '        <p class="mb-0"><i class="fas fa-calendar mr-2"></i>' . $value->event_date . '</p>';
+                    echo '        <p class="mb-0"><i class="fas fa-calendar mr-2"></i>' . date("d.m.Y", strtotime( $value->event_date)) . '</p>';
                     echo '        <!-- Text -->';
                     echo '        <p class="card-text">' . $value->event_description . '</p>';
                     echo '        <!-- Button -->';

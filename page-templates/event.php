@@ -32,7 +32,7 @@ get_header(); ?>
             echo '<ul>';
               foreach ($categories as &$categoriesValue) {
                 echo '<li class="list-style-type-none">';
-                echo '  <span class="'. $categoriesValue->style .' rounded cp-1">'.  $categoriesValue->category_name .'</span> '. $categoriesValue->description ;
+                echo '  <span class="'. $categoriesValue->style .' rounded cp-1">'.  $categoriesValue->category_name .'</span> - '.$categoriesValue->description ;
                 echo '</li>';
               }
             echo '</ul>';
@@ -43,12 +43,12 @@ get_header(); ?>
             echo '<ul>';
             foreach ($timeLine as &$timeLineValue) {
               echo '<li class="list-style-type-none">';
-              echo    date("G:i", strtotime($timeLineValue->time_start))   .' ';
+              echo    date("H:i", strtotime($timeLineValue->time_start))   .' ';
 
-              if (date("G:i", strtotime($timeLineValue->time_end))=='0:00') {
-                  echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'. $timeLineValue->description;
+              if (date("H:i", strtotime($timeLineValue->time_end))=='00:00') {
+                  echo $timeLineValue->description;
               } else {
-                  echo date("G:i", strtotime($timeLineValue->time_end)).' '. $timeLineValue->description;
+                  echo date("H:i", strtotime($timeLineValue->time_end)).' '. $timeLineValue->description;
               }
 
               echo '</li>';
