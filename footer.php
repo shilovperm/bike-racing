@@ -13,7 +13,18 @@
 
 	</div><!-- #content -->
 
-	<footer id="colophon" class="site-footer text-center bg-white mt-4 text-muted">	
+	<footer id="colophon" class="site-footer text-center bg-white mt-4 text-muted">
+			<div class="container">
+				<div class="row">
+						<div class="col-sm">
+							<a href="policy" style="color:white!important;"> Политика конфиденциальности </a>
+						</div>
+						<div class="col-sm">
+						</div>
+						<div class="col-sm">
+						</div>
+				</div>
+			</div>
 	</footer>
 </div>
 
