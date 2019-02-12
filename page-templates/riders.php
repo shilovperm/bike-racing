@@ -17,7 +17,7 @@ get_header(); ?>
             $riders = get_rider_list();
             foreach ($riders as &$value) {
               echo '<tr>';
-              echo '  <td class="position-relative"> <span class="badge badge-' . $value->style.' d-inline">'.$value->Category_Short_Name.'</span> <a href="rider/?rider_id='. $value->rider_id .'">'. $value->rider_name .'</a>'; 
+              echo '  <td class="position-relative"> <span class="badge badge-' . $value->style.' d-inline">'.$value->Category_Short_Name.'</span> <a href="'. home_url() .'/rider?rider_id='. $value->rider_id .'">'. $value->rider_name .'</a>'; 
               echo '  </td>';
               echo '  <td class="p-0 pl-1">';
               if (substr($value->photo_link, 0, 4)=='http' and substr($value->strava_link, 0, 4)=='http') {

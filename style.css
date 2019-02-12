@@ -566,4 +566,10 @@ ul.timeline > li:before {
   padding: 1px;
 }
 
+.rider-image {
+  border-radius: 5px;
+  width: 124px;
+  height: 124px;
+  margin: 10px;
+}
 /*Общие свойства */
