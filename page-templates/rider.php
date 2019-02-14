@@ -45,8 +45,32 @@ get_header(); ?>
     <?php
       foreach ($rider_years as &$value) {
           echo '<div class="tab-pane fade show active" id="YEAR'.$value->year.'" role="tabpanel" aria-labelledby="'.$value->year.'-tab">';
-          $rider_year_results = get_rider_results_by_year($par_rider_id,$value->year);
 
+          $rider_year_ratings =get_rating_by_rider_id($par_rider_id,$value->year);
+            echo '<h6> Рейтинги: </h6>';
+            echo '<div class="table-container">';
+            echo '	<table class="table table-striped table-bordered" style="width:100%">';
+            echo '    <thead>';
+            echo '        <tr>';
+            echo '            <th>Рейтинг</th>';
+            echo '            <th>№</th>';
+            echo '            <th>Очки</th>';
+            echo '        </tr>';
+            echo '    </thead>';
+            echo '    <tbody>';
+            foreach ($rider_year_ratings as &$year_ratings) {
+                echo '        <tr>';
+                echo '            <td>'.$year_ratings->rating_name.'</td>';
+                echo '            <td> <span class="badge badge-' . $year_ratings->style . ' d-inline">#' . $year_ratings->rating . '</span> </td>';
+                echo '            <td>'.$year_ratings->result_points.' </td>';
+                echo '        </tr>';
+            }
+            echo '		</tbody>';
+            echo '	</table>';
+            echo '</div>';
+
+          $rider_year_results = get_rider_results_by_year($par_rider_id,$value->year);
+            echo '<h6> События: </h6>';
             echo '<div class="table-container">';
             echo '	<table class="table table-striped table-bordered" style="width:100%">';
             echo '    <thead>';
@@ -61,7 +85,7 @@ get_header(); ?>
             foreach ($rider_year_results as &$year_results) {
                 echo '        <tr>';
                 echo '            <td> <span class="badge badge-' . $year_results->style . ' d-inline">' . $year_results->result_category_place . '</span> </td>';
-                echo '            <td>'.$year_results->event_title.'<i>('.$year_results->event_subtitle.')</i></td>';
+                echo '            <td>'.$year_results->event_title.'<i> ('.$year_results->event_subtitle.')</i></td>';
                 echo '            <td>'.date("d.m.Y", strtotime( $year_results->event_date)).' </td>';
                 echo '            <td>'.$year_results->result_points.' </td>';
                 echo '        </tr>';

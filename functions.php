@@ -346,7 +346,16 @@ function get_rider_results_by_year($rider_id, $year)
 	return $results;
 }
 
-
+/*
+Возвращает список рейтингов в рамках сезона у участника
+*/
+function get_rating_by_rider_id($rider_id, $year)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_rating_by_rider_id(%d,%d)',$rider_id,$year) );
+	return $results;
+}
 
 // Add a custom user role
 
