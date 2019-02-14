@@ -25,8 +25,20 @@ get_header(); ?>
           echo '<h5> Организатор: '. $eventValue->org_name .'</h5>';
           echo '<h5> Дата: '. date("d.m.Y", strtotime( $eventValue->event_date)) .'</h5>';
           echo '<h6> Тип соревнования: '. $eventValue->race_type_name .' ('. $eventValue->race_type_short_name . ')</h6>';
+          if ($eventValue->event_status_id == 2) {
+            echo '<a  href="'.$eventValue->event_registration_link.'" target="_blank" class="btn btn-success m-1">Зарегистрироваться</a>';
+            echo '<a  href="'.$eventValue->event_participants_link.'" target="_blank" class="btn btn-info m-1"> Зарегистрированные участники </a>';
+            echo '<h6> Оплата участия:</h6>';
+            echo '<ul>';
+            echo '    <li class="list-style-type-none">Получатель: <b>Чертков Дмитрий Сергеевич</b></li>';
+            echo '    <li class="list-style-type-none">Карта Сбербанка: <b>4276 4900 2134 0734</b></li>';
+            echo '</ul>';
+          }
 
         }
+
+
+
         if (count($categories)>0) {
             echo '<h6> Категории участников:</h6>';
             echo '<ul>';

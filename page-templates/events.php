@@ -41,7 +41,7 @@ get_header(); ?>
                 echo '        <!-- Button -->';
                 $btnstyle   = ($value->status_id == 2 or $value->status_id == 3) ? 'btn-success' :'btn-outline-gray';
                 $btndisable = ($value->status_id == 2) ? '':'disabled';
-                echo '        <button type="button" class="btn '. $btnstyle .' btn-on-card"' . $btndisable . '>' . $value->status_name . '</button>';
+                echo '        <a  href="'.$value->event_registration_link.'" target="_blank" class="btn '. $btnstyle .' btn-on-card"' . $btndisable . '>' . $value->status_name . '</a>';
                 echo '    </div>';
                 echo '</div>';
                 echo '<!-- Card Wider -->';
