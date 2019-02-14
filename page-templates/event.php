@@ -20,9 +20,9 @@ get_header(); ?>
 
         foreach ($event as &$eventValue)
         {
-          echo '<h3>'. $eventValue->event_title .'<img  class="img-logo yellow-background ml-1" src="data:image/png;base64,'.base64_encode($eventValue->org_logo).'" alt="wr"></h3>';
+          echo '<h3>'. $eventValue->event_title .'</h3>';
           echo '<h4>'. $eventValue->event_subtitle .'</h4>';
-          echo '<h5> Организатор: '. $eventValue->org_name .'</h5>';
+          echo '<h5> Организатор: '. $eventValue->org_name .'<img  class="img-logo yellow-background ml-1" src="data:image/png;base64,'.base64_encode($eventValue->org_logo).'" alt="wr"></h5>';
           echo '<h5> Дата: '. date("d.m.Y", strtotime( $eventValue->event_date)) .'</h5>';
           echo '<h6> Тип соревнования: '. $eventValue->race_type_name .' ('. $eventValue->race_type_short_name . ')</h6>';
           if ($eventValue->event_status_id == 2) {
