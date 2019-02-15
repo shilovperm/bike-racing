@@ -32,6 +32,7 @@ get_header(); ?>
             echo '<ul>';
             echo '    <li class="list-style-type-none">Получатель: <b>Чертков Дмитрий Сергеевич</b></li>';
             echo '    <li class="list-style-type-none">Карта Сбербанка: <b>4276 4900 2134 0734</b></li>';
+            echo '    <li class="list-style-type-none">Сообщение: <b>Кубок весны</b></li>';
             echo '</ul>';
           }
 
