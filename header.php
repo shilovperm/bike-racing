@@ -27,11 +27,11 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
   <link rel="stylesheet" id="dataTables-css" href="<?php echo get_template_directory_uri() . '/assets/css/dataTables.bootstrap4.min.css'; ?>" type="text/css" media="all">
 
-	<script async src="<?php echo get_template_directory_uri() . '/assets/js/customizer.js'; ?>" ></script>
+	<script src="<?php echo get_template_directory_uri() . '/assets/js/customizer.js'; ?>" ></script>
 
-	<script async src="<?php echo get_template_directory_uri() . '/assets/js/jquery-3.3.1.js'; ?>" ></script>
-	<script async src="<?php echo get_template_directory_uri() . '/assets/js/jquery.dataTables.min.js'; ?>"></script>
-	<script async src="<?php echo get_template_directory_uri() . '/assets/js/dataTables.bootstrap4.min.js'; ?>" ></script>
+	<script src="<?php echo get_template_directory_uri() . '/assets/js/jquery-3.3.1.js'; ?>" ></script>
+	<script src="<?php echo get_template_directory_uri() . '/assets/js/jquery.dataTables.min.js'; ?>"></script>
+	<script src="<?php echo get_template_directory_uri() . '/assets/js/dataTables.bootstrap4.min.js'; ?>" ></script>
 
 	<?php wp_head(); ?>
 </head>
