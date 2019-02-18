@@ -25,11 +25,11 @@ get_header(); ?>
                 echo '    <!-- Card image -->';
                 echo '    <div class="view view-cascade overlay">';
                 echo '        <a href="event/?event_id=' . $value->event_id . '">';
-                echo '            <img  class="card-img-top img-link-hover" src="data:image/png;base64,'.base64_encode($value->image).'" height="200" width="300" alt="Card image cap">';
+                echo '            <img  class="card-img-top" src="data:image/png;base64,'.base64_encode($value->image).'" height="200" width="300" alt="Card image cap">';
                 echo '        </a>';
                 echo '    </div>';
                 echo '    <!-- Card content -->';
-                echo '    <div class="card-body card-body-cascade text-center card-body-custom">';
+                echo '    <a href="event/?event_id=' . $value->event_id . '" class="card-body card-body-cascade text-center card-body-custom">';
                 echo '        <!-- Title -->';
                 echo '        <h4 class="card-title"><strong>' . $value->event_title . '</strong></h4>';
                 echo '        <!-- Subtitle -->';
@@ -41,8 +41,8 @@ get_header(); ?>
                 echo '        <!-- Button -->';
                 $btnstyle   = ($value->status_id == 2 or $value->status_id == 3) ? 'btn-success' :'btn-outline-gray';
                 $btndisable = ($value->status_id == 2) ? '':'disabled';
-                echo '        <a  href="event/?event_id=' . $value->event_id . '" target="_blank" class="btn '. $btnstyle .' btn-on-card"' . $btndisable . '>' . $value->status_name . '</a>';
-                echo '    </div>';
+                echo '        <button type="button"  href="event/?event_id=' . $value->event_id . '" target="_blank" class="btn '. $btnstyle .' btn-on-card"' . $btndisable . '>' . $value->status_name . '</button>';
+                echo '    </a>';
                 echo '</div>';
                 echo '<!-- Card Wider -->';
             echo '</div>';
@@ -68,11 +68,11 @@ get_header(); ?>
                     echo '    <!-- Card image -->';
                     echo '    <div class="view view-cascade overlay">';
                     echo '        <a href="event/?event_id=' . $value->event_id . '">';
-                    echo '            <img  class="card-img-top img-link-hover" src="data:image/png;base64,'.base64_encode($value->image).'" height="200" width="300" alt="Card image cap">';
+                    echo '            <img  class="card-img-top" src="data:image/png;base64,'.base64_encode($value->image).'" height="200" width="300" alt="Card image cap">';
                     echo '        </a>';
                     echo '    </div>';
                     echo '    <!-- Card content -->';
-                    echo '    <div class="card-body card-body-cascade text-center card-body-custom">';
+                    echo '    <a href="event/?event_id=' . $value->event_id . '" class="card-body card-body-cascade text-center card-body-custom">';
                     echo '        <!-- Title -->';
                     echo '        <h4 class="card-title"><strong>' . $value->event_title . '</strong></h4>';
                     echo '        <!-- Subtitle -->';
@@ -85,7 +85,7 @@ get_header(); ?>
                     $btnstyle   = ($value->status_id == 2 or $value->status_id == 3) ? 'btn-success' :'btn-outline-gray';
                     $btndisable = ($value->status_id == 2) ? '':'disabled';
                     echo '        <button type="button" class="btn '. $btnstyle .' btn-on-card"' . $btndisable . '>' . $value->status_name . '</button>';
-                    echo '    </div>';
+                    echo '    </a>';
                     echo '</div>';
                     echo '<!-- Card Wider -->';
                 }

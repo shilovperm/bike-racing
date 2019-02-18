@@ -420,6 +420,12 @@ html, body, header, #intro {
 
 /* Блок с карточками событий */
 
+.card-custom:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5) !important;
+  opacity: 0.75;
+  /*background-color: #eeeeee !important;*/
+}
+
 .card-custom {
 	min-width: 230px;
 	max-width: 300px;
@@ -427,15 +433,10 @@ html, body, header, #intro {
 	max-height: 600px;
 	margin: 10px;
 	color: dark;
-}
-
-.img-link-hover {
   opacity: 1;
 }
 
-.img-link-hover:hover {
-  opacity: 0.75;
-}
+
 
 .yellow-background {
 	background-color: #FDFB00;
@@ -453,7 +454,13 @@ html, body, header, #intro {
 .card-body-custom {
   display: flex;
   flex-direction: column;
+  color: black;
 }
+.card-body-custom:hover {
+  color: black;
+  text-decoration: none;
+}
+
 
 .btn-on-card {
   margin-top: auto;
