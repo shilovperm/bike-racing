@@ -434,6 +434,7 @@ html, body, header, #intro {
 	margin: 10px;
 	color: dark;
   opacity: 1;
+  border:0;
 }
 
 
@@ -455,6 +456,7 @@ html, body, header, #intro {
   display: flex;
   flex-direction: column;
   color: black;
+
 }
 .card-body-custom:hover {
   color: black;

@@ -16,6 +16,9 @@ get_header(); ?>
 
 
       foreach ($rider as &$rider_value) {
+        if ($rider_value->rider_photo) {
+            echo '<img  class="" src="data:image/webp;base64,'.base64_encode($rider_value->rider_photo).'" height="400" width="300" alt="Card image cap">';
+        }
         echo '<h3>'.$rider_value->rider_name;
         if (strlen($rider_value->strava_link)>0){
             echo '<a href="'.$rider_value->strava_link.'" target="_blank"><img class="img-logo ml-1" src="'.get_template_directory_uri() . '/images/Logo_Strava.png" ></a>';
@@ -23,7 +26,7 @@ get_header(); ?>
         echo '</h3>';
 
         if (strlen($rider_value->team_name)>0){
-          echo '<h4> Команда: '.$rider_value->team_name.'<a href="'.$rider_value->team_strava_link.'" target="_blank"><img  class="img-logo yellow-background ml-1" src="data:image/png;base64,'.base64_encode($rider_value->team_photo).'" alt="wr"></a></h4>';
+          echo '<h4> Команда: <a href="'.$rider_value->team_strava_link.'" target="_blank"><img  class="img-logo ml-1" src="data:image/png;base64,'.base64_encode($rider_value->team_photo).'" alt="wr"></a></h4>';
         }
         if (strlen($rider_value->birth_year)>0){
           echo '<h5> Год рождения: '.$rider_value->birth_year.'</h5>';
