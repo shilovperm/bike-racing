@@ -86,7 +86,7 @@ get_header(); ?>
                 echo '        <tr>';
                 echo '            <td> <span class="badge badge-' . $year_results->style . ' d-inline">' . $year_results->result_category_place . '</span> </td>';
                 echo '            <td>'.$year_results->event_title.'<i> ('.$year_results->event_subtitle.')</i></td>';
-                echo '            <td>'.date("d.m.Y", strtotime( $year_results->event_date)).' </td>';
+                echo '            <td>'.date("d.m", strtotime( $year_results->event_date)).' </td>';
                 echo '            <td>'.$year_results->result_points.' </td>';
                 echo '        </tr>';
             }
