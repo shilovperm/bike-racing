@@ -28,6 +28,7 @@ get_header(); ?>
           if ($eventValue->event_status_id == 2) {
             echo '<a  href="'.$eventValue->event_registration_link.'" target="_blank" class="btn btn-success m-1">Зарегистрироваться</a>';
             echo '<a  href="'.$eventValue->event_participants_link.'" target="_blank" class="btn btn-info m-1"> Зарегистрированные участники </a>';
+            echo '<a  href="'.$eventValue->event_regulation_link.'" class="btn btn-info m-1"> Положение гонки </a>';
             echo '<h6> Оплата участия:</h6>';
             echo '<ul>';
             echo '    <li class="list-style-type-none">Получатель: <b>Чертков Дмитрий Сергеевич</b></li>';
@@ -35,10 +36,7 @@ get_header(); ?>
             echo '    <li class="list-style-type-none">Сообщение: <b>Кубок весны</b></li>';
             echo '</ul>';
           }
-
         }
-
-
 
         if (count($categories)>0) {
             echo '<h6> Категории участников:</h6>';
