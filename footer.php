@@ -17,7 +17,7 @@
 			<div class="container">
 				<div class="row">
 						<div class="col-sm">
-							<a href="policy" style="color:white!important;"> Политика конфиденциальности </a>
+							<a href="<?php echo home_url() . '/policy';?>" style="color:white!important;"> Политика конфиденциальности </a>
 						</div>
 						<div class="col-sm">
 						</div>
