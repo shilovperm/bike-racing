@@ -360,3 +360,4 @@ function get_rating_by_rider_id($rider_id, $year)
 // Add a custom user role
 
 $result = add_role( 'organization', 'Организатор' ,array( ) );
+$result = add_role( 'rider', 'Гонщик' ,array( ) );
