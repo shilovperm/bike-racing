@@ -3,7 +3,14 @@
 * Template Name: Ratings
 */
 
-get_header(); ?>
+get_header();
+
+
+$ratings = get_ratings();
+
+?>
+
+
 <div class="container-fluid p-0">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Рейтинги</a>
@@ -13,15 +20,11 @@ get_header(); ?>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Кубок Велта-спорт
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="?category=A">Категория A</a>
-                        <a class="dropdown-item" href="?category=B">Категория B</a>
-                        <a class="dropdown-item" href="?category=C">Категория C</a>
-                        <a class="dropdown-item" href="?category=D">Категория D</a>
-                    </div>
+                    <?php
+                    foreach ($ratings as &$ratingsValue) {
+                        echo '<a class="dropdown-item" href="?rating_id='.$ratingsValue->rating_id.'">'.$ratingsValue->rating_name.'('.$ratingsValue->rating_year.')</a>';
+                    }
+                    ?>
                 </li>
             </ul>
         </div>
@@ -29,59 +32,73 @@ get_header(); ?>
 </div>
 
 <?php
-    if (isset($_GET["category"])) {
-        $p_category = $_GET["category"];
+    if (isset($_GET["rating_id"])) {
+        $p_rating_id = $_GET["rating_id"];
     } else {
-        $p_category = 'A';
+        $p_rating_id = 1;
     };
+
+  $categories = get_categories_by_rating_id($p_rating_id);
+  $rating     = get_rating_by_rating_id($p_rating_id);
+
+  echo'<div class="container">';
+
+  echo '<h3>'.$ratingsValue->rating_name.'('.$ratingsValue->rating_year.')</h3>';
+
+  echo '<div class="btn-group p-1 d-inline-block ">';
+
+      foreach ($categories as &$categoriesValue) {
+         echo '<button type="button" class="btn btn-'. $categoriesValue->style .'   btn-filter m-1" data-target="'. $categoriesValue->category_short_name .'"   >'. $categoriesValue->category_name .'</button>';
+      }
+  echo '</div>';
+
+  echo '<div class="table-container">';
+  echo '	<table class="table table-striped table-bordered" style="width:100%">';
+  echo '    <thead>';
+  echo '        <tr>';
+  echo '            <th>#</th>';
+  echo '            <th>Категория/Имя</th>';
+  echo '            <th>Этап №1</th>';
+  echo '            <th>Этап №2</th>';
+  echo '            <th>Этап №3</th>';
+  echo '            <th>Этап №4</th>';
+  echo '            <th>Этап №5</th>';
+  echo '            <th>Итого</th>';
+  echo '        </tr>';
+  echo '    </thead>';
+  echo '    <tbody>';
+  foreach ($rating as &$ratingValue) {
+      echo '        <tr data-status="'.$ratingValue->category_short_name.'">';
+      echo '            <td>';
+      echo '                <span class="ml-0 badge badge-' . $ratingValue->style . ' d-inline">' . $ratingValue->num  . '</span>';
+      echo '            </td>';
+      echo '            <td class="position-relative"> <span class="ml-0 badge badge-' . $ratingValue->style . ' d-inline">' . $ratingValue->category_short_name . '</span> <a href="'. home_url() .'/rider?rider_id='. $ratingValue->rider_id .'">'. $ratingValue->rider_name .'</a></td>';
+      /*echo '   <td>'.$riderResultValue->team_name.' </td>';*/
+      echo '            <td>'.$ratingValue->result1.' </td>';
+      echo '            <td>'.$ratingValue->result2.' </td>';
+      echo '            <td>'.$ratingValue->result3.' </td>';
+      echo '            <td>'.$ratingValue->result4.' </td>';
+      echo '            <td>'.$ratingValue->result5.' </td>';
+      echo '            <td>'.$ratingValue->result_points.' </td>';
+      echo '        </tr>';
+  }
+  echo '		</tbody>';
+  echo '		<tfoot>';
+  echo '		    <tr>';
+  echo '		      <th>#</th>';
+  echo '		      <th>Категория/Имя</th>';
+  echo '		      <th>Этап №1</th>';
+  echo '		      <th>Этап №2</th>';
+  echo '		      <th>Этап №3</th>';
+  echo '		      <th>Этап №4</th>';
+  echo '		      <th>Этап №5</th>';
+  echo '		      <th>Итого</th>';
+  echo '		    </tr>';
+  echo '		</tfoot>';
+  echo '	</table>';
+  echo '</div>';
+  echo '</div>';
 ?>
-
-
-<div class="container">
-    <table id="example" class="table table-striped table-bordered" style="width:100%">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Категория/Имя</th>
-                <th>Этап №1</th>
-                <th>Этап №2</th>
-                <th>Этап №3</th>
-                <th>Этап №4</th>
-                <th>Этап №5</th>
-                <th>Итого</th>
-            </tr>
-        </thead>
-        <tbody>
-          <?php
-            $riders = get_rating_list_by_category($p_category);
-            foreach ($riders as &$value) {
-              echo '<tr>';
-              echo '  <td>', $value->Num ,'</td>';
-              echo '  <td> <span class="badge badge-', $value->Style,' d-inline">',$value->Category_Short_Name,'</span> <a href="'. home_url() .'/rider?rider_id='. $value->rider_id .'">'. $value->rider_name .'</a></td>';
-              echo '  <td>', $value->result1,'</td>';
-              echo '  <td>', $value->result2,'</td>';
-              echo '  <td>', $value->result3,'</td>';
-              echo '  <td>', $value->result4,'</td>';
-              echo '  <td>', $value->result5,'</td>';
-              echo '  <td>', $value->result_points ,'</td>';
-              echo '</tr>';
-            }
-          ?>
-        </tbody>
-        <tfoot>
-            <tr>
-                <th>#</th>
-                <th>Категория/Имя</th>
-                <th>Этап №1</th>
-                <th>Этап №2</th>
-                <th>Этап №3</th>
-                <th>Этап №4</th>
-                <th>Этап №5</th>
-                <th>Итого</th>
-            </tr>
-        </tfoot>
-    </table>
-</div>
 
 <?php
 get_footer();

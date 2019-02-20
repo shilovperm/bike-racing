@@ -108,7 +108,7 @@ get_header(); ?>
         				echo '        <tr data-status="'.$riderResultValue->category_short_name.'">';
         				echo '            <td>';
                 echo '                <span class="badge badge-default d-inline m-0">' . $riderResultValue->result_absolute_place . '</span>';
-                echo '                <span class="badge badge-' . $riderResultValue->style . ' d-inline">' . $riderResultValue->result_category_place . '</span>';
+                echo '                <span class="ml-0 badge badge-' . $riderResultValue->style . ' d-inline">' . $riderResultValue->result_category_place . '</span>';
                 echo '            </td>';
                 echo '            <td class="position-relative"> <span class="badge badge-' . $riderResultValue->style . ' d-inline">' . $riderResultValue->category_short_name . '</span> <a href="'. home_url() .'/rider?rider_id='. $riderResultValue->rider_id .'">'. $riderResultValue->rider_name .'</a></td>';
                 /*echo '   <td>'.$riderResultValue->team_name.' </td>';*/

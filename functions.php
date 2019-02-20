@@ -212,16 +212,6 @@ function get_rider_list()
 	return $results;
 }
 
-/*
-Возвращает список категорий
-*/
-function get_category_list()
-{
-	global $wpdb_bike;
-	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_get_categories_by_parent_id(1)', 'category_info') );
-	return $results;
-}
 
 /*
 Возвращает рейтинг участников в категории
@@ -356,6 +346,40 @@ function get_rating_by_rider_id($rider_id, $year)
 			'CALL p_get_rating_by_rider_id(%d,%d)',$rider_id,$year) );
 	return $results;
 }
+
+/*
+Возвращает список рейтингов по годам
+*/
+function get_ratings()
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_ratings()','events_info') );
+	return $results;
+}
+
+/*
+Возвращает список категорий по рейтингу
+*/
+function get_categories_by_rating_id($rating_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_categories_by_rating_id(%d)',$rating_id) );
+	return $results;
+}
+
+/*
+Возвращает рейтинг по идентификатору рейтинга
+*/
+function get_rating_by_rating_id($rating_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_rating_by_rating_id(%d)',$rating_id) );
+	return $results;
+}
+
 
 // Add a custom user role
 
