@@ -18,7 +18,7 @@ get_header(); ?>
             $riders = get_riders();
             foreach ($riders as &$rider_value) {
               echo '<tr>';
-              echo '  <td class="position-relative"> <span class="badge badge-' . $rider_value->style.' d-inline">'.$rider_value->Category_Short_Name.'</span> <a href="'. home_url() .'/rider?rider_id='. $rider_value->rider_id .'">'. $rider_value->rider_name .'</a>';
+              echo '  <td class="position-relative"> <span class="badge badge-' . $rider_value->style.' d-inline ml-0">'.$rider_value->Category_Short_Name.'</span> <a href="'. home_url() .'/rider?rider_id='. $rider_value->rider_id .'">'. $rider_value->rider_name .'</a>';
               if (strlen($rider_value->strava_link)>0){
                   echo '<a href="'.$rider_value->strava_link.'" target="_blank"><img class="ml-1 p-0" src="'.get_template_directory_uri() . '/images/Logo_strava_mini.png" height="24" width="24" alt="Logo_strava_mini" ></a>';
               }
