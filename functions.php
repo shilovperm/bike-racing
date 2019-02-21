@@ -208,7 +208,7 @@ function get_rider_list()
 {
 	global $wpdb_bike;
 	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_get_all_riders();','rider_info') );
+			'CALL p_get_riders_all();','rider_info') );
 	return $results;
 }
 
