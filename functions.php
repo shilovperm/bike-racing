@@ -204,7 +204,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 /*
 Возвращает список участников с категориями
 */
-function get_rider_list()
+function get_riders()
 {
 	global $wpdb_bike;
 	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
