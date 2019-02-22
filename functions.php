@@ -372,6 +372,7 @@ function get_categories_by_rating_id($rating_id)
 /*
 Возвращает рейтинг по идентификатору рейтинга
 */
+
 function get_rating_by_rating_id($rating_id)
 {
 	global $wpdb_bike;
@@ -379,7 +380,20 @@ function get_rating_by_rating_id($rating_id)
 			'CALL p_get_rating_by_rating_id(%d)',$rating_id) );
 	return $results;
 }
+/*Заменяем логотип на свой*/
+function my_login_logo(){
+ echo '
+ <style type="text/css">
+ #login h1 a { background: url('. get_template_directory_uri() .'/images/logo_login.png) no-repeat 0 0 !important; width: 100%; height:150px;}
+ </style>';
+}
+add_action('login_head', 'my_login_logo');
 
+/* Ставим ссылку с логотипа на сайт, а не на wordpress.org */
+add_filter( 'login_headerurl', create_function('', 'return get_home_url();') );
+
+/* убираем title в логотипе "сайт работает на wordpress" */
+add_filter( 'login_headertitle', create_function('', 'return false;') );
 
 // Add a custom user role
 
