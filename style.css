@@ -492,6 +492,10 @@ html, body, header, #intro {
   padding: 3px;
 }
 
+.table-logo {
+  height: 24px;
+}
+
 .race-type {
   top: 5px;
 	left: 5px;
