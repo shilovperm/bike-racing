@@ -586,3 +586,7 @@ ul.timeline > li:before {
   margin: 10px;
 }
 /*Общие свойства */
+
+.table td {
+  padding: 0.25rem;
+}
