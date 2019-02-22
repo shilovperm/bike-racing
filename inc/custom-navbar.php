@@ -24,6 +24,9 @@ class WP_bootstrap_4_walker_nav_menu extends Walker_Nav_menu {
         if ($title=='Личный кабинет'&&(!current_user_can('administrator')))
         {
           /**Личный кабинет по умолчанию скрыт**/
+        } elseif ($title=='Вход' && is_user_logged_in())
+        {
+
         } else
         {
 
