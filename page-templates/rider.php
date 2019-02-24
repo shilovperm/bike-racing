@@ -29,7 +29,7 @@ get_header(); ?>
         }
         echo '<h3>'.$rider_value->rider_name;
         if ($rider_value->wp_user_approved == 1) {
-          echo '<img class="ml-1" height="15" width="15" src="'.get_template_directory_uri() . '/images/verified.png" >';
+          echo '<img class="ml-1" height="15" width="15" src="'.get_template_directory_uri() . '/images/verified.png" data-toggle="tooltip" data-placement="top" title="Верифицирован" >';
         }
         if (strlen($rider_value->strava_link)>0){
             echo '<a href="'.$rider_value->strava_link.'" target="_blank"><img class="img-logo ml-1" src="'.get_template_directory_uri() . '/images/Logo_Strava.png" ></a>';
