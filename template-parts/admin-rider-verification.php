@@ -30,7 +30,7 @@
               echo '  <td>'.$riders_verifications_value->rider_name.'</td>';
               echo '  <td>'.$riders_verifications_value->birth_year.'</td>';
               echo '  <td>'.$riders_verifications_value->city.'</td>';
-              echo '  <td>'.$wp_user->last_name.''.$wp_user->first_name.'</td>';
+              echo '  <td>'.$wp_user->last_name.' '.$wp_user->first_name.'</td>';
               echo '  <td>'.$wp_user->user_email.'</td>';
               echo '  <td>';
               echo '    <form action="" method="post">';
