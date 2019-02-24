@@ -79,8 +79,14 @@ get_header(); ?>
         }
 
         if (strlen($eventValue->event_place_map)>0) {
-        echo '<h6> Место регистрации на гонку:</h6>';
-        echo '<div style="display: block; width: 100%; height: 450px;">'. $eventValue->event_place_map. '</div>';
+            echo '<h6> Место регистрации на гонку:</h6>';
+            echo '<div style="display: block; width: 100%; height: 450px;">'. $eventValue->event_place_map. '</div>';
+        }
+
+        if (strlen($eventValue->event_segment_link)>0) {
+            echo '<h6> Сегмент в Strava:*</h6>';
+            echo $eventValue->event_segment_link;
+            echo '<p><i>*Примечание: трек трассы может быть изменен организоатором в день гонки</i></p>';
         }
 
         if (count($riderResult)>0) {
@@ -122,6 +128,7 @@ get_header(); ?>
         		echo '</div>';
         }
     ?>
+
   </div>
 <?php
 get_footer();
