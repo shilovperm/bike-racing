@@ -7,12 +7,20 @@ get_header(); ?>
 
 <div class="container">
   <?php
+      if (isset($_POST['button']))
+      {
+          if (!empty($_POST["wp_user_id"]) && !empty($_POST["rider_id"])){
+              $result = set_wp_user_to_rider($_POST["wp_user_id"],$_POST["rider_id"]);
+          }
+      }
+
       if (isset($_GET["rider_id"])) {
           $par_rider_id = $_GET["rider_id"];
       };
 
       $rider = get_rider_info($par_rider_id);
       $rider_years = get_rider_years_of_events($par_rider_id);
+      $current_user = wp_get_current_user();
 
 
       foreach ($rider as &$rider_value) {
@@ -20,10 +28,28 @@ get_header(); ?>
             echo '<img  class="" src="data:image/webp;base64,'.base64_encode($rider_value->rider_photo).'" height="400" width="300" alt="Card image cap">';
         }
         echo '<h3>'.$rider_value->rider_name;
+        if ($rider_value->wp_user_approved == 1) {
+          echo '<img class="ml-1" height="15" width="15" src="'.get_template_directory_uri() . '/images/verified.png" >';
+        }
         if (strlen($rider_value->strava_link)>0){
             echo '<a href="'.$rider_value->strava_link.'" target="_blank"><img class="img-logo ml-1" src="'.get_template_directory_uri() . '/images/Logo_Strava.png" ></a>';
         }
         echo '</h3>';
+
+        if ($current_user->exists()) {
+          $full_name = $current_user->user_lastname.' '.$current_user->user_firstname;
+          if ($full_name == $rider_value->rider_name && $rider_value->wp_user_id == null) {
+            echo '<form action="" method="post">';
+            echo '    <input type="hidden" name="wp_user_id" value="'.$current_user->ID.'">';
+            echo '    <input type="hidden" name="rider_id" value="'.$par_rider_id.'">';
+            echo '    <button class="btn btn-success" type="submit" name="button">Привязать участника</button>';
+            echo '</form>';
+          }
+          if ($full_name == $rider_value->rider_name && $rider_value->wp_user_id != null && $rider_value->wp_user_approved == 0) {
+            echo '  <button type="button" class="btn btn-info" disabled>Запрос отправлен</button>';
+          }
+        }
+
 
         if (strlen($rider_value->team_name)>0){
           echo '<h4> Команда: <a href="'.$rider_value->team_strava_link.'" target="_blank"><img  class="img-logo ml-1" src="data:image/png;base64,'.base64_encode($rider_value->team_photo).'" alt="wr"></a></h4>';

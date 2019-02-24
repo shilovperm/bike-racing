@@ -380,6 +380,19 @@ function get_rating_by_rating_id($rating_id)
 			'CALL p_get_rating_by_rating_id(%d)',$rating_id) );
 	return $results;
 }
+
+/*
+Привязка пользователя WP к участнику
+*/
+
+function set_wp_user_to_rider($wp_user_id,$rider_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_set_wp_user_to_rider(%d,%d)',$wp_user_id,$rider_id) );
+	return $results;
+}
+
 /*Заменяем логотип на свой*/
 function my_login_logo(){
  echo '
