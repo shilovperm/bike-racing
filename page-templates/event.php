@@ -86,7 +86,7 @@ get_header(); ?>
         if (strlen($eventValue->event_segment_link)>0) {
             echo '<h6> Сегмент в Strava:*</h6>';
             echo $eventValue->event_segment_link;
-            echo '<p><i>*Примечание: трек трассы может быть изменен организоатором в день гонки</i></p>';
+            echo '<p><i>*Примечание: трек трассы может быть изменен организатором в день гонки</i></p>';
         }
 
         if (count($riderResult)>0) {
