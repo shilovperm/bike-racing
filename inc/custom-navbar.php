@@ -21,9 +21,9 @@ class WP_bootstrap_4_walker_nav_menu extends Walker_Nav_menu {
             $dropdown_link_class = 'dropdown-toggle';
         }
 
-        if ($title=='Личный кабинет'&&(!current_user_can('administrator')))
+        if ($title=='Админ'&&(!current_user_can('administrator')))
         {
-          /**Личный кабинет по умолчанию скрыт**/
+          /**Личный кабинет администратора по умолчанию скрыт**/
         } elseif ($title=='Вход' && is_user_logged_in())
         {
 

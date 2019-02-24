@@ -394,6 +394,31 @@ function set_wp_user_to_rider($wp_user_id,$rider_id)
 	return $results;
 }
 
+/*
+Список участников на верификации
+*/
+
+function get_riders_on_verification()
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_riders_on_verification()','events_info') );
+	return $results;
+}
+
+/*
+Верификация участника
+*/
+
+function set_wp_user_verified($rider_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_set_wp_user_verified(%d)',$rider_id) );
+	return $results;
+}
+
+
 /*Заменяем логотип на свой*/
 function my_login_logo(){
  echo '
