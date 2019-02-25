@@ -27,7 +27,7 @@ get_header(); ?>
         if ($rider_value->rider_photo) {
             echo '<img  class="" src="data:image/webp;base64,'.base64_encode($rider_value->rider_photo).'" height="400" width="300" alt="rider_image">';
         } else {
-            echo get_avatar($rider->wp_user_id,200,'');
+            echo get_avatar($rider_value->wp_user_id,200,'');            
         }
 
 
