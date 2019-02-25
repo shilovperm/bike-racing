@@ -29,12 +29,11 @@ get_header(); ?>
         } elseif (substr(get_avatar_url($rider_value->wp_user_id), 29, 1) != "?") {
             echo get_avatar($rider_value->wp_user_id,200,'');
         }
-        echo substr(get_avatar_url($rider_value->wp_user_id), 29, 1);
-        echo get_avatar_url($rider_value->wp_user_id);
-        /*get_avatar_url($rider_value->wp_user_id)
 
-        https://secure.gravatar.com/avatar/983ef7ca308e667f5ec66aea5d8914bb?s=200&d=mm&r=g
-        https://secure.gravatar.com/avatar/?s=200&d=mm&r=g*/
+        echo get_avatar_url($rider_value->wp_user_id);
+
+
+    
 
         echo '<h3>'.$rider_value->rider_name;
         if ($rider_value->wp_user_approved == 1) {
