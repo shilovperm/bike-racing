@@ -26,10 +26,15 @@ get_header(); ?>
       foreach ($rider as &$rider_value) {
         if ($rider_value->rider_photo) {
             echo '<img  class="" src="data:image/webp;base64,'.base64_encode($rider_value->rider_photo).'" height="400" width="300" alt="rider_image">';
-        } else {
-            echo get_avatar($rider_value->wp_user_id,200,'');            
+        } elseif (substr(get_avatar_url($rider_value->wp_user_id), 29, 1) != "?") {
+            echo get_avatar($rider_value->wp_user_id,200,'');
         }
+        echo substr(get_avatar_url($rider_value->wp_user_id), 29, 1);
+        echo get_avatar_url($rider_value->wp_user_id);
+        /*get_avatar_url($rider_value->wp_user_id)
 
+        https://secure.gravatar.com/avatar/983ef7ca308e667f5ec66aea5d8914bb?s=200&d=mm&r=g
+        https://secure.gravatar.com/avatar/?s=200&d=mm&r=g*/
 
         echo '<h3>'.$rider_value->rider_name;
         if ($rider_value->wp_user_approved == 1) {
