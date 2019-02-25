@@ -27,7 +27,7 @@ get_header(); ?>
         if ($rider_value->rider_photo) {
             echo '<img  class="" src="data:image/webp;base64,'.base64_encode($rider_value->rider_photo).'" height="400" width="300" alt="rider_image">';
         } elseif (substr(get_avatar_url($rider_value->wp_user_id), 35, 1) != "?") {
-            echo get_avatar($rider_value->wp_user_id,200,'','', array('extra_attr'=>'style="border-radius: 0.5rem !important; padding: 10px !important; box-shadow: 0 0 10px rgba(0,0,0,0.5);"') );
+            echo get_avatar($rider_value->wp_user_id,200,'','', array('extra_attr'=>'style="border-radius: 0.5rem !important; margin: 10px !important; box-shadow: 0 0 10px rgba(0,0,0,0.5);"') );
         }
 
         echo '<h3>'.$rider_value->rider_name;
