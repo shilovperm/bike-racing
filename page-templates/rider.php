@@ -26,9 +26,10 @@ get_header(); ?>
       foreach ($rider as &$rider_value) {
         if ($rider_value->rider_photo) {
             echo '<img  class="" src="data:image/webp;base64,'.base64_encode($rider_value->rider_photo).'" height="400" width="300" alt="rider_image">';
-        } elseif ( get_avatar( get_the_author_meta( 'ID' )) != 0) {
-            echo '<img src="'.esc_url( get_avatar_url( $current_user->ID ) ).'" alt="rider_image">';
-        }      
+        } else {
+            echo get_avatar($current_user->ID,200,'');
+        }
+
 
         echo '<h3>'.$rider_value->rider_name;
         if ($rider_value->wp_user_approved == 1) {

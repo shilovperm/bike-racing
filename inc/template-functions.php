@@ -39,8 +39,6 @@ function wp_bootstrap_4_pingback_header() {
 }
 add_action( 'wp_head', 'wp_bootstrap_4_pingback_header' );
 
-
-
 /**
 * Add classes to navigation buttons
 */
