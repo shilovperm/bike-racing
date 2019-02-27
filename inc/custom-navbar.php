@@ -16,6 +16,13 @@ class WP_bootstrap_4_walker_nav_menu extends Walker_Nav_menu {
 
         $dropdown_class = '';
         $dropdown_link_class = '';
+
+        $current_user = wp_get_current_user();
+        $is_on_verification = 0;
+        if ($current_user->ID > 0) {
+            $is_on_verification = is_on_verification($current_user->ID);
+        }
+
         if( $args->walker->has_children && $depth == 0 ) {
             $dropdown_class = 'dropdown';
             $dropdown_link_class = 'dropdown-toggle';
@@ -25,6 +32,9 @@ class WP_bootstrap_4_walker_nav_menu extends Walker_Nav_menu {
         {
           /**Личный кабинет администратора по умолчанию скрыт**/
         } elseif ($title=='Вход' && is_user_logged_in())
+        {
+          /*Вход для вошедших пользователей скрыт*/
+        } elseif (($title=='Верификация' && is_user_logged_in() && $is_on_verification==0)||($title=='Верификация' && !is_user_logged_in()))
         {
 
         } else

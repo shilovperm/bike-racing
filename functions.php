@@ -316,6 +316,15 @@ function get_rider_info($rider_id)
 	return $results;
 }
 
+/*Проверка на верификацию*/
+function is_on_verification($wp_user_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_var( $wpdb_bike->prepare(
+			'SELECT  f_is_on_verification(%d)',$wp_user_id) );
+	return $results;
+}
+
 
 
 /*

@@ -21,8 +21,7 @@ get_header(); ?>
       $rider = get_rider_info($par_rider_id);
       $rider_years = get_rider_years_of_events($par_rider_id);
       $current_user = wp_get_current_user();
-
-
+      
       foreach ($rider as &$rider_value) {
         echo '<br>';
         if ($rider_value->rider_photo) {
