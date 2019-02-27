@@ -337,7 +337,7 @@ body.custom-background .wp-bp-main-content .col-md-8 { background: #f8f9fa; padd
 /*----------------------------------------------------------------
 # Castomization
 ------------------------------------------------------------------*/
-html, body, header, #intro {
+html, body, #intro {
   height: 100%;
 }
 
