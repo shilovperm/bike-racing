@@ -59,7 +59,7 @@
 			<div class="entry-summary">
 				<?php the_excerpt(); ?>
 				<div class="">
-					<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn btn-primary btn-sm"><?php esc_html_e( 'Continue Reading', 'wp-bootstrap-4' ); ?> <small class="oi oi-chevron-right ml-1"></small></a>
+					<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn btn-primary btn-sm"><?php esc_html_e( 'Читать далее', 'wp-bootstrap-4' ); ?> <small class="oi oi-chevron-right ml-1"></small></a>
 				</div>
 			</div><!-- .entry-summary -->
 		<?php endif; ?>
