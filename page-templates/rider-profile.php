@@ -8,51 +8,57 @@ get_header(); ?>
 <div class="container">
   <?php
   // define variables and set to empty values
-  $nameErr = $emailErr = $genderErr = $websiteErr = "";
-  $name = $email = $gender = $comment = $website = "";
+
+
+  $current_user = wp_get_current_user();
+
+  $name = $current_user->user_firstname;
+  $lastName = $current_user->user_lastname;
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["name"])) {
-      $nameErr = "Name is required";
+      $nameErr = "Поле Имя обязательно";
     } else {
       $name = test_input($_POST["name"]);
       // check if name only contains letters and whitespace
-      if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-        $nameErr = "Only letters and white space allowed";
+      if (!preg_match("/^[а-яА-ЯёЁ]*$/",$name)) {
+        $nameErr = "Поле Имя должно содержать только кириллицу";
       }
     }
 
-    if (empty($_POST["email"])) {
-      $emailErr = "Email is required";
-    } else {
-      $email = test_input($_POST["email"]);
-      // check if e-mail address is well-formed
-      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $emailErr = "Invalid email format";
-      }
-    }
 
-    if (empty($_POST["website"])) {
-      $website = "";
+      if (empty($_POST["lastName"])) {
+        $lastNameErr = "Поле Фамилия обязательно";
+      } else {
+        $lastName = test_input($_POST["lastName"]);
+        // check if name only contains letters and whitespace
+        if (!preg_match("/^[а-яА-ЯёЁ]*$/",$lastName)) {
+          $lastNameErr = "Поле Фамилия должно содержать только кириллицу";
+        }
+      }
+
+
+    if (empty($_POST["stravaLink"])) {
+      $stravaLink = "";
     } else {
-      $website = test_input($_POST["website"]);
+      $stravaLink = test_input($_POST["stravaLink"]);
       // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
-      if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
-        $websiteErr = "Invalid URL";
+      if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$stravaLink)) {
+        $stravaLinkErr = "Ошибочный URL strava";
       }
     }
 
-    if (empty($_POST["comment"])) {
-      $comment = "";
-    } else {
-      $comment = test_input($_POST["comment"]);
-    }
 
-    if (empty($_POST["gender"])) {
-      $genderErr = "Gender is required";
-    } else {
-      $gender = test_input($_POST["gender"]);
-    }
+      if (empty($_POST["year"])) {
+        $yearErr = "Поле Год рождения обязательно";
+      } else {
+        $year = test_input($_POST["year"]);
+        // check if name only contains letters and whitespace
+        if (!preg_match("[0-9]{4}",$year)) {
+          $yearErr = "Поле Год рождения должно содержать 4 цифры";
+        }
+      }
+
   }
 
   function test_input($data) {
@@ -61,28 +67,26 @@ get_header(); ?>
     $data = htmlspecialchars($data);
     return $data;
   }
+
+
+
   ?>
 
   <h2>Профиль участника</h2>
-  <p><span class="error">* required field</span></p>
-  <form method="post">
-    Name: <input type="text" name="name" value="<?php echo $name;?>">
+  <p><span class="error">* обязательные поля</span></p>
+  <form action="" method="post">
+    Имя: <input type="text" name="name" value="<?php echo $name;?>">
     <span class="error">* <?php echo $nameErr;?></span>
     <br>
-    E-mail: <input type="text" name="email" value="<?php echo $email;?>">
-    <span class="error">* <?php echo $emailErr;?></span>
+    Фамилия: <input type="text" name="lastName" value="<?php echo $lastName;?>">
+    <span class="error">* <?php echo $lastNameErr;?></span>
     <br>
-    Website: <input type="text" name="website" value="<?php echo $website;?>">
-    <span class="error"><?php echo $websiteErr;?></span>
+    Профиль в strava: <input type="text" name="strava_link" value="<?php echo $stravaLink;?>">
+    <span class="error"><?php echo $stravaLinkErr;?></span>
     <br>
-    Comment: <textarea name="comment" rows="5" cols="40"><?php echo $comment;?></textarea>
-    <br>
-    Gender:
-    <input type="radio" name="gender" <?php if (isset($gender) && $gender=="female") echo "checked";?> value="female">Female
-    <input type="radio" name="gender" <?php if (isset($gender) && $gender=="male") echo "checked";?> value="male">Male
-    <input type="radio" name="gender" <?php if (isset($gender) && $gender=="other") echo "checked";?> value="other">Other
-    <span class="error">* <?php echo $genderErr;?></span>
-    <br>
+    Год рождения: <input type="text" name="year" value="<?php echo $year;?>">
+    <span class="error"><?php echo $yearErr;?></span>
+
     <input type="submit" name="submit" value="Submit">
   </form>
 
@@ -90,13 +94,11 @@ get_header(); ?>
   echo "<h2>Your Input:</h2>";
   echo $name;
   echo "<br>";
-  echo $email;
+  echo $lastName;
   echo "<br>";
-  echo $website;
+  echo $stravaLink;
   echo "<br>";
-  echo $comment;
-  echo "<br>";
-  echo $gender;
+  echo $year;
   ?>
 
 
