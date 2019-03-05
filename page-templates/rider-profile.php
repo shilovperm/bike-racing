@@ -81,11 +81,21 @@ get_header(); ?>
     Фамилия: <input type="text" name="lastName" value="<?php echo $lastName;?>">
     <span class="error">* <?php echo $lastNameErr;?></span>
     <br>
-    Профиль в strava: <input type="text" name="strava_link" value="<?php echo $stravaLink;?>">
-    <span class="error"><?php echo $stravaLinkErr;?></span>
+    <!--
+    Профиль в strava: <input type="text" name="stravaLink" value="<?php echo $stravaLink;?>">
+    <span class="error"><?php /*echo $stravaLinkErr;*/?></span>
     <br>
+    -->
+    <label for="basic-url">Профиль в strava:</label>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">https://www.strava.com/athletes/</span>
+      </div>
+      <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="stravaLink" value="<?php echo $stravaLink;?>">
+      <span class="error"><?php echo $stravaLinkErr;?></span>
+    </div>
     Год рождения: <input type="text" name="year" value="<?php echo $year;?>">
-    <span class="error"><?php echo $yearErr;?></span>
+    <span class="error"> *<?php echo $yearErr;?></span>
 
     <input type="submit" name="submit" value="Submit">
   </form>
