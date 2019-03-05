@@ -20,7 +20,7 @@ get_header(); ?>
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (empty($_POST["riderName"])) {
-          $nameErr = "Поле Имя обязательно. Поле заполняется в профиле пользователя WordPress.";
+          $nameErr = "Поле Имя обязательно";
         } else {
           $name = test_input($_POST["riderName"]);
           // check if name only contains letters and whitespace
@@ -30,7 +30,7 @@ get_header(); ?>
         }
 
         if (empty($_POST["riderLastName"])) {
-          $lastNameErr = "Поле Фамилия обязательно. Поле заполняется в профиле пользователя WordPress.";
+          $lastNameErr = "Поле Фамилия обязательно";
         } else {
           $lastName = test_input($_POST["riderLastName"]);
           // check if name only contains letters and whitespace
