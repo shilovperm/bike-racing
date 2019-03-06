@@ -45,8 +45,9 @@ get_header(); ?>
                 echo '    </a>';
                 echo '</div>';
                 echo '<!-- Card Wider -->';
-            echo '</div>';
+
             }
+            echo '</div>';
           }
       ?>
     </section>
