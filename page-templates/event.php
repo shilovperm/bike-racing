@@ -35,6 +35,8 @@ get_header(); ?>
             echo '    <li class="list-style-type-none">Карта Сбербанка: <b>4276 4900 2134 0734</b></li>';
             echo '    <li class="list-style-type-none">Сообщение: <b>Кубок весны</b></li>';
             echo '</ul>';
+          } elseif ($eventValue->event_regulation_link != null) {
+                echo '<a  href="'.$eventValue->event_regulation_link.'" class="btn btn-info m-1"> Положение гонки </a>';
           }
         }
 
