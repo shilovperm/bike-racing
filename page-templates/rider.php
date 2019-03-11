@@ -87,7 +87,7 @@ get_header(); ?>
           }
 
           $rider_year_ratings =get_rating_by_rider_id($par_rider_id,$value->year);
-          
+
           if (count($rider_year_ratings)>0) {
             echo '<h6> Рейтинги: </h6>';
             echo '<div class="table-container">';
@@ -103,7 +103,7 @@ get_header(); ?>
             foreach ($rider_year_ratings as &$year_ratings) {
                 echo '        <tr>';
                 echo '            <td>'.$year_ratings->rating_name.'</td>';
-                echo '            <td> <span class="badge badge-' . $year_ratings->style . ' d-inline">#' . $year_ratings->rating . '</span> </td>';
+                echo '            <td> <span class="badge badge-' . $year_ratings->style . ' d-inline" data-toggle="tooltip" data-placement="top" title="Рейтинг в категории '.$year_ratings->Category_Short_Name.'">#' . $year_ratings->rating . '</span> </td>';
                 echo '            <td>'.$year_ratings->result_points.' </td>';
                 echo '        </tr>';
             }
@@ -127,7 +127,7 @@ get_header(); ?>
             echo '    <tbody>';
             foreach ($rider_year_results as &$year_results) {
                 echo '        <tr>';
-                echo '            <td> <span class="badge badge-' . $year_results->style . ' d-inline">' . $year_results->result_category_place . '</span> </td>';
+                echo '            <td> <span class="badge badge-' . $year_results->style . ' d-inline" data-toggle="tooltip" data-placement="top" title="Место в категории '.$year_results->category_short_name.'">' . $year_results->result_category_place . '</span> </td>';
                 echo '            <td>'.$year_results->event_title.'<i> ('.$year_results->event_subtitle.')</i></td>';
                 echo '            <td>'.date("d.m", strtotime( $year_results->event_date)).' </td>';
                 echo '            <td>'.$year_results->result_points.' </td>';

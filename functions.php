@@ -429,7 +429,18 @@ function set_wp_user_verified($rider_id)
 			'CALL p_set_wp_user_verified(%d)',$rider_id) );
 	return $results;
 }
+  
+	/*
+	Список ссылок на видео для события
+	*/
 
+	function get_video_links_by_event_id($event_id)
+	{
+		global $wpdb_bike;
+		$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+				'CALL p_get_video_links_by_event_id(%d)',$event_id) );
+		return $results;
+	}
 
 /*Заменяем логотип на свой*/
 function my_login_logo(){

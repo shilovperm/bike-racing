@@ -17,6 +17,7 @@ get_header(); ?>
         $timeLine   = get_event_timeline_by_event_id($par_event_id);
         $costRules  = get_event_cost_rules_by_event_id($par_event_id);
         $riderResult= get_event_result_by_event_id($par_event_id);
+        $videoLinks = get_video_links_by_event_id($par_event_id);
 
         foreach ($event as &$eventValue)
         {
@@ -78,6 +79,12 @@ get_header(); ?>
                 echo '</li>';
               }
             echo '</ul>';
+        }
+
+        if (count($videoLinks)>0) {
+            foreach ($videoLinks as &$videoLinksValue) {
+                echo $videoLinksValue->link;
+            }
         }
 
 
