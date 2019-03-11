@@ -153,6 +153,7 @@ function wp_bootstrap_4_scripts() {
 	wp_enqueue_script( 'popper-js', get_template_directory_uri() . '/assets/js/popper.js', array('jquery'), 'v0', true );
 	wp_enqueue_script( 'bootstrap-4-js', get_template_directory_uri() . '/assets/js/bootstrap.js', array('jquery'), 'v4.0.0', true );
 	wp_enqueue_script( 'dataTables-bootstrap-4-js', get_template_directory_uri() . '/assets/js/dataTables.bootstrap4.min.js', array('jquery'), 'v4.0.0', true );
+	wp_enqueue_script( 'jquery-fancybox-js', get_template_directory_uri() . '/assets/js/jquery.fancybox.min.js', array('jquery'), 'v3.5.6', true );
   wp_enqueue_script( 'customizer-js', get_template_directory_uri() . '/assets/js/customizer.js', array('jquery'), 'v1.0', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -429,7 +430,7 @@ function set_wp_user_verified($rider_id)
 			'CALL p_set_wp_user_verified(%d)',$rider_id) );
 	return $results;
 }
-  
+
 	/*
 	Список ссылок на видео для события
 	*/
@@ -450,6 +451,12 @@ function my_login_logo(){
  </style>';
 }
 add_action('login_head', 'my_login_logo');
+
+/*Отключаем библиотеку WP-embed*/
+function my_deregister_scripts(){
+ wp_deregister_script( 'wp-embed' );
+}
+add_action( 'wp_footer', 'my_deregister_scripts' );
 
 /* Ставим ссылку с логотипа на сайт, а не на wordpress.org */
 add_filter( 'login_headerurl', create_function('', 'return get_home_url();') );
