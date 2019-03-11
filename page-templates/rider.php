@@ -21,7 +21,7 @@ get_header(); ?>
       $rider = get_rider_info($par_rider_id);
       $rider_years = get_rider_years_of_events($par_rider_id);
       $current_user = wp_get_current_user();
-      
+
       foreach ($rider as &$rider_value) {
         echo '<br>';
         if ($rider_value->rider_photo) {
@@ -67,7 +67,11 @@ get_header(); ?>
       <?php
         foreach ($rider_years as &$value) {
           echo '<li class="nav-item">';
-          echo '    <a class="nav-link active" id="'.$value->year.'-tab" data-toggle="tab" href="#YEAR'.$value->year.'" role="tab" aria-controls="'.$value->year.'" aria-selected="true">'.$value->year.'</a>';
+          if ($value->year == date("Y") ) {
+            echo '    <a class="nav-link active" id="'.$value->year.'-tab" data-toggle="tab" href="#YEAR'.$value->year.'" role="tab" aria-controls="'.$value->year.'" aria-selected="true">'.$value->year.'</a>';
+          } else {
+            echo '    <a class="nav-link" id="'.$value->year.'-tab" data-toggle="tab" href="#YEAR'.$value->year.'" role="tab" aria-controls="'.$value->year.'" aria-selected="false">'.$value->year.'</a>';
+          }
           echo '</li>';
         }
       ?>
@@ -76,9 +80,15 @@ get_header(); ?>
   <div class="tab-content" id="myTabContent">
     <?php
       foreach ($rider_years as &$value) {
-          echo '<div class="tab-pane fade show active" id="YEAR'.$value->year.'" role="tabpanel" aria-labelledby="'.$value->year.'-tab">';
+          if ($value->year == date("Y") ) {
+              echo '<div class="tab-pane fade show active" id="YEAR'.$value->year.'" role="tabpanel" aria-labelledby="'.$value->year.'-tab">';
+          } else {
+              echo '<div class="tab-pane fade" id="YEAR'.$value->year.'" role="tabpanel" aria-labelledby="'.$value->year.'-tab">';
+          }
 
           $rider_year_ratings =get_rating_by_rider_id($par_rider_id,$value->year);
+          
+          if (count($rider_year_ratings)>0) {
             echo '<h6> Рейтинги: </h6>';
             echo '<div class="table-container">';
             echo '	<table class="table table-striped table-bordered" style="width:100%">';
@@ -100,6 +110,7 @@ get_header(); ?>
             echo '		</tbody>';
             echo '	</table>';
             echo '</div>';
+          }
 
           $rider_year_results = get_rider_results_by_year($par_rider_id,$value->year);
             echo '<h6> События: </h6>';
@@ -130,9 +141,6 @@ get_header(); ?>
       }
     ?>
   </div>
-
-
-
 
 </div>
 
