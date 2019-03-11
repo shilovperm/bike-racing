@@ -35,7 +35,7 @@ get_header(); ?>
             echo '    <li class="list-style-type-none">Карта Сбербанка: <b>4276 4900 2134 0734</b></li>';
             echo '    <li class="list-style-type-none">Сообщение: <b>Кубок весны</b></li>';
             echo '</ul>';
-          } elseif ($eventValue->event_regulation_link != null) {
+          } elseif ($eventValue->event_regulation_link != null && $eventValue->event_status_id <> 3) {
                 echo '<a  href="'.$eventValue->event_regulation_link.'" class="btn btn-info m-1"> Положение гонки </a>';
           }
         }
@@ -51,7 +51,7 @@ get_header(); ?>
             echo '</ul>';
         }
 
-        if (count($timeLine)>0) {
+        if (count($timeLine)>0 && $eventValue->event_status_id <> 3) {
             echo '<h6> Расписание мероприятия:</h6>';
             echo '<ul>';
             foreach ($timeLine as &$timeLineValue) {
@@ -69,7 +69,7 @@ get_header(); ?>
             echo '</ul>';
         }
 
-        if (count($costRules)>0) {
+        if (count($costRules)>0 && $eventValue->event_status_id <> 3) {
             echo '<h6> Стоимость участия:</h6>';
             echo '<ul>';
               foreach ($costRules as &$costRulesValue) {
@@ -80,16 +80,6 @@ get_header(); ?>
             echo '</ul>';
         }
 
-        if (strlen($eventValue->event_place_map)>0) {
-            echo '<h6> Место регистрации на гонку:</h6>';
-            echo '<div style="display: block; width: 100%; height: 450px;">'. $eventValue->event_place_map. '</div>';
-        }
-
-        if (strlen($eventValue->event_segment_link)>0) {
-            echo '<h6> Сегмент в Strava:*</h6>';
-            echo $eventValue->event_segment_link;
-            echo '<p><i>*Примечание: трек трассы может быть изменен организатором в день гонки</i></p>';
-        }
 
         if (count($riderResult)>0) {
     		    echo '<div class="btn-group p-1 d-inline-block ">';
@@ -129,6 +119,18 @@ get_header(); ?>
         		echo '	</table>';
         		echo '</div>';
         }
+
+        if (strlen($eventValue->event_place_map)>0) {
+            echo '<h6> Место регистрации на гонку:</h6>';
+            echo '<div style="display: block; width: 100%; height: 450px;">'. $eventValue->event_place_map. '</div>';
+        }
+
+        if (strlen($eventValue->event_segment_link)>0) {
+            echo '<h6> Сегмент в Strava:*</h6>';
+            echo $eventValue->event_segment_link;
+            echo '<p><i>*Примечание: трек трассы может быть изменен организатором в день гонки</i></p>';
+        }
+
     ?>
 
   </div>
