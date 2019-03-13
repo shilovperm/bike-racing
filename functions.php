@@ -443,6 +443,30 @@ function set_wp_user_verified($rider_id)
 		return $results;
 	}
 
+	/*
+	Общая информация о рейтинге
+	*/
+
+	function get_rating_info_by_rating_id($rating_id)
+	{
+		global $wpdb_bike;
+		$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+				'CALL p_get_rating_info_by_rating_id(%d)',$rating_id) );
+		return $results;
+	}
+
+	/*
+	Список событий входящих в рейтинг
+	*/
+
+	function get_rating_event_consist_by_rating_id($rating_id)
+	{
+		global $wpdb_bike;
+		$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+				'CALL p_get_rating_event_consist_by_rating_id(%d)',$rating_id) );
+		return $results;
+	}
+
 /*Заменяем логотип на свой*/
 function my_login_logo(){
  echo '

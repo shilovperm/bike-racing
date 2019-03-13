@@ -38,16 +38,38 @@ $ratings = get_ratings();
         $p_rating_id = 1;
     };
 
-  $categories = get_categories_by_rating_id($p_rating_id);
-  $rating     = get_rating_by_rating_id($p_rating_id);
+  $categories   = get_categories_by_rating_id($p_rating_id);
+  $rating       = get_rating_by_rating_id($p_rating_id);
+  $ratingInfo   = get_rating_info_by_rating_id($p_rating_id);
+  $ratingEvents = get_rating_event_consist_by_rating_id($p_rating_id);
 
   echo'<div class="container">';
+  echo '<h3>Рейтинг '.$ratingInfo[0]->rating_name.'('.$ratingInfo[0]->rating_year.')</h3>';
 
-  echo '<h3>'.$ratingsValue->rating_name.'('.$ratingsValue->rating_year.')</h3>';
+  echo '<div class="table-container">';
+  echo '	<table class="table table-striped table-bordered" style="width:100%">';
+  echo '    <thead>';
+  echo '        <tr>';
+  echo '            <th>#</th>';
+  echo '            <th>Событие</th>';
+  echo '            <th>Дата</th>';
+  echo '        </tr>';
+  echo '    </thead>';
+  echo '    <tbody>';
+  foreach ($ratingEvents as &$ratingEventsValue) {
+      echo '        <tr>';
+      echo '           <td>'.$ratingEventsValue->event_number.' </td>';
+      echo '           <td>'.$ratingEventsValue->event_title.' ('.$ratingEventsValue->event_subtitle.') </td>';
+      echo '           <td>'.date("d.m.Y", strtotime($ratingEventsValue->event_date)) .' </td>';
+      echo '        </tr>';
+  }
+  echo '		</tbody>';
+  echo '	</table>';
+  echo '</div>';
+
 
   echo '<div class="btn-group p-1 d-inline-block ">';
-
-      foreach ($categories as &$categoriesValue) {
+  foreach ($categories as &$categoriesValue) {
          echo '<button type="button" class="btn btn-'. $categoriesValue->style .'   btn-filter m-1" data-target="'. $categoriesValue->category_short_name .'"   >'. $categoriesValue->category_name .'</button>';
       }
   echo '</div>';
@@ -58,11 +80,9 @@ $ratings = get_ratings();
   echo '        <tr>';
   echo '            <th>#</th>';
   echo '            <th>Категория/Имя</th>';
-  echo '            <th>Этап №1</th>';
-  echo '            <th>Этап №2</th>';
-  echo '            <th>Этап №3</th>';
-  echo '            <th>Этап №4</th>';
-  echo '            <th>Этап №5</th>';
+  for ($i = 1; $i <= $ratingInfo[0]->event_count; $i++) {
+    echo '            <th>'.$i.'</th>';
+  }
   echo '            <th>Итого</th>';
   echo '        </tr>';
   echo '    </thead>';
@@ -87,16 +107,15 @@ $ratings = get_ratings();
   echo '		    <tr>';
   echo '		      <th>#</th>';
   echo '		      <th>Категория/Имя</th>';
-  echo '		      <th>Этап №1</th>';
-  echo '		      <th>Этап №2</th>';
-  echo '		      <th>Этап №3</th>';
-  echo '		      <th>Этап №4</th>';
-  echo '		      <th>Этап №5</th>';
+  for ($i = 1; $i <= $ratingInfo[0]->event_count; $i++) {
+    echo '            <th>'.$i.'</th>';
+  }
   echo '		      <th>Итого</th>';
   echo '		    </tr>';
   echo '		</tfoot>';
   echo '	</table>';
-  echo '</div>';
+  echo '  </div>';
+
   echo '</div>';
 ?>
 
