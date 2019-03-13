@@ -64,10 +64,10 @@ get_header(); ?>
   ?>
 
   <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <?php
+      <?php      
         foreach ($rider_years as &$value) {
           echo '<li class="nav-item">';
-          if ($value->year == date("Y") ) {
+          if ($value->year == $rider_years[0]->year ) {
             echo '    <a class="nav-link active" id="'.$value->year.'-tab" data-toggle="tab" href="#YEAR'.$value->year.'" role="tab" aria-controls="'.$value->year.'" aria-selected="true">'.$value->year.'</a>';
           } else {
             echo '    <a class="nav-link" id="'.$value->year.'-tab" data-toggle="tab" href="#YEAR'.$value->year.'" role="tab" aria-controls="'.$value->year.'" aria-selected="false">'.$value->year.'</a>';
@@ -80,7 +80,7 @@ get_header(); ?>
   <div class="tab-content" id="myTabContent">
     <?php
       foreach ($rider_years as &$value) {
-          if ($value->year == date("Y") ) {
+          if ($value->year == $rider_years[0]->year ) {
               echo '<div class="tab-pane fade show active" id="YEAR'.$value->year.'" role="tabpanel" aria-labelledby="'.$value->year.'-tab">';
           } else {
               echo '<div class="tab-pane fade" id="YEAR'.$value->year.'" role="tabpanel" aria-labelledby="'.$value->year.'-tab">';
