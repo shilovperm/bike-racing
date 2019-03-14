@@ -313,9 +313,21 @@ function get_rider_info($rider_id)
 {
 	global $wpdb_bike;
 	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_get_rider_info(%d)',$rider_id) );
+			'CALL p_get_rider_info_by_rider_id(%d)',$rider_id) );
 	return $results;
 }
+
+/*
+Возвращает общуую информацию об участнике
+*/
+function get_rider_info_by_WP_user_id($WP_user_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_rider_info_by_WP_user_id(%d)',$WP_user_id) );
+	return $results;
+}
+
 
 /*Проверка на верификацию*/
 function is_on_verification($wp_user_id)
