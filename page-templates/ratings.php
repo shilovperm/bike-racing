@@ -59,7 +59,7 @@ $ratings = get_ratings();
   foreach ($ratingEvents as &$ratingEventsValue) {
       echo '        <tr>';
       echo '           <td>'.$ratingEventsValue->event_number.' </td>';
-      echo '           <td>'.$ratingEventsValue->event_title.' ('.$ratingEventsValue->event_subtitle.') </td>';
+      echo '           <td> <a href="'. home_url() .'/event/?event_id='.$ratingEventsValue->event_id.'">'.$ratingEventsValue->event_title.' ('.$ratingEventsValue->event_subtitle.') </a> </td>';
       echo '           <td>'.date("d.m.Y", strtotime($ratingEventsValue->event_date)) .' </td>';
       echo '        </tr>';
   }
