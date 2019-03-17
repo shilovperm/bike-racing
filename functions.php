@@ -329,6 +329,7 @@ function get_rider_info_by_WP_user_id($WP_user_id)
 }
 
 
+
 /*Проверка на верификацию (проверка привязки WP пользователю участника)*/
 function is_on_verification($wp_user_id)
 {
