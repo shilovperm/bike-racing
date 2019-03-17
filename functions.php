@@ -328,8 +328,6 @@ function get_rider_info_by_WP_user_id($WP_user_id)
 	return $results;
 }
 
-
-
 /*Проверка на верификацию (проверка привязки WP пользователю участника)*/
 function is_on_verification($wp_user_id)
 {
@@ -427,6 +425,7 @@ function set_wp_user_to_rider($wp_user_id,$rider_id)
 			'CALL p_set_wp_user_to_rider(%d,%d)',$wp_user_id,$rider_id) );
 	return $results;
 }
+
 
 /*
 Список участников на верификации
