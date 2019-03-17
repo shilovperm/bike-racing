@@ -18,6 +18,7 @@ get_header(); ?>
         $costRules  = get_event_cost_rules_by_event_id($par_event_id);
         $riderResult= get_event_result_by_event_id($par_event_id);
         $videoLinks = get_video_links_by_event_id($par_event_id);
+        $photoLinks = get_photo_links_by_event_id($par_event_id);
 
         foreach ($event as &$eventValue)
         {
@@ -87,6 +88,11 @@ get_header(); ?>
             }
         }
 
+        if (count($photoLinks)>0) {
+            foreach ($photoLinks as &$photoLinksValue) {
+                  echo '<a data-fancybox="gallery" href="'.$photoLinksValue->link.'"><img src="'.$photoLinksValue->link_second.'" width="370" height="246"></a>';
+            }
+        }
         /* Фотогалерея
         echo '<a data-fancybox="gallery" href="https://2.downloader.disk.yandex.ru/preview/dc7eb213308496a2ea4177a7412a612d18130d50f9430c343be2edb0b0c3af75/inf/f0-b_ZLSqxQWEEprLC_qEOIZzz9cJAjaLh0x6nPNVLnzDWmvdHgd5ejOJZZ9ZcQ22Kuj3dp4uBWqxQp55L7vxQ%3D%3D?uid=34026928&filename=IMG-5438.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&tknv=v2&size=1903x920"><img src="https://2.downloader.disk.yandex.ru/preview/a351d384cfcb46e0cada4c4fe8d09090623c2e0a2a49cdd8b3563ad01500aad1/inf/wnAPXzVkp1rvwBSNEEyA36n2_lRtEFKAqJ9vZsC3HHgmBFRS4t5LED4VvVl07IA1miQuGGnz_rXKvgoIZP9Aig%3D%3D?uid=34026928&filename=IMG-5438.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&tknv=v2&size=1903x920"></a>';
 
