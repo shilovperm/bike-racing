@@ -64,7 +64,7 @@ get_header(); ?>
   ?>
 
   <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <?php      
+      <?php
         foreach ($rider_years as &$value) {
           echo '<li class="nav-item">';
           if ($value->year == $rider_years[0]->year ) {
@@ -102,7 +102,7 @@ get_header(); ?>
             echo '    <tbody>';
             foreach ($rider_year_ratings as &$year_ratings) {
                 echo '        <tr>';
-                echo '            <td>'.$year_ratings->rating_name.'</td>';
+                echo '            <td><a href="'. home_url() .'/ratings/?rating_id='.$year_ratings->rating_id.'">'.$year_ratings->rating_name.'</a></td>';
                 echo '            <td> <span class="badge badge-' . $year_ratings->style . ' d-inline" data-toggle="tooltip" data-placement="top" title="Рейтинг в категории '.$year_ratings->Category_Short_Name.'">#' . $year_ratings->rating . '</span> </td>';
                 echo '            <td>'.$year_ratings->result_points.' </td>';
                 echo '        </tr>';
@@ -128,7 +128,7 @@ get_header(); ?>
             foreach ($rider_year_results as &$year_results) {
                 echo '        <tr>';
                 echo '            <td> <span class="badge badge-' . $year_results->style . ' d-inline" data-toggle="tooltip" data-placement="top" title="Место в категории '.$year_results->category_short_name.'">' . $year_results->result_category_place . '</span> </td>';
-                echo '            <td>'.$year_results->event_title.'<i> ('.$year_results->event_subtitle.')</i></td>';
+                echo '            <td> <a href="'. home_url() .'/event/?event_id='.$year_results->event_id.'">'.$year_results->event_title.'<i> ('.$year_results->event_subtitle.')</i></a></td>';
                 echo '            <td>'.date("d.m", strtotime( $year_results->event_date)).' </td>';
                 echo '            <td>'.$year_results->result_points.' </td>';
                 echo '        </tr>';

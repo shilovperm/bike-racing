@@ -36,7 +36,7 @@ class WP_bootstrap_4_walker_nav_menu extends Walker_Nav_menu {
           /*Вход для вошедших пользователей скрыт*/
         } elseif (($title=='Верификация' && is_user_logged_in() && $is_on_verification==0)||($title=='Верификация' && !is_user_logged_in()))
         {
-
+            /*Верификация для вошедших пользователей скрыта*/
         } else
         {
 

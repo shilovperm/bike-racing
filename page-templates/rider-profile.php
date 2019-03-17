@@ -13,8 +13,21 @@ get_header(); ?>
 
     $current_user = wp_get_current_user();
 
-    $name = $current_user->user_firstname;
-    $lastName = $current_user->user_lastname;
+    if (is_verified(/*$current_user->ID*/7)==1) {
+      $name = 'Вифицированный поцик';
+      $rider = get_rider_info_by_WP_user_id(7);
+      foreach ($rider as &$rider_value) {
+        $name = $rider_value->rider_name;
+        $stravaLink = str_replace('https://www.strava.com/athletes/','',$rider_value->strava_link);
+        $year = $rider_value->birth_year;
+        $city = $rider_value->city;
+      }
+    } else {
+      $name = $current_user->user_lastname.' '.$current_user->user_firstname;
+    }
+
+
+
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -26,16 +39,6 @@ get_header(); ?>
           // check if name only contains letters and whitespace
           if (!preg_match("/[а-яА-ЯёЁ]/",$name)) {
             $nameErr = "Поле Имя должно содержать только кириллицу";
-          }
-        }
-
-        if (empty($_POST["riderLastName"])) {
-          $lastNameErr = "Поле Фамилия обязательно";
-        } else {
-          $lastName = test_input($_POST["riderLastName"]);
-          // check if name only contains letters and whitespace
-          if (!preg_match("/[а-яА-ЯёЁ]/",$lastName)) {
-            $lastNameErr = "Поле Фамилия должно содержать только кириллицу";
           }
         }
 
@@ -68,6 +71,9 @@ get_header(); ?>
             $cityErr = "Поле Город должно содержать только кириллицу";
           }
         }
+
+        if (is_verified(/*$current_user->ID*/7)==1 && !empty($_POST["riderName"]) &&  &&)
+
     }
 
     function test_input($data) {
@@ -85,17 +91,10 @@ get_header(); ?>
     <p><span class="error">* обязательные поля</span></p>
     <form action="" method="post">
 
-      <div class="form-row">
-          <div class="form-group col-md-6">
-              <label for="riderName">Имя*:</label>
-              <input class="form-control mb-3" type="text" id="riderName" name="riderName" value="<?php echo $name;?>" >
-              <span class="error"><?php echo $nameErr;?></span>
-          </div>
-          <div class="form-group col-md-6">
-              <label for="riderLastName">Фамилия*:</label>
-              <input class="form-control mb-3" type="text" id="riderLastName" name="riderLastName" value="<?php echo $lastName;?>" >
-              <span class="error"><?php echo $lastNameErr;?></span>
-          </div>
+      <div class="form-group">
+          <label for="riderName">Фамилия и имя участника*:</label>
+          <input class="form-control mb-3" type="text" id="riderName" name="riderName" value="<?php echo $name;?>" >
+          <span class="error"><?php echo $nameErr;?></span>
       </div>
 
       <label for="strava-url">Профиль в strava:</label>

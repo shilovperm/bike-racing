@@ -318,7 +318,11 @@ function get_rider_info($rider_id)
 }
 
 /*
+<<<<<<< HEAD
 Возвращает общуую информацию об участнике
+=======
+Возвращает общуую информацию об участнике по идентификатору WP пользователя
+>>>>>>> 59edcbc3a19aa62432cb9f5d81dfc975feceaa87
 */
 function get_rider_info_by_WP_user_id($WP_user_id)
 {
@@ -329,7 +333,11 @@ function get_rider_info_by_WP_user_id($WP_user_id)
 }
 
 
+<<<<<<< HEAD
 /*Проверка на верификацию*/
+=======
+/*Проверка на верификацию (проверка привязки WP пользователю участника)*/
+>>>>>>> 59edcbc3a19aa62432cb9f5d81dfc975feceaa87
 function is_on_verification($wp_user_id)
 {
 	global $wpdb_bike;
@@ -338,6 +346,14 @@ function is_on_verification($wp_user_id)
 	return $results;
 }
 
+/*Проверка на полную верификацию WP пользователя с участником*/
+function is_verified($wp_user_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_var( $wpdb_bike->prepare(
+			'SELECT  f_is_verified(%d)',$wp_user_id) );
+	return $results;
+}
 
 
 /*
