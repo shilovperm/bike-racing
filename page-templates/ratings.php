@@ -10,7 +10,7 @@ $ratings = get_ratings();
 
 ?>
 
-
+<!--
 <div class="container-fluid p-0">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Рейтинги</a>
@@ -20,16 +20,17 @@ $ratings = get_ratings();
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
-                    <?php
+                    <?php /*
                     foreach ($ratings as &$ratingsValue) {
                         echo '<a class="dropdown-item" href="?rating_id='.$ratingsValue->rating_id.'">'.$ratingsValue->rating_name.'('.$ratingsValue->rating_year.')</a>';
-                    }
+                    }*/
                     ?>
                 </li>
             </ul>
         </div>
     </nav>
 </div>
+!>
 
 <?php
     if (isset($_GET["rating_id"])) {
