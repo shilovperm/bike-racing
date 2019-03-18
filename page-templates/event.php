@@ -19,6 +19,7 @@ get_header(); ?>
         $riderResult= get_event_result_by_event_id($par_event_id);
         $videoLinks = get_video_links_by_event_id($par_event_id);
         $photoLinks = get_photo_links_by_event_id($par_event_id);
+        $thirdRider = get_third_time_by_event_id($par_event_id);
 
         foreach ($event as &$eventValue)
         {
@@ -93,11 +94,7 @@ get_header(); ?>
                   echo '<a data-fancybox="gallery" href="'.$photoLinksValue->link.'"><img src="'.$photoLinksValue->link_second.'" width="370" height="246"></a>';
             }
         }
-        /* Фотогалерея
-        echo '<a data-fancybox="gallery" href="https://2.downloader.disk.yandex.ru/preview/dc7eb213308496a2ea4177a7412a612d18130d50f9430c343be2edb0b0c3af75/inf/f0-b_ZLSqxQWEEprLC_qEOIZzz9cJAjaLh0x6nPNVLnzDWmvdHgd5ejOJZZ9ZcQ22Kuj3dp4uBWqxQp55L7vxQ%3D%3D?uid=34026928&filename=IMG-5438.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&tknv=v2&size=1903x920"><img src="https://2.downloader.disk.yandex.ru/preview/a351d384cfcb46e0cada4c4fe8d09090623c2e0a2a49cdd8b3563ad01500aad1/inf/wnAPXzVkp1rvwBSNEEyA36n2_lRtEFKAqJ9vZsC3HHgmBFRS4t5LED4VvVl07IA1miQuGGnz_rXKvgoIZP9Aig%3D%3D?uid=34026928&filename=IMG-5438.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&tknv=v2&size=1903x920"></a>';
 
-        echo '<a data-fancybox="gallery" href="https://1.downloader.disk.yandex.ru/preview/f816177268b46568f9adfde253d75ddf4ebb427e33efe0ea6c84acda08b624b1/inf/KgAv5nvqBvRbgquU5uj1P-IZzz9cJAjaLh0x6nPNVLnhiwb1Br5QgqaHp9KiRjNpFiVJFsUncdTNKUjM-KSU7w%3D%3D?uid=34026928&filename=IMG-5453.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&tknv=v2&size=1903x920"><img src="https://3.downloader.disk.yandex.ru/preview/b72d6adb98677b5f2625c98474e693af0b952e8654b893325a3968e518c139f5/inf/oPoVR3ZZLOaQHRx87JFRCqn2_lRtEFKAqJ9vZsC3HHhiZQto3cOltic8KaJYJmmd5jsY7CigsrraVbaheySZGQ%3D%3D?uid=34026928&filename=IMG-5453.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&tknv=v2&size=1903x920"></a>';
-        */
         if (count($riderResult)>0) {
     		    echo '<div class="btn-group p-1 d-inline-block ">';
 
@@ -108,7 +105,7 @@ get_header(); ?>
     		    echo '</div>';
 
         		echo '<div class="table-container">';
-        		echo '	<table class="table table-striped table-bordered" style="width:100%">';
+        		echo '	<table class="table table-striped table-bordered action-table" style="width:100%">';
             echo '    <thead>';
             echo '        <tr>';
             echo '            <th>№</th>';
@@ -127,10 +124,13 @@ get_header(); ?>
                 echo '            </td>';
                 echo '            <td class="position-relative"> <span class="badge badge-' . $riderResultValue->style . ' d-inline">' . $riderResultValue->category_short_name . '</span> <a href="'. home_url() .'/rider?rider_id='. $riderResultValue->rider_id .'">'. $riderResultValue->rider_name .'</a></td>';
                 /*echo '   <td>'.$riderResultValue->team_name.' </td>';*/
-                echo '            <td>'.$riderResultValue->result_time.' </td>';
+                $third_seconds = strtotime("1970-01-01 ".$thirdRider[0]->result_time." UTC");
+                $rider_seconds = strtotime("1970-01-01 ".$riderResultValue->result_time. "UTC");
+
+                echo '            <td>'.$riderResultValue->result_time.' '.get_rider_span_lag_percent($third_seconds,$thirdRider[0]->result_laps,$rider_seconds,$riderResultValue->result_laps,$riderResultValue->rule_min,$riderResultValue->rule_max) .'</td>';
                 echo '            <td>'.$riderResultValue->result_laps.' </td>';
                 echo '            <td>'.$riderResultValue->result_points.' </td>';
-        				echo '        </tr>';
+        				echo '        </tr>';            
             }
         		echo '		</tbody>';
         		echo '	</table>';

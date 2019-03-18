@@ -52,7 +52,7 @@ $ratings = get_ratings();
   echo '</div>';
 
   echo '<div class="table-container">';
-  echo '	<table class="table table-striped table-bordered rating-table" style="width:100%">';
+  echo '	<table class="table table-striped table-bordered action-table" style="width:100%">';
   echo '    <thead>';
   echo '        <tr>';
   echo '            <th>#</th>';

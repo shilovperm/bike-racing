@@ -499,6 +499,45 @@ function set_wp_user_verified($rider_id)
 		return $results;
 	}
 
+	/*
+	Расчет % отставания от третьего в абсолюте
+
+	<span class="badge badge-danger d-inline"> +12% </span>
+	*/
+	function get_rider_span_lag_percent($third_time, $third_laps, $rider_time, $rider_laps, $rule_min, $rule_max)
+	{
+		$time_percent = 0;
+
+		if ($rule_min>=0 && $rule_max >0) {
+			$time_percent = (($rider_time/$rider_laps)/($third_time/$third_laps)-1)*100;
+			if ($time_percent > 0) {
+				if ($time_percent <= $rule_min) {
+					$color="success";
+				} elseif ($time_percent < $rule_max) {
+					$color="default";
+				} else {
+					$color="danger";
+				}
+				$results = '<span class="badge badge-'.$color.' d-inline"> '.round($time_percent,1).'% </span>';
+			}
+		}
+		return $results;
+	}
+
+
+/*
+Время и количество кругов третьего участника в событии
+*/
+
+function get_third_time_by_event_id($event_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_third_time_by_event_id(%d)',$event_id) );
+	return $results;
+}
+
+
 /*Заменяем логотип на свой*/
 function my_login_logo(){
  echo '
