@@ -8,31 +8,7 @@ get_header();
 
 $ratings = get_ratings();
 
-?>
 
-
-<div class="container-fluid p-0">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Рейтинги</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    <?php
-                    foreach ($ratings as &$ratingsValue) {
-                        echo '<a class="dropdown-item" href="?rating_id='.$ratingsValue->rating_id.'">'.$ratingsValue->rating_name.'('.$ratingsValue->rating_year.')</a>';
-                    }
-                    ?>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</div>
-
-
-<?php
     if (isset($_GET["rating_id"])) {
         $p_rating_id = $_GET["rating_id"];
     } else {
@@ -76,7 +52,7 @@ $ratings = get_ratings();
   echo '</div>';
 
   echo '<div class="table-container">';
-  echo '	<table class="table table-striped table-bordered" style="width:100%">';
+  echo '	<table class="table table-striped table-bordered rating-table" style="width:100%">';
   echo '    <thead>';
   echo '        <tr>';
   echo '            <th>#</th>';

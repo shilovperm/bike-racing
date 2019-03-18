@@ -17,10 +17,10 @@ $(document).ready(function () {
   $('.btn-filter').on('click', function () {
       var $target = $(this).data('target');
       if ($target != 'all') {
-        $('.table tr td').css('display', 'none');
-        $('.table tr[data-status="' + $target + '"] td').fadeIn('slow');
+        $('.rating-table tr td').css('display', 'none');
+        $('.rating-table tr[data-status="' + $target + '"] td').fadeIn('slow');
       } else {
-        $('.table tr td').css('display', 'none').fadeIn('slow');
+        $('.rating-table tr td').css('display', 'none').fadeIn('slow');
       }
     });
 
