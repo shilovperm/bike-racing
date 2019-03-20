@@ -16,7 +16,8 @@ get_header(); ?>
         $categories = get_event_categories_by_event_id($par_event_id);
         $timeLine   = get_event_timeline_by_event_id($par_event_id);
         $costRules  = get_event_cost_rules_by_event_id($par_event_id);
-        $riderResult= get_event_result_by_event_id($par_event_id);
+        $riderResultCat = get_event_result_by_event_id($par_event_id,'Category');
+        $riderResultAge = get_event_result_by_event_id($par_event_id,'Age');
         $videoLinks = get_video_links_by_event_id($par_event_id);
         $photoLinks = get_photo_links_by_event_id($par_event_id);
         $thirdRider = get_third_time_by_event_id($par_event_id);
@@ -95,7 +96,7 @@ get_header(); ?>
             }
         }
 
-        if (count($riderResult)>0) {
+        if (count($riderResultCat)>0) {
     		    echo '<div class="btn-group p-1 d-inline-block ">';
 
                 foreach ($categories as &$categoriesValue) {
@@ -116,7 +117,7 @@ get_header(); ?>
             echo '        </tr>';
             echo '    </thead>';
             echo '    <tbody>';
-            foreach ($riderResult as &$riderResultValue) {
+            foreach ($riderResultCat as &$riderResultValue) {
         				echo '        <tr data-status="'.$riderResultValue->category_short_name.'">';
         				echo '            <td>';
                 echo '                <span class="badge badge-default d-inline m-0">' . $riderResultValue->result_absolute_place . '</span>';
@@ -138,6 +139,51 @@ get_header(); ?>
         		echo '		</tbody>';
         		echo '	</table>';
         		echo '</div>';
+        }
+
+        if (count($riderResultAge)>0) {
+            echo '<div class="btn-group p-1 d-inline-block ">';
+
+                foreach ($categories as &$categoriesValue) {
+                   echo '<button type="button" class="btn btn-'. $categoriesValue->style .'   btn-filter m-1" data-target="'. $categoriesValue->category_short_name .'"   >'. $categoriesValue->category_name .'</button>';
+                }
+                echo '<button type="button" class="btn btn-default  btn-filter m-1" data-target="all" >Все категории</button>';
+            echo '</div>';
+
+            echo '<div class="table-container">';
+            echo '	<table class="table table-striped table-bordered action-table" style="width:100%">';
+            echo '    <thead>';
+            echo '        <tr>';
+            echo '            <th>№</th>';
+            echo '            <th>Имя</th>';
+            echo '            <th>Время</th>';
+            echo '            <th>Круги</th>';
+            echo '            <th>Очки</th>';
+            echo '        </tr>';
+            echo '    </thead>';
+            echo '    <tbody>';
+            foreach ($riderResultAge as &$riderResultValue) {
+                echo '        <tr data-status="'.$riderResultValue->category_short_name.'">';
+                echo '            <td>';
+                echo '                <span class="badge badge-default d-inline m-0">' . $riderResultValue->result_absolute_place . '</span>';
+                echo '                <span class="ml-0 badge badge-' . $riderResultValue->style . ' d-inline">' . $riderResultValue->result_category_place . '</span>';
+                echo '            </td>';
+                echo '            <td class="position-relative"> <span class="badge badge-' . $riderResultValue->style . ' d-inline">' . $riderResultValue->category_short_name . '</span> <a href="'. home_url() .'/rider?rider_id='. $riderResultValue->rider_id .'">'. $riderResultValue->rider_name .'</a></td>';
+                /*echo '   <td>'.$riderResultValue->team_name.' </td>';*/
+                $third_seconds = strtotime("1970-01-01 ".$thirdRider[0]->result_time." UTC");
+                $rider_seconds = strtotime("1970-01-01 ".$riderResultValue->result_time. "UTC");
+                if ($riderResultValue->lap_is_equal) {
+                    echo '            <td>'.$riderResultValue->result_time.' '.get_rider_span_lag_percent($third_seconds,$thirdRider[0]->result_laps,$rider_seconds,$riderResultValue->result_laps,$riderResultValue->rule_min,$riderResultValue->rule_max) .'</td>';
+                } else {
+                    echo '            <td>'.$riderResultValue->result_time.'</td>';
+                }
+                echo '            <td>'.$riderResultValue->result_laps.' </td>';
+                echo '            <td>'.$riderResultValue->result_points.' </td>';
+                echo '        </tr>';
+            }
+            echo '		</tbody>';
+            echo '	</table>';
+            echo '</div>';
         }
 
         if (strlen($eventValue->event_place_map)>0) {
