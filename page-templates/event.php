@@ -126,11 +126,14 @@ get_header(); ?>
                 /*echo '   <td>'.$riderResultValue->team_name.' </td>';*/
                 $third_seconds = strtotime("1970-01-01 ".$thirdRider[0]->result_time." UTC");
                 $rider_seconds = strtotime("1970-01-01 ".$riderResultValue->result_time. "UTC");
-
-                echo '            <td>'.$riderResultValue->result_time.' '.get_rider_span_lag_percent($third_seconds,$thirdRider[0]->result_laps,$rider_seconds,$riderResultValue->result_laps,$riderResultValue->rule_min,$riderResultValue->rule_max) .'</td>';
+                if ($riderResultValue->lap_is_equal) {
+                    echo '            <td>'.$riderResultValue->result_time.' '.get_rider_span_lag_percent($third_seconds,$thirdRider[0]->result_laps,$rider_seconds,$riderResultValue->result_laps,$riderResultValue->rule_min,$riderResultValue->rule_max) .'</td>';
+                } else {
+                    echo '            <td>'.$riderResultValue->result_time.'</td>';
+                }
                 echo '            <td>'.$riderResultValue->result_laps.' </td>';
                 echo '            <td>'.$riderResultValue->result_points.' </td>';
-        				echo '        </tr>';            
+        				echo '        </tr>';
             }
         		echo '		</tbody>';
         		echo '	</table>';
