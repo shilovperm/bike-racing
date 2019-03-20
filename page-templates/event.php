@@ -13,7 +13,8 @@ get_header(); ?>
         };
 
         $event      = get_event_info_by_event_id($par_event_id);
-        $categories = get_event_categories_by_event_id($par_event_id);
+        $categoriesCat = get_event_categories_by_event_id($par_event_id,'Category');
+        $categoriesAge = get_event_categories_by_event_id($par_event_id,'Age');
         $timeLine   = get_event_timeline_by_event_id($par_event_id);
         $costRules  = get_event_cost_rules_by_event_id($par_event_id);
         $riderResultCat = get_event_result_by_event_id($par_event_id,'Category');
@@ -96,95 +97,116 @@ get_header(); ?>
             }
         }
 
-        if (count($riderResultCat)>0) {
-    		    echo '<div class="btn-group p-1 d-inline-block ">';
-
-                foreach ($categories as &$categoriesValue) {
-            			 echo '<button type="button" class="btn btn-'. $categoriesValue->style .'   btn-filter m-1" data-target="'. $categoriesValue->category_short_name .'"   >'. $categoriesValue->category_name .'</button>';
+        /*Добавляем таб для результатов по категориям и возрастам*/
+        echo '<ul class="nav nav-tabs" id="myTab" role="tablist">';
+                echo '<li class="nav-item">';
+                if (count($riderResultCat)>0 && count($riderResultAge)>0) {
+                  echo '    <a class="nav-link active" id="Category-tab" data-toggle="tab" href="#Category" role="tab" aria-controls="Category" aria-selected="true">По категориям</a>';
+                  echo '    <a class="nav-link" id="Age-tab" data-toggle="tab" href="#Age" role="tab" aria-controls="Age" aria-selected="false">По возрастам</a>';
+                } elseif (count($riderResultCat)>0){
+                  echo '    <a class="nav-link active" id="Category-tab" data-toggle="tab" href="#Category" role="tab" aria-controls="Category" aria-selected="true">По категориям</a>';
+                } else if (count($riderResultAge)>0) {
+                  echo '    <a class="nav-link active" id="Age-tab" data-toggle="tab" href="#Age" role="tab" aria-controls="Age" aria-selected="true">По возрастам</a>';
                 }
-                echo '<button type="button" class="btn btn-default  btn-filter m-1" data-target="all" >Все категории</button>';
-    		    echo '</div>';
+                echo '</li>';
+        echo '</ul>';
+        echo '<div class="tab-content" id="myTabContent">';
+            /*Вывод результата по Категориям*/
+            if (count($riderResultCat)>0) {
+                echo '<div class="tab-pane fade show active" id="Category" role="tabpanel" aria-labelledby="Category-tab">';
+            		    echo '<div class="btn-group p-1 d-inline-block ">';
 
-        		echo '<div class="table-container">';
-        		echo '	<table class="table table-striped table-bordered action-table" style="width:100%">';
-            echo '    <thead>';
-            echo '        <tr>';
-            echo '            <th>№</th>';
-            echo '            <th>Имя</th>';
-            echo '            <th>Время</th>';
-            echo '            <th>Круги</th>';
-            echo '            <th>Очки</th>';
-            echo '        </tr>';
-            echo '    </thead>';
-            echo '    <tbody>';
-            foreach ($riderResultCat as &$riderResultValue) {
-        				echo '        <tr data-status="'.$riderResultValue->category_short_name.'">';
-        				echo '            <td>';
-                echo '                <span class="badge badge-default d-inline m-0">' . $riderResultValue->result_absolute_place . '</span>';
-                echo '                <span class="ml-0 badge badge-' . $riderResultValue->style . ' d-inline">' . $riderResultValue->result_category_place . '</span>';
-                echo '            </td>';
-                echo '            <td class="position-relative"> <span class="badge badge-' . $riderResultValue->style . ' d-inline">' . $riderResultValue->category_short_name . '</span> <a href="'. home_url() .'/rider?rider_id='. $riderResultValue->rider_id .'">'. $riderResultValue->rider_name .'</a></td>';
-                /*echo '   <td>'.$riderResultValue->team_name.' </td>';*/
-                $third_seconds = strtotime("1970-01-01 ".$thirdRider[0]->result_time." UTC");
-                $rider_seconds = strtotime("1970-01-01 ".$riderResultValue->result_time. "UTC");
-                if ($riderResultValue->lap_is_equal) {
-                    echo '            <td>'.$riderResultValue->result_time.' '.get_rider_span_lag_percent($third_seconds,$thirdRider[0]->result_laps,$rider_seconds,$riderResultValue->result_laps,$riderResultValue->rule_min,$riderResultValue->rule_max) .'</td>';
-                } else {
-                    echo '            <td>'.$riderResultValue->result_time.'</td>';
-                }
-                echo '            <td>'.$riderResultValue->result_laps.' </td>';
-                echo '            <td>'.$riderResultValue->result_points.' </td>';
-        				echo '        </tr>';
+                        foreach ($categoriesCat as &$categoriesValue) {
+                    			 echo '<button type="button" class="btn btn-'. $categoriesValue->style .'   btn-filter m-1" data-target="'. $categoriesValue->category_short_name .'"   >'. $categoriesValue->category_name .'</button>';
+                        }
+                        echo '<button type="button" class="btn btn-default  btn-filter m-1" data-target="all" >Все категории</button>';
+            		    echo '</div>';
+
+                		echo '<div class="table-container">';
+                		echo '	<table class="table table-striped table-bordered action-table" style="width:100%">';
+                    echo '    <thead>';
+                    echo '        <tr>';
+                    echo '            <th>№</th>';
+                    echo '            <th>Имя</th>';
+                    echo '            <th>Время</th>';
+                    echo '            <th>Круги</th>';
+                    echo '            <th>Очки</th>';
+                    echo '        </tr>';
+                    echo '    </thead>';
+                    echo '    <tbody>';
+                    foreach ($riderResultCat as &$riderResultValue) {
+                				echo '        <tr data-status="'.$riderResultValue->category_short_name.'">';
+                				echo '            <td>';
+                        echo '                <span class="badge badge-default d-inline m-0">' . $riderResultValue->result_absolute_place . '</span>';
+                        echo '                <span class="ml-0 badge badge-' . $riderResultValue->style . ' d-inline">' . $riderResultValue->result_category_place . '</span>';
+                        echo '            </td>';
+                        echo '            <td class="position-relative"> <span class="badge badge-' . $riderResultValue->style . ' d-inline">' . $riderResultValue->category_short_name . '</span> <a href="'. home_url() .'/rider?rider_id='. $riderResultValue->rider_id .'">'. $riderResultValue->rider_name .'</a></td>';
+                        /*echo '   <td>'.$riderResultValue->team_name.' </td>';*/
+                        $third_seconds = strtotime("1970-01-01 ".$thirdRider[0]->result_time." UTC");
+                        $rider_seconds = strtotime("1970-01-01 ".$riderResultValue->result_time. "UTC");
+                        if ($riderResultValue->lap_is_equal) {
+                            echo '            <td>'.$riderResultValue->result_time.' '.get_rider_span_lag_percent($third_seconds,$thirdRider[0]->result_laps,$rider_seconds,$riderResultValue->result_laps,$riderResultValue->rule_min,$riderResultValue->rule_max) .'</td>';
+                        } else {
+                            echo '            <td>'.$riderResultValue->result_time.'</td>';
+                        }
+                        echo '            <td>'.$riderResultValue->result_laps.' </td>';
+                        echo '            <td>'.$riderResultValue->result_points.' </td>';
+                				echo '        </tr>';
+                    }
+                		echo '		</tbody>';
+                		echo '	</table>';
+                		echo '</div>';
+                echo '</div>';
             }
-        		echo '		</tbody>';
-        		echo '	</table>';
-        		echo '</div>';
-        }
+            /*Вывод результата по Возрастам*/
+            if (count($riderResultAge)>0) {
+                echo '<div class="tab-pane fade" id="Age" role="tabpanel" aria-labelledby="Age-tab">';
+                    echo '<div class="btn-group p-1 d-inline-block ">';
 
-        if (count($riderResultAge)>0) {
-            echo '<div class="btn-group p-1 d-inline-block ">';
+                        foreach ($categoriesAge as &$categoriesValue) {
+                           echo '<button type="button" class="btn btn-'. $categoriesValue->style .'   btn-filter m-1" data-target="'. $categoriesValue->category_short_name .'"   >'. $categoriesValue->category_name .'</button>';
+                        }
+                        echo '<button type="button" class="btn btn-default  btn-filter m-1" data-target="all" >Все категории</button>';
+                    echo '</div>';
 
-                foreach ($categories as &$categoriesValue) {
-                   echo '<button type="button" class="btn btn-'. $categoriesValue->style .'   btn-filter m-1" data-target="'. $categoriesValue->category_short_name .'"   >'. $categoriesValue->category_name .'</button>';
-                }
-                echo '<button type="button" class="btn btn-default  btn-filter m-1" data-target="all" >Все категории</button>';
-            echo '</div>';
-
-            echo '<div class="table-container">';
-            echo '	<table class="table table-striped table-bordered action-table" style="width:100%">';
-            echo '    <thead>';
-            echo '        <tr>';
-            echo '            <th>№</th>';
-            echo '            <th>Имя</th>';
-            echo '            <th>Время</th>';
-            echo '            <th>Круги</th>';
-            echo '            <th>Очки</th>';
-            echo '        </tr>';
-            echo '    </thead>';
-            echo '    <tbody>';
-            foreach ($riderResultAge as &$riderResultValue) {
-                echo '        <tr data-status="'.$riderResultValue->category_short_name.'">';
-                echo '            <td>';
-                echo '                <span class="badge badge-default d-inline m-0">' . $riderResultValue->result_absolute_place . '</span>';
-                echo '                <span class="ml-0 badge badge-' . $riderResultValue->style . ' d-inline">' . $riderResultValue->result_category_place . '</span>';
-                echo '            </td>';
-                echo '            <td class="position-relative"> <span class="badge badge-' . $riderResultValue->style . ' d-inline">' . $riderResultValue->category_short_name . '</span> <a href="'. home_url() .'/rider?rider_id='. $riderResultValue->rider_id .'">'. $riderResultValue->rider_name .'</a></td>';
-                /*echo '   <td>'.$riderResultValue->team_name.' </td>';*/
-                $third_seconds = strtotime("1970-01-01 ".$thirdRider[0]->result_time." UTC");
-                $rider_seconds = strtotime("1970-01-01 ".$riderResultValue->result_time. "UTC");
-                if ($riderResultValue->lap_is_equal) {
-                    echo '            <td>'.$riderResultValue->result_time.' '.get_rider_span_lag_percent($third_seconds,$thirdRider[0]->result_laps,$rider_seconds,$riderResultValue->result_laps,$riderResultValue->rule_min,$riderResultValue->rule_max) .'</td>';
-                } else {
-                    echo '            <td>'.$riderResultValue->result_time.'</td>';
-                }
-                echo '            <td>'.$riderResultValue->result_laps.' </td>';
-                echo '            <td>'.$riderResultValue->result_points.' </td>';
-                echo '        </tr>';
+                    echo '<div class="table-container">';
+                    echo '	<table class="table table-striped table-bordered action-table" style="width:100%">';
+                    echo '    <thead>';
+                    echo '        <tr>';
+                    echo '            <th>№</th>';
+                    echo '            <th>Имя</th>';
+                    echo '            <th>Время</th>';
+                    echo '            <th>Круги</th>';
+                    echo '            <th>Очки</th>';
+                    echo '        </tr>';
+                    echo '    </thead>';
+                    echo '    <tbody>';
+                    foreach ($riderResultAge as &$riderResultValue) {
+                        echo '        <tr data-status="'.$riderResultValue->category_short_name.'">';
+                        echo '            <td>';
+                        echo '                <span class="badge badge-default d-inline m-0">' . $riderResultValue->result_absolute_place . '</span>';
+                        echo '                <span class="ml-0 badge badge-' . $riderResultValue->style . ' d-inline">' . $riderResultValue->result_category_place . '</span>';
+                        echo '            </td>';
+                        echo '            <td class="position-relative"> <span class="badge badge-' . $riderResultValue->style . ' d-inline">' . $riderResultValue->category_short_name . '</span> <a href="'. home_url() .'/rider?rider_id='. $riderResultValue->rider_id .'">'. $riderResultValue->rider_name .'</a></td>';
+                        /*echo '   <td>'.$riderResultValue->team_name.' </td>';*/
+                        $third_seconds = strtotime("1970-01-01 ".$thirdRider[0]->result_time." UTC");
+                        $rider_seconds = strtotime("1970-01-01 ".$riderResultValue->result_time. "UTC");
+                        if ($riderResultValue->lap_is_equal) {
+                            echo '            <td>'.$riderResultValue->result_time.' '.get_rider_span_lag_percent($third_seconds,$thirdRider[0]->result_laps,$rider_seconds,$riderResultValue->result_laps,$riderResultValue->rule_min,$riderResultValue->rule_max) .'</td>';
+                        } else {
+                            echo '            <td>'.$riderResultValue->result_time.'</td>';
+                        }
+                        echo '            <td>'.$riderResultValue->result_laps.' </td>';
+                        echo '            <td>'.$riderResultValue->result_points.' </td>';
+                        echo '        </tr>';
+                    }
+                    echo '		</tbody>';
+                    echo '	</table>';
+                    echo '</div>';
+                echo '</div>';
             }
-            echo '		</tbody>';
-            echo '	</table>';
-            echo '</div>';
-        }
+        echo '</div>';
+
 
         if (strlen($eventValue->event_place_map)>0) {
             echo '<h6> Место регистрации на гонку:</h6>';

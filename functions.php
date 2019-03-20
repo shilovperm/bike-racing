@@ -265,11 +265,11 @@ function get_event_info_by_event_id($event_id)
 /*
 Возвращает категории мероприятия
 */
-function get_event_categories_by_event_id($event_id)
+function get_event_categories_by_event_id($event_id, $category_type)
 {
 	global $wpdb_bike;
 	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_get_event_categories_by_event_id(%d)',$event_id) );
+			'CALL p_get_event_categories_by_event_id(%d,%s)',$event_id, $category_type) );
 	return $results;
 }
 
