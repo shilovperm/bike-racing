@@ -45,10 +45,21 @@ get_header(); ?>
           }
         }
 
-        if (count($categories)>0) {
+        if (count($categoriesCat)>0) {
             echo '<h6> Категории участников:</h6>';
             echo '<ul>';
-              foreach ($categories as &$categoriesValue) {
+              foreach ($categoriesCat as &$categoriesValue) {
+                echo '<li class="list-style-type-none">';
+                echo '  <span class="'. $categoriesValue->style .' rounded cp-1">'.  $categoriesValue->category_name .'</span> - '.$categoriesValue->description ;
+                echo '</li>';
+              }
+            echo '</ul>';
+        }
+
+        if (count($categoriesAge)>0) {
+            echo '<h6> Возрастные категории участников:</h6>';
+            echo '<ul>';
+              foreach ($categoriesAge as &$categoriesValue) {
                 echo '<li class="list-style-type-none">';
                 echo '  <span class="'. $categoriesValue->style .' rounded cp-1">'.  $categoriesValue->category_name .'</span> - '.$categoriesValue->description ;
                 echo '</li>';
@@ -91,24 +102,32 @@ get_header(); ?>
             }
         }
 
-        if (count($photoLinks)>0) {
+        /*if (count($photoLinks)>0) {
             foreach ($photoLinks as &$photoLinksValue) {
                   echo '<a data-fancybox="gallery" href="'.$photoLinksValue->link.'"><img src="'.$photoLinksValue->link_second.'" width="370" height="246"></a>';
             }
-        }
+        }*/
 
         /*Добавляем таб для результатов по категориям и возрастам*/
         echo '<ul class="nav nav-tabs" id="myTab" role="tablist">';
-                echo '<li class="nav-item">';
+
                 if (count($riderResultCat)>0 && count($riderResultAge)>0) {
+                  echo '<li class="nav-item">';
                   echo '    <a class="nav-link active" id="Category-tab" data-toggle="tab" href="#Category" role="tab" aria-controls="Category" aria-selected="true">По категориям</a>';
+                  echo '</li>';
+                  echo '<li class="nav-item">';
                   echo '    <a class="nav-link" id="Age-tab" data-toggle="tab" href="#Age" role="tab" aria-controls="Age" aria-selected="false">По возрастам</a>';
+                  echo '</li>';
                 } elseif (count($riderResultCat)>0){
+                  echo '<li class="nav-item">';
                   echo '    <a class="nav-link active" id="Category-tab" data-toggle="tab" href="#Category" role="tab" aria-controls="Category" aria-selected="true">По категориям</a>';
+                  echo '</li>';
                 } else if (count($riderResultAge)>0) {
+                  echo '<li class="nav-item">';
                   echo '    <a class="nav-link active" id="Age-tab" data-toggle="tab" href="#Age" role="tab" aria-controls="Age" aria-selected="true">По возрастам</a>';
+                  echo '</li>';
                 }
-                echo '</li>';
+
         echo '</ul>';
         echo '<div class="tab-content" id="myTabContent">';
             /*Вывод результата по Категориям*/
