@@ -22,6 +22,7 @@ get_header(); ?>
       $rider_years = get_rider_years_of_events($par_rider_id);
       $current_user = wp_get_current_user();
 
+
       foreach ($rider as &$rider_value) {
         echo '<br>';
         if ($rider_value->rider_photo) {
@@ -121,15 +122,24 @@ get_header(); ?>
             echo '            <th>№</th>';
             echo '            <th>Событие</th>';
             echo '            <th>Дата</th>';
+            echo '            <th>Время</th>';
             echo '            <th>Очки</th>';
             echo '        </tr>';
             echo '    </thead>';
             echo '    <tbody>';
             foreach ($rider_year_results as &$year_results) {
+                $thirdRider = get_third_time_by_event_id($year_results->event_id);
+                $third_seconds = strtotime("1970-01-01 ".$thirdRider[0]->result_time." UTC");
+                $rider_seconds = strtotime("1970-01-01 ".$year_results->result_time. "UTC");
                 echo '        <tr>';
                 echo '            <td> <span class="badge badge-' . $year_results->style . ' d-inline" data-toggle="tooltip" data-placement="top" title="Место в категории '.$year_results->category_short_name.'">' . $year_results->result_category_place . '</span> </td>';
                 echo '            <td> <a href="'. home_url() .'/event/?event_id='.$year_results->event_id.'">'.$year_results->event_title.'<i> ('.$year_results->event_subtitle.')</i></a></td>';
                 echo '            <td>'.date("d.m", strtotime( $year_results->event_date)).' </td>';
+                if ($year_results->lap_is_equal) {
+                    echo '            <td>'.$year_results->result_time.' '.get_rider_span_lag_percent($third_seconds,$thirdRider[0]->result_laps,$rider_seconds,$year_results->result_laps,$year_results->rule_min,$year_results->rule_max) .'</td>';
+                } else {
+                    echo '            <td>'.$year_results->result_time.'</td>';
+                }
                 echo '            <td>'.$year_results->result_points.' </td>';
                 echo '        </tr>';
             }
