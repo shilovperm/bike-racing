@@ -164,12 +164,12 @@ get_header(); ?>
                         $third_seconds = strtotime("1970-01-01 ".$thirdRider[0]->result_time." UTC");
                         $rider_seconds = strtotime("1970-01-01 ".$riderResultValue->result_time. "UTC");
                         if ($riderResultValue->lap_is_equal) {
-                            echo '            <td>'.$riderResultValue->result_time.' <span data-toggle="tooltip" data-placement="top" title="Отставание от тройки лидеров">'.get_rider_span_lag_percent($third_seconds,$thirdRider[0]->result_laps,$rider_seconds,$riderResultValue->result_laps,$riderResultValue->rule_min,$riderResultValue->rule_max) .'</span></td>';
+                            echo '            <td>'.$riderResultValue->result_time.' '.get_rider_span_lag_percent($third_seconds,$thirdRider[0]->result_laps,$rider_seconds,$riderResultValue->result_laps,$riderResultValue->rule_min,$riderResultValue->rule_max) .'</td>';
                         } else {
                             echo '            <td>'.$riderResultValue->result_time.'</td>';
                         }
                         echo '            <td>'.$riderResultValue->result_laps.' </td>';
-                        echo '            <td data-toggle="tooltip" data-placement="top" title="Очки в категории">'.$riderResultValue->result_points.' </td>';
+                        echo '            <td><span data-toggle="tooltip" data-placement="top" title="Очки в категории">'.$riderResultValue->result_points.'</span></td>';
                 				echo '        </tr>';
                     }
                 		echo '		</tbody>';
@@ -203,10 +203,10 @@ get_header(); ?>
                     foreach ($riderResultAge as &$riderResultValue) {
                         echo '        <tr data-status="'.$riderResultValue->category_short_name.'">';
                         echo '            <td>';
-                        echo '                <span class="badge badge-default d-inline m-0">' . $riderResultValue->result_absolute_place . '</span>';
-                        echo '                <span class="ml-0 badge badge-' . $riderResultValue->style . ' d-inline">' . $riderResultValue->result_category_place . '</span>';
+                        echo '                <span data-toggle="tooltip" data-placement="top" title="Позиция в абсолюте" class="badge badge-default d-inline m-0">' . $riderResultValue->result_absolute_place . '</span>';
+                        echo '                <span data-toggle="tooltip" data-placement="top" title="Позиция в категории" class="ml-0 badge badge-' . $riderResultValue->style . ' d-inline">' . $riderResultValue->result_category_place . '</span>';
                         echo '            </td>';
-                        echo '            <td class="position-relative"> <span class="badge badge-' . $riderResultValue->style . ' d-inline">' . $riderResultValue->category_short_name . '</span> <a href="'. home_url() .'/rider?rider_id='. $riderResultValue->rider_id .'">'. $riderResultValue->rider_name .'</a></td>';
+                        echo '            <td class="position-relative"> <span data-toggle="tooltip" data-placement="top" title="Категория" class="badge badge-' . $riderResultValue->style . ' d-inline">' . $riderResultValue->category_short_name . '</span> <a href="'. home_url() .'/rider?rider_id='. $riderResultValue->rider_id .'">'. $riderResultValue->rider_name .'</a></td>';
                         /*echo '   <td>'.$riderResultValue->team_name.' </td>';*/
                         $third_seconds = strtotime("1970-01-01 ".$thirdRider[0]->result_time." UTC");
                         $rider_seconds = strtotime("1970-01-01 ".$riderResultValue->result_time. "UTC");
@@ -216,7 +216,7 @@ get_header(); ?>
                             echo '            <td>'.$riderResultValue->result_time.'</td>';
                         }
                         echo '            <td>'.$riderResultValue->result_laps.' </td>';
-                        echo '            <td>'.$riderResultValue->result_points.' </td>';
+                        echo '            <td><span data-toggle="tooltip" data-placement="top" title="Очки в категории">'.$riderResultValue->result_points.' </span></td>';
                         echo '        </tr>';
                     }
                     echo '		</tbody>';

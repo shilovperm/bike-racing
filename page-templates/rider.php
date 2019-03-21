@@ -136,11 +136,11 @@ get_header(); ?>
                 echo '            <td> <a href="'. home_url() .'/event/?event_id='.$year_results->event_id.'">'.$year_results->event_title.'<i> ('.$year_results->event_subtitle.')</i></a></td>';
                 echo '            <td>'.date("d.m", strtotime( $year_results->event_date)).' </td>';
                 if ($year_results->lap_is_equal) {
-                    echo '            <td>'.$year_results->result_time.' <span data-toggle="tooltip" data-placement="top" title="Отставание от тройки лидеров">'.get_rider_span_lag_percent($third_seconds,$thirdRider[0]->result_laps,$rider_seconds,$year_results->result_laps,$year_results->rule_min,$year_results->rule_max) .'</span></td>';
+                    echo '            <td>'.$year_results->result_time.' '.get_rider_span_lag_percent($third_seconds,$thirdRider[0]->result_laps,$rider_seconds,$year_results->result_laps,$year_results->rule_min,$year_results->rule_max) .'</td>';
                 } else {
                     echo '            <td>'.$year_results->result_time.'</td>';
                 }
-                echo '            <td>'.$year_results->result_points.' </td>';
+                echo '            <td><span data-toggle="tooltip" data-placement="top" title="Очки в категории '.$year_results->category_short_name.'">'.$year_results->result_points.' </td>';
                 echo '        </tr>';
             }
             echo '		</tbody>';

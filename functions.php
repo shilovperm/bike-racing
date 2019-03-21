@@ -518,7 +518,7 @@ function set_wp_user_verified($rider_id)
 				} else {
 					$color="danger";
 				}
-				$results = '<span class="badge badge-'.$color.' d-inline"> '.round($time_percent,1).'% </span>';
+				$results = '<span data-toggle="tooltip" data-placement="top" title="Отставание от тройки лидеров" class="badge badge-'.$color.' d-inline"> '.round($time_percent,1).'% </span>';
 			}
 		}
 		return $results;
