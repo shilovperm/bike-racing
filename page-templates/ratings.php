@@ -21,7 +21,7 @@ $ratings = get_ratings();
   $ratingEvents = get_rating_event_consist_by_rating_id($p_rating_id);
 
   echo'<div class="container">';
-  echo '<h3>Рейтинг '.$ratingInfo[0]->rating_name.'('.$ratingInfo[0]->rating_year.')</h3>';
+  echo '<h3>Рейтинг '.$ratingInfo[0]->rating_name.' ('.$ratingInfo[0]->rating_year.')</h3>';
 
   echo '<div class="table-container">';
   echo '	<table class="table table-striped table-bordered" style="width:100%">';

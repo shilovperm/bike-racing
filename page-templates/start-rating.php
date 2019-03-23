@@ -19,7 +19,7 @@ $ratings = get_ratings();
 
 
   echo'<div class="container">';
-  echo '<h3>Рейтинг '.$ratingInfo[0]->rating_name.'('.$ratingInfo[0]->rating_year.')</h3>';
+  echo '<h3>Рейтинг '.$ratingInfo[0]->rating_name.' ('.$ratingInfo[0]->rating_year.')</h3>';
 
   echo '<div class="table-container">';
   echo '	<table class="table table-striped table-bordered" style="width:100%">';
