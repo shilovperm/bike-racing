@@ -415,6 +415,19 @@ function get_rating_by_rating_id($rating_id)
 }
 
 /*
+Возвращает стартовый рейтинг
+*/
+
+function get_start_rating()
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_start_rating()','events_info') );
+	return $results;
+}
+
+
+/*
 Привязка пользователя WP к участнику
 */
 

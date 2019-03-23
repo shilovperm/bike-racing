@@ -1,6 +1,6 @@
 <?php
 /*
-* Template Name: Ratings
+* Template Name: start-rating
 */
 
 get_header();
@@ -8,17 +8,15 @@ get_header();
 
 $ratings = get_ratings();
 
+  /*Идентификатор стартового рейтинга*/
+  $p_rating_id = 3;
 
-    if (isset($_GET["rating_id"])) {
-        $p_rating_id = $_GET["rating_id"];
-    } else {
-        $p_rating_id = 1;
-    };
 
   $categories   = get_categories_by_rating_id($p_rating_id);
-  $rating       = get_rating_by_rating_id($p_rating_id);
+  $rating       = get_start_rating();
   $ratingInfo   = get_rating_info_by_rating_id($p_rating_id);
   $ratingEvents = get_rating_event_consist_by_rating_id($p_rating_id);
+
 
   echo'<div class="container">';
   echo '<h3>Рейтинг '.$ratingInfo[0]->rating_name.'('.$ratingInfo[0]->rating_year.')</h3>';
@@ -58,10 +56,7 @@ $ratings = get_ratings();
   echo '        <tr>';
   echo '            <th>#</th>';
   echo '            <th>Категория/Имя</th>';
-  for ($i = 1; $i <= $ratingInfo[0]->event_count; $i++) {
-    echo '            <th>'.$i.'</th>';
-  }
-  echo '            <th>Итого</th>';
+  echo '            <th>Очки</th>';
   echo '        </tr>';
   echo '    </thead>';
   echo '    <tbody>';
@@ -71,12 +66,6 @@ $ratings = get_ratings();
       echo '                <span data-toggle="tooltip" data-placement="top" title="Позиция в категории" class="ml-0 badge badge-' . $ratingValue->style . ' d-inline">' . $ratingValue->num  . '</span>';
       echo '            </td>';
       echo '            <td class="position-relative"> <span data-toggle="tooltip" data-placement="top" title="Категория" class="ml-0 badge badge-' . $ratingValue->style . ' d-inline">' . $ratingValue->category_short_name . '</span> <a href="'. home_url() .'/rider?rider_id='. $ratingValue->rider_id .'">'. $ratingValue->rider_name .'</a></td>';
-      /*echo '   <td>'.$riderResultValue->team_name.' </td>';*/
-      echo '            <td>'.$ratingValue->result1.' </td>';
-      echo '            <td>'.$ratingValue->result2.' </td>';
-      echo '            <td>'.$ratingValue->result3.' </td>';
-      echo '            <td>'.$ratingValue->result4.' </td>';
-      echo '            <td>'.$ratingValue->result5.' </td>';
       echo '            <td>'.$ratingValue->result_points.' </td>';
       echo '        </tr>';
   }
@@ -85,10 +74,7 @@ $ratings = get_ratings();
   echo '		    <tr>';
   echo '		      <th>#</th>';
   echo '		      <th>Категория/Имя</th>';
-  for ($i = 1; $i <= $ratingInfo[0]->event_count; $i++) {
-    echo '            <th>'.$i.'</th>';
-  }
-  echo '		      <th>Итого</th>';
+  echo '		      <th>Очки</th>';
   echo '		    </tr>';
   echo '		</tfoot>';
   echo '	</table>';
