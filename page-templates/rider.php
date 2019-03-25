@@ -25,18 +25,19 @@ get_header(); ?>
 
       foreach ($rider as &$rider_value) {
         echo '<br>';
+
         if ($rider_value->rider_photo) {
             echo '<img  class="" src="data:image/webp;base64,'.base64_encode($rider_value->rider_photo).'" height="400" width="300" alt="rider_image">';
         } elseif (substr(get_avatar_url($rider_value->wp_user_id), 35, 1) != "?") {
             echo get_avatar($rider_value->wp_user_id,200,'','', array('extra_attr'=>'style="border-radius: 0.5rem !important; box-shadow: 0 0 10px rgba(0,0,0,0.5);"') );
         }
 
-        echo '<h3>'.$rider_value->rider_name;
+        echo '<h3>'.$rider_value->rider_name.' <span data-toggle="tooltip" data-placement="top" title="Категория" class="badge badge-' . $rider_value->style.' d-inline ml-0">'.$rider_value->category_short_name.'</span>';
         if ($rider_value->wp_user_approved == 1) {
           echo '<img class="ml-1" height="15" width="15" src="'.get_template_directory_uri() . '/images/verified.png" data-toggle="tooltip" data-placement="top" title="Верифицирован" >';
         }
         if (strlen($rider_value->strava_link)>0){
-            echo '<a href="'.$rider_value->strava_link.'" target="_blank"><img class="img-logo ml-1" src="'.get_template_directory_uri() . '/images/Logo_Strava.png" ></a>';
+            echo '<a data-toggle="tooltip" data-placement="top" title="Профиль в STRAVA" href="'.$rider_value->strava_link.'" target="_blank"><img class="img-logo ml-1" src="'.get_template_directory_uri() . '/images/Logo_Strava.png" ></a>';
         }
         echo '</h3>';
 
@@ -56,7 +57,7 @@ get_header(); ?>
 
 
         if (strlen($rider_value->team_name)>0){
-          echo '<h4> Команда: <a href="'.$rider_value->team_strava_link.'" target="_blank"><img  class="img-logo ml-1" src="data:image/png;base64,'.base64_encode($rider_value->team_photo).'" alt="wr"></a></h4>';
+          echo '<h4> Команда: <a data-toggle="tooltip" data-placement="top" title="Профиль команды в STRAVA" href="'.$rider_value->team_strava_link.'" target="_blank"><img  class="img-logo ml-1" src="data:image/png;base64,'.base64_encode($rider_value->team_photo).'" alt="wr"></a></h4>';
         }
         if (strlen($rider_value->birth_year)>0){
           echo '<h5> Год рождения: '.$rider_value->birth_year.'</h5>';
