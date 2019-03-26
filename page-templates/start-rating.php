@@ -64,9 +64,19 @@ $ratings = get_ratings();
       echo '        <tr data-status="'.$ratingValue->category_short_name.'">';
       echo '            <td>';
       echo '                <span data-toggle="tooltip" data-placement="top" title="Позиция в категории" class="ml-0 badge badge-' . $ratingValue->style . ' d-inline">' . $ratingValue->num  . '</span>';
+      if ($ratingValue->delta_position>0){
+          echo '                <span data-toggle="tooltip" data-placement="top" title="Изменение позиции в категории" class="ml-0 badge badge-success d-inline">+' . $ratingValue->delta_position  . '</span>';
+      } elseif ($ratingValue->delta_position<0) {
+          echo '                <span data-toggle="tooltip" data-placement="top" title="Позиция в категории" class="ml-0 badge badge-danger d-inline"> ' . $ratingValue->delta_position  . '</span>';
+      }
       echo '            </td>';
       echo '            <td class="position-relative"> <span data-toggle="tooltip" data-placement="top" title="Категория" class="ml-0 badge badge-' . $ratingValue->style . ' d-inline">' . $ratingValue->category_short_name . '</span> <a href="'. home_url() .'/rider?rider_id='. $ratingValue->rider_id .'">'. $ratingValue->rider_name .'</a></td>';
-      echo '            <td>'.$ratingValue->result_points.' </td>';
+      echo '            <td>';
+      echo                  $ratingValue->result_points;
+      if ($ratingValue->delta_points>0){
+          echo '                <span data-toggle="tooltip" data-placement="top" title="Изменение очков в категории" class="ml-0 badge badge-success d-inline">' . $ratingValue->delta_points . '</span>';
+      }
+      echo '            </td>';
       echo '        </tr>';
   }
   echo '		</tbody>';
