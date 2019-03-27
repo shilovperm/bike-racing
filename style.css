@@ -590,3 +590,7 @@ ul.timeline > li:before {
 .table td {
   padding: 0.25rem;
 }
+
+.error {
+  color: #FF0000;
+}

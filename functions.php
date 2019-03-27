@@ -550,6 +550,18 @@ function get_third_time_by_event_id($event_id)
 	return $results;
 }
 
+/*
+Обновление параметров профиля участника
+*/
+
+function update_rider_by_WP_user($rider_name, $birth_year, $strava_link, $city, $WP_user_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_update_rider_by_WP_user(%s,%s,%s,%s,%d)',$rider_name, $birth_year, $strava_link, $city, $WP_user_id) );
+	return $results;
+}
+
 
 /*Заменяем логотип на свой*/
 function my_login_logo(){
