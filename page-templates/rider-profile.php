@@ -84,7 +84,7 @@ get_header(); ?>
               ) {
 
                 $results = update_rider_by_WP_user($name, $year, $inStravaLink , $city, $current_user->ID);
-                echo '<div class="alert alert-success" role="alert">  Изменения сохранены! </div>';
+                echo '<div class="alert alert-success mt-1" role="alert">  Изменения сохранены! </div>';
             } elseif ($current_user->ID>0
                 && !empty($name)
                 && !empty($year)
@@ -93,8 +93,8 @@ get_header(); ?>
                 && !preg_match("/[а-яА-ЯёЁ]/",$name)==0
                 && !preg_match("/[а-яА-ЯёЁ]/",$city)==0
               ) {
-                $results = add_rider($name,'D',$year,$city,$inStravaLink,$current_user->ID,1);                
-                echo '<div class="alert alert-success" role="alert">  Участник '.$name.' создан </div>';
+                $results = add_rider($name,'D',$year,$city,$inStravaLink,$current_user->ID,1);
+                echo '<div class="alert alert-success mt-1" role="alert">  Участник '.$name.' создан </div>';
             }
 
 
