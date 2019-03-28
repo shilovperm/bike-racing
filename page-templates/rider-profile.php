@@ -11,7 +11,9 @@ get_header(); ?>
     // define variables and set to empty values
 
 
-    $current_user = wp_get_current_user();    
+    $current_user = wp_get_current_user();
+    
+    echo $current_user->ID;
 
         if (is_verified($current_user->ID)==1) {
           $name = 'Вифицированный поцик';
