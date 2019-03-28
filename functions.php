@@ -519,7 +519,7 @@ function set_wp_user_verified($rider_id)
 	{
 		global $wpdb_bike;
 		$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-				'CALL p_get_rating_event_consist_by_rating_id(%s,%s,%d,%s,%s,%d,%d)',$rider_name,$category_short_name,$birth_year,$city,$strava_link,$WP_user_id,$wp_user_approved) );
+				'CALL p_add_rider(%s,%s,%d,%s,%s,%d,%d)',$rider_name,$category_short_name,$birth_year,$city,$strava_link,$WP_user_id,$wp_user_approved) );
 		return $results;
 	}
 
