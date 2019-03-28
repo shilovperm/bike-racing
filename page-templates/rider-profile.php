@@ -106,12 +106,9 @@ get_header(); ?>
           $data = htmlspecialchars($data);
           return $data;
         }
-
-
-
         ?>
 
-        <h2>Профиль участника</h2>
+        <h1>Профиль участника</h1>
         <p><span class="error">* обязательные поля</span></p>
         <form action="" method="post">
 
