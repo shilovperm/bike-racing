@@ -12,8 +12,8 @@ get_header(); ?>
 
 
     $current_user = wp_get_current_user();
-    
-    echo $current_user->ID;
+
+    //echo $current_user->ID;
 
         if (is_verified($current_user->ID)==1) {
           $name = 'Вифицированный поцик';
@@ -82,7 +82,7 @@ get_header(); ?>
               ) {
 
                 $results = update_rider_by_WP_user($name, $year, $inStravaLink , $city, $current_user->ID);
-                echo $name .'<br>'. $year .'<br>'. $inStravaLink .'<br>'. $city;
+                //echo $name .'<br>'. $year .'<br>'. $inStravaLink .'<br>'. $city;
             } elseif ($current_user->ID>0
                 && !empty($name)
                 && !empty($year)
@@ -90,7 +90,7 @@ get_header(); ?>
                 && !empty($stravaLink)
               ) {
                 $results = add_rider($name,'D',$year,$city,$inStravaLink,$current_user->ID,1);
-                echo 'Участник добавлен<br> Имя: '.$name.'<br> Категория: D<br> Год рождения: '.$year.' Город: '.$city.'<br> Strava: '.$inStravaLink.'<br> user_id: '.$current_user->ID;
+                //echo 'Участник добавлен<br> Имя: '.$name.'<br> Категория: D<br> Год рождения: '.$year.' Город: '.$city.'<br> Strava: '.$inStravaLink.'<br> user_id: '.$current_user->ID;
             }
 
 
