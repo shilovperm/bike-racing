@@ -79,6 +79,8 @@ get_header(); ?>
                 && !empty($year)
                 && !empty($city)
                 && !empty($stravaLink)
+                && !preg_match("/[а-яА-ЯёЁ]/",$name)==0
+                && !preg_match("/[а-яА-ЯёЁ]/",$city)==0
               ) {
 
                 $results = update_rider_by_WP_user($name, $year, $inStravaLink , $city, $current_user->ID);
@@ -88,6 +90,8 @@ get_header(); ?>
                 && !empty($year)
                 && !empty($city)
                 && !empty($stravaLink)
+                && !preg_match("/[а-яА-ЯёЁ]/",$name)==0
+                && !preg_match("/[а-яА-ЯёЁ]/",$city)==0
               ) {
                 $results = add_rider($name,'D',$year,$city,$inStravaLink,$current_user->ID,1);
                 //echo 'Участник добавлен<br> Имя: '.$name.'<br> Категория: D<br> Год рождения: '.$year.' Город: '.$city.'<br> Strava: '.$inStravaLink.'<br> user_id: '.$current_user->ID;
