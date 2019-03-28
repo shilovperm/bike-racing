@@ -513,8 +513,18 @@ function set_wp_user_verified($rider_id)
 	}
 
 	/*
-	Расчет % отставания от третьего в абсолюте
+	Функция добавления участника из формы сохранения
+	*/
+	function add_rider($rider_name,$category_short_name,$birth_year,$city,$strava_link,$WP_user_id,$wp_user_approved)
+	{
+		global $wpdb_bike;
+		$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+				'CALL p_get_rating_event_consist_by_rating_id(%s,%s,%d,%s,%s,%d,%d)',$rider_name,$category_short_name,$birth_year,$city,$strava_link,$WP_user_id,$wp_user_approved) );
+		return $results;
+	}
 
+	/*
+	Расчет % отставания от третьего в абсолюте
 	<span class="badge badge-danger d-inline"> +12% </span>
 	*/
 	function get_rider_span_lag_percent($third_time, $third_laps, $rider_time, $rider_laps, $rule_min, $rule_max)
