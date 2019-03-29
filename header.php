@@ -31,7 +31,7 @@
 	/*Добавляем метаданные динамически в зависимости от страницы*/
 	$currentPage = get_page_uri();
 	if ($currentPage == 'events' or $currentPage == '') {
-		echo '<meta property="og:title" content="Bike-Racing Велосипедные гонки в Перми"/>';
+		echo '<meta property="og:title" content="Велосипедные гонки в Перми"/>';
 		echo '<meta property="og:description" content="Гонки, рейтинги участников, протоколы гонок"/>';
 		echo '<meta property="og:image" content="https://bike-racing.ru/wp-content/themes/bike-racing/images/logo_login.png">';
 		echo '<meta property="og:type" content="article"/>';
@@ -43,7 +43,7 @@
 				$par_rider_id = $_GET["rider_id"];
 		};
 		$rider = get_rider_info($par_rider_id);
-		echo '<meta property="og:title" content="Bike-Racing Профиль участника: '.$rider[0]->rider_name.'"/>';
+		echo '<meta property="og:title" content="Профиль участника: '.$rider[0]->rider_name.'"/>';
 		echo '<meta property="og:description" content="Рейтинги и статистика выступлений участника '.$rider[0]->rider_name.'"/>';
 		echo '<meta property="og:image" content="'.get_avatar_url($rider_value->wp_user_id).'">';
 		echo '<meta property="og:type" content="article"/>';
@@ -51,14 +51,14 @@
 	}
 
 	if ($currentPage == 'riders') {
-		echo '<meta property="og:title" content="Bike-Racing Участники"/>';
+		echo '<meta property="og:title" content="Участники"/>';
 		echo '<meta property="og:description" content="Полный список участников по категориям"/>';
 		echo '<meta property="og:image" content="https://bike-racing.ru/wp-content/themes/bike-racing/images/logo_login.png">';
 		echo '<meta property="og:type" content="article"/>';
 		echo '<meta property="og:url" content= "https://bike-racing.ru/riders/"/>';
 	}
 	if ($currentPage == 'start-rating') {
-		echo '<meta property="og:title" content="Bike-Racing Рейтинг Стартовый протокол"/>';
+		echo '<meta property="og:title" content="Рейтинг Стартовый протокол"/>';
 		echo '<meta property="og:description" content="Стартовый протокол определяет позицию в стартовом створе"/>';
 		echo '<meta property="og:image" content="https://bike-racing.ru/wp-content/themes/bike-racing/images/logo_login.png">';
 		echo '<meta property="og:type" content="article"/>';
@@ -66,7 +66,7 @@
 	}
 
 	if ($currentPage == 'roadmap') {
-		echo '<meta property="og:title" content="Bike-Racing Дорожная карта"/>';
+		echo '<meta property="og:title" content="Дорожная карта"/>';
 		echo '<meta property="og:description" content="Дорожная карта определяет направление развития сайта и фиксирует изменения"/>';
 		echo '<meta property="og:image" content="https://bike-racing.ru/wp-content/themes/bike-racing/images/logo_login.png">';
 		echo '<meta property="og:type" content="article"/>';
@@ -82,7 +82,7 @@
 		$ratingInfo   = get_rating_info_by_rating_id($p_rating_id);
 	  $ratingEvents = get_rating_event_consist_by_rating_id($p_rating_id);
 
-		echo '<meta property="og:title" content="Bike-Racing Рейтинг '.$ratingInfo[0]->rating_name.'"/>';
+		echo '<meta property="og:title" content="Рейтинг '.$ratingInfo[0]->rating_name.'"/>';
 		echo '<meta property="og:description" content="';
 		foreach ($ratingEvents as &$ratingEventsValue) {
 				echo $ratingEventsValue->event_subtitle.' ';
