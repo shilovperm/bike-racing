@@ -20,9 +20,6 @@ $ratings = get_ratings();
 
   echo'<div class="container">';
   echo '<h3>Рейтинг '.$ratingInfo[0]->rating_name.' ('.$ratingInfo[0]->rating_year.')</h3>';
-  echo '<img class="icon-size-16" src="'.get_template_directory_uri().'/svg/si-glyph-triangle-up.svg"/>';
-  echo '<img class="icon-size-16" src="'.get_template_directory_uri().'/svg/si-glyph-triangle-down.svg"/>';
-  echo '<span data-toggle="tooltip" data-placement="top" title="Позиция в категории" class="ml-0 badge badge-success d-inline">5</span>';
   echo '<div class="table-container">';
   echo '	<table class="table table-striped table-bordered" style="width:100%">';
   echo '    <thead>';
