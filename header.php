@@ -49,6 +49,43 @@
 		echo '<meta property="og:type" content="article"/>';
 		echo '<meta property="og:url" content= "'.home_url( add_query_arg( NULL, NULL )).'" />';
 	}
+
+	if ($currentPage == 'start-rating') {
+		echo '<meta property="og:title" content="Bike-Racing Рейтинг Стартовый протокол"/>';
+		echo '<meta property="og:description" content="Стартовый протокол определяет позицию в стартовом створе"/>';
+		echo '<meta property="og:image" content="https://bike-racing.ru/wp-content/themes/bike-racing/images/logo_login.png">';
+		echo '<meta property="og:type" content="article"/>';
+		echo '<meta property="og:url" content= "https://bike-racing.ru/start-rating/"/>';
+	}
+
+	if ($currentPage == 'roadmap') {
+		echo '<meta property="og:title" content="Bike-Racing Дорожная карта"/>';
+		echo '<meta property="og:description" content="Дорожная карта определяет направление развития сайта и фиксирует изменения"/>';
+		echo '<meta property="og:image" content="https://bike-racing.ru/wp-content/themes/bike-racing/images/logo_login.png">';
+		echo '<meta property="og:type" content="article"/>';
+		echo '<meta property="og:url" content= "https://bike-racing.ru/roadmap/"/>';
+	}
+
+	if ($currentPage == 'ratings') {
+		if (isset($_GET["rating_id"])) {
+        $p_rating_id = $_GET["rating_id"];
+    } else {
+        $p_rating_id = 1;
+    };
+		$ratingInfo   = get_rating_info_by_rating_id($p_rating_id);
+	  $ratingEvents = get_rating_event_consist_by_rating_id($p_rating_id);
+
+		echo '<meta property="og:title" content="Bike-Racing Рейтинг '.$ratingInfo[0]->rating_name.'"/>';
+		echo '<meta property="og:description" content="';
+		foreach ($ratingEvents as &$ratingEventsValue) {
+				echo $ratingEventsValue->event_subtitle.' ';
+		}
+		echo '"/>';
+		echo '<meta property="og:image" content="https://bike-racing.ru/wp-content/themes/bike-racing/images/logo_login.png">';
+		echo '<meta property="og:type" content="article"/>';
+		echo '<meta property="og:url" content= "'.home_url( add_query_arg( NULL, NULL )).'"/>';
+	}
+
 	?>
 	<?php wp_head(); ?>
 </head>
