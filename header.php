@@ -50,6 +50,13 @@
 		echo '<meta property="og:url" content= "'.home_url( add_query_arg( NULL, NULL )).'" />';
 	}
 
+	if ($currentPage == 'riders') {
+		echo '<meta property="og:title" content="Bike-Racing Участники"/>';
+		echo '<meta property="og:description" content="Полный список участников по категориям"/>';
+		echo '<meta property="og:image" content="https://bike-racing.ru/wp-content/themes/bike-racing/images/logo_login.png">';
+		echo '<meta property="og:type" content="article"/>';
+		echo '<meta property="og:url" content= "https://bike-racing.ru/riders/"/>';
+	}
 	if ($currentPage == 'start-rating') {
 		echo '<meta property="og:title" content="Bike-Racing Рейтинг Стартовый протокол"/>';
 		echo '<meta property="og:description" content="Стартовый протокол определяет позицию в стартовом створе"/>';
