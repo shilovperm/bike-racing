@@ -30,6 +30,14 @@
 	<?php
 	/*Добавляем метаданные динамически в зависимости от страницы*/
 	$currentPage = get_page_uri();
+	if ($currentPage == 'events' or $currentPage == '') {
+		echo '<meta property="og:title" content="Bike-Racing Велосипедные гонки в Перми"/>';
+		echo '<meta property="og:description" content="Гонки, рейтинги участников, протоколы гонок"/>';
+		echo '<meta property="og:image" content="https://bike-racing.ru/wp-content/themes/bike-racing/images/logo_login.png">';
+		echo '<meta property="og:type" content="article"/>';
+		echo '<meta property="og:url" content= "https://bike-racing.ru"/>';
+	}
+
 	if ($currentPage == 'rider') {
 		if (isset($_GET["rider_id"])) {
 				$par_rider_id = $_GET["rider_id"];

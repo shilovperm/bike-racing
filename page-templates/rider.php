@@ -23,8 +23,7 @@ get_header(); ?>
       $current_user = wp_get_current_user();
 
       foreach ($rider as &$rider_value) {
-        echo '<br>';
-
+        echo '<br>';        
         if ($rider_value->rider_photo) {
             echo '<img  class="" src="data:image/webp;base64,'.base64_encode($rider_value->rider_photo).'" height="400" width="300" alt="rider_image">';
         } elseif (substr(get_avatar_url($rider_value->wp_user_id), 35, 1) != "?") {
