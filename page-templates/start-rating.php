@@ -20,7 +20,9 @@ $ratings = get_ratings();
 
   echo'<div class="container">';
   echo '<h3>Рейтинг '.$ratingInfo[0]->rating_name.' ('.$ratingInfo[0]->rating_year.')</h3>';
-
+  echo '<img class="icon-size-16" src="'.get_template_directory_uri().'/svg/si-glyph-triangle-up.svg"/>';
+  echo '<img class="icon-size-16" src="'.get_template_directory_uri().'/svg/si-glyph-triangle-down.svg"/>';
+  echo '<span data-toggle="tooltip" data-placement="top" title="Позиция в категории" class="ml-0 badge badge-success d-inline">5</span>';
   echo '<div class="table-container">';
   echo '	<table class="table table-striped table-bordered" style="width:100%">';
   echo '    <thead>';
@@ -64,10 +66,12 @@ $ratings = get_ratings();
       echo '        <tr data-status="'.$ratingValue->category_short_name.'">';
       echo '            <td>';
       echo '                <span data-toggle="tooltip" data-placement="top" title="Позиция в категории" class="ml-0 badge badge-' . $ratingValue->style . ' d-inline">' . $ratingValue->num  . '</span>';
-      if ($ratingValue->delta_position>0){
-          echo '                <span data-toggle="tooltip" data-placement="top" title="Изменение позиции в категории" class="ml-0 badge badge-success d-inline">+' . $ratingValue->delta_position  . '</span>';
+      if ($ratingValue->delta_position>9){
+          echo '                <span data-toggle="tooltip" data-placement="top" title="Изменение позиции в категории" class="ml-0 badge d-inline" style="background: url('.get_template_directory_uri().'/svg/si-glyph-triangle-up.svg); background-repeat: no-repeat; background-size: 32px 32px; background-position: -0px -4px; color:white;">&nbsp&nbsp' . $ratingValue->delta_position .'&nbsp&nbsp&nbsp</span>';
+      } elseif ($ratingValue->delta_position>0) {
+          echo '                <span data-toggle="tooltip" data-placement="top" title="Изменение позиции в категории" class="ml-0 badge d-inline" style="background: url('.get_template_directory_uri().'/svg/si-glyph-triangle-up.svg); background-repeat: no-repeat; background-size: 32px 32px; background-position: -0px -4px; color:white;">&nbsp&nbsp&nbsp' . $ratingValue->delta_position .'&nbsp&nbsp&nbsp</span>';
       } elseif ($ratingValue->delta_position<0) {
-          echo '                <span data-toggle="tooltip" data-placement="top" title="Позиция в категории" class="ml-0 badge badge-danger d-inline"> ' . $ratingValue->delta_position  . '</span>';
+          echo '                <span data-toggle="tooltip" data-placement="top" title="Изменение позиции в категории" class="ml-0 badge d-inline" style="background: url('.get_template_directory_uri().'/svg/si-glyph-triangle-down.svg); background-repeat: no-repeat; background-size: 32px 32px; background-position: -0px -4px; color:white;">&nbsp&nbsp&nbsp' . abs($ratingValue->delta_position) .'&nbsp&nbsp&nbsp</span>';
       }
       echo '            </td>';
       echo '            <td class="position-relative"> <span data-toggle="tooltip" data-placement="top" title="Категория" class="ml-0 badge badge-' . $ratingValue->style . ' d-inline">' . $ratingValue->category_short_name . '</span> <a href="'. home_url() .'/rider?rider_id='. $ratingValue->rider_id .'">'. $ratingValue->rider_name .'</a></td>';
