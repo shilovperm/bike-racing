@@ -27,7 +27,21 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
   <link rel="stylesheet" id="dataTables-css" 	href="<?php echo get_template_directory_uri() . '/assets/css/dataTables.bootstrap4.min.css'; ?>" type="text/css" media="all">
 	<link rel="stylesheet" id="fancyBox" 				href="<?php echo get_template_directory_uri() . '/assets/css/jquery.fancybox.min.css'; ?>" type="text/css" media="all">
-
+	<?php
+	/*Добавляем метаданные динамически в зависимости от страницы*/
+	$currentPage = get_page_uri();
+	if ($currentPage == 'rider') {
+		if (isset($_GET["rider_id"])) {
+				$par_rider_id = $_GET["rider_id"];
+		};
+		$rider = get_rider_info($par_rider_id);
+		echo '<meta property="og:title" content="Bike-Racing Профиль участника: '.$rider[0]->rider_name.'"/>';
+		echo '<meta property="og:description" content="Рейтинги и статистика выступлений участника '.$rider[0]->rider_name.'"/>';
+		echo '<meta property="og:image" content="'.get_avatar_url($rider_value->wp_user_id).'">';
+		echo '<meta property="og:type" content="article"/>';
+		echo '<meta property="og:url" content= "'.home_url( add_query_arg( NULL, NULL )).'" />';
+	}
+	?>
 	<?php wp_head(); ?>
 </head>
 

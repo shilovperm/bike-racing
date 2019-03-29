@@ -18,11 +18,9 @@ get_header(); ?>
           $par_rider_id = $_GET["rider_id"];
       };
 
-
       $rider = get_rider_info($par_rider_id);
       $rider_years = get_rider_years_of_events($par_rider_id);
       $current_user = wp_get_current_user();
-
 
       foreach ($rider as &$rider_value) {
         echo '<br>';
@@ -33,14 +31,14 @@ get_header(); ?>
             echo get_avatar($rider_value->wp_user_id,200,'','', array('extra_attr'=>'style="border-radius: 0.5rem !important; box-shadow: 0 0 10px rgba(0,0,0,0.5);"') );
         }
 
-        echo '<h1>'.$rider_value->rider_name.' <span data-toggle="tooltip" data-placement="top" title="Категория" class="badge badge-' . $rider_value->style.' d-inline ml-0">'.$rider_value->category_short_name.'</span>';
+        echo '<h3>'.$rider_value->rider_name.' <span data-toggle="tooltip" data-placement="top" title="Категория" class="badge badge-' . $rider_value->style.' d-inline ml-0">'.$rider_value->category_short_name.'</span>';
         if ($rider_value->wp_user_approved == 1) {
           echo '<img class="ml-1" height="15" width="15" src="'.get_template_directory_uri() . '/images/verified.png" data-toggle="tooltip" data-placement="top" title="Верифицирован" >';
         }
         if (strlen($rider_value->strava_link)>0){
             echo '<a data-toggle="tooltip" data-placement="top" title="Профиль в STRAVA" href="'.$rider_value->strava_link.'" target="_blank"><img class="img-logo ml-1" src="'.get_template_directory_uri() . '/images/Logo_Strava.png" ></a>';
         }
-        echo '</h1>';
+        echo '</h3>';
 
         if ($current_user->exists()) {
           $full_name = $current_user->user_lastname.' '.$current_user->user_firstname;
