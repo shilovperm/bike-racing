@@ -18,6 +18,7 @@ get_header(); ?>
           $par_rider_id = $_GET["rider_id"];
       };
 
+
       $rider = get_rider_info($par_rider_id);
       $rider_years = get_rider_years_of_events($par_rider_id);
       $current_user = wp_get_current_user();
