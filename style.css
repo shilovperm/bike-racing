@@ -439,9 +439,13 @@ html, body, #intro {
 
 
 
-.yellow-background {
+.velta-sport {
 	background-color: #FDFB00;
 }
+.parma {
+	background-color: #FF0000;
+}
+
 
 .absolute-top-left {
 	top:5px;
@@ -475,13 +479,54 @@ html, body, #intro {
   z-index: 1;
 }
 
-.card-img-logo {
+.organization-logo {
   width:100px;
   top: 5px;
 	right: 5px;
   z-index: 1;
   padding: 2px;
   border-radius: 0.25rem;
+
+}
+
+.organization-text-logo {
+  top: 5px;
+	right: 5px;
+  z-index: 1;
+  padding: 0px 10px;
+  border-radius: 5px;
+  color: #343a40;
+  background-color:#E9E9E9;
+  font-weight: bold;
+}
+
+
+.sponsor-logo-1 {
+  max-width:110px;
+  max-height:50px;
+  left: 5px;
+	bottom: 5px;
+  z-index: 1;
+  padding: 2px;
+  border-radius: 0.25rem;
+}
+
+.sponsor-logo-2 {
+  max-width:110px;
+  max-height:50px;
+  right: 5px;
+	bottom: 5px;
+  z-index: 1;
+  padding: 2px;
+  border-radius: 0.25rem;
+}
+
+.sponsor-logo-1:hover {
+  opacity: 0.8;
+}
+
+.sponsor-logo-2:hover {
+  opacity: 0.8;
 }
 
 .img-logo {

@@ -16,19 +16,26 @@ get_header(); ?>
             echo '<!-- Card Wider из БД-->';
             foreach ($events as &$value) {
                 echo '<div class="card card-cascade wider card-custom position-relative blue-grey-text">';
-                /*echo '    <!-- snowflake image -->';
-                echo '    <img  class="card-add-picture-1 position-absolute" src="' . get_template_directory_uri() . '/images/snowflake.svg" alt="wr" height="25" width="25">';*/
-                echo '    <!-- veltalogo image -->';
-                echo '    <img  class="card-img-logo position-absolute yellow-background" src="data:image/png;base64,'.base64_encode($value->org_logo).'" alt="wr">';
-                echo '    <!--XCO image -->';
-                echo '    <p class="position-absolute race-type">' . $value->race_type_short_name . '</p>';
-                echo '    <!-- Card image -->';
+                // Card image
                 echo '    <div class="view view-cascade overlay">';
                 echo '        <a href="event/?event_id=' . $value->event_id . '">';
                 echo '            <img  class="card-img-top" src="data:image/png;base64,'.base64_encode($value->image).'" height="200" width="300" alt="Card image cap">';
                 echo '        </a>';
+                //race type logo
+                echo '        <p data-toggle="tooltip" data-placement="top" title="Тип гонки" class="position-absolute race-type">' . $value->race_type_short_name . '</p>';
+                //org logo
+                if ($value->org_logo == null) {
+                    echo '        <p data-toggle="tooltip" data-placement="top" title="Организатор" class="position-absolute organization-text-logo">' . $value->org_short_name . '</p>';
+                } else {
+                    echo '        <img  data-toggle="tooltip" data-placement="top" title="Организатор" class="organization-logo position-absolute '.$value->org_style.'" src="data:image/png;base64,'.base64_encode($value->org_logo).'" alt="wr">';
+                }
+                //sponsor logos
+                $sponsors = get_sponsors_by_event_id($value->event_id);
+                foreach ($sponsors as &$sponsor) {
+                    echo '       <a  href="'.$sponsor->sponsor_link.'" target="_blank"> <img data-toggle="tooltip" data-placement="top" title="Спонсор" class="sponsor-logo-'.$sponsor->position_on_card.' position-absolute '.$sponsor->sponsor_style.'" src="data:image/png;base64,'.base64_encode($sponsor->image).'" alt="'.$sponsor->description.'"></a>';
+                }
                 echo '    </div>';
-                echo '    <!-- Card content -->';
+                // Card content
                 echo '    <a href="event/?event_id=' . $value->event_id . '" class="card-body card-body-cascade text-center card-body-custom">';
                 echo '        <!-- Title -->';
                 echo '        <h4 class="card-title"><strong>' . $value->event_title . '</strong></h4>';
@@ -44,8 +51,6 @@ get_header(); ?>
                 echo '        <button type="button"  href="event/?event_id=' . $value->event_id . '" target="_blank" class="btn '. $btnstyle .' btn-on-card"' . $btndisable . '>' . $value->status_name . '</button>';
                 echo '    </a>';
                 echo '</div>';
-                echo '<!-- Card Wider -->';
-
             }
             echo '</div>';
           }
@@ -60,17 +65,24 @@ get_header(); ?>
                 echo '  <!-- Card Wider из БД-->';
                 foreach ($events as &$value) {
                     echo '<div class="card card-cascade wider card-custom position-relative blue-grey-text">';
-                    /*echo '    <!-- snowflake image -->';
-                    echo '    <img  class="card-add-picture-1 position-absolute" src="' . get_template_directory_uri() . '/images/snowflake.svg" alt="wr" height="25" width="25">';*/
-                    echo '    <!-- veltalogo image -->';
-                    echo '    <img  class="card-img-logo position-absolute yellow-background" src="data:image/png;base64,'.base64_encode($value->org_logo).'" alt="wr">';
-                    echo '    <!--XCO image -->';
-                    echo '    <p class="position-absolute race-type">' . $value->race_type_short_name . '</p>';
-                    echo '    <!-- Card image -->';
+                    //Card image
                     echo '    <div class="view view-cascade overlay">';
                     echo '        <a href="event/?event_id=' . $value->event_id . '">';
                     echo '            <img  class="card-img-top" src="data:image/png;base64,'.base64_encode($value->image).'" height="200" width="300" alt="Card image cap">';
                     echo '        </a>';
+                    //race type logo
+                    echo '        <p data-toggle="tooltip" data-placement="top" title="Тип гонки" class="position-absolute race-type">' . $value->race_type_short_name . '</p>';
+                    //org logo
+                    if ($value->org_logo == null) {
+                        echo '        <p data-toggle="tooltip" data-placement="top" title="Организатор" class="position-absolute organization-text-logo">' . $value->org_short_name . '</p>';
+                    } else {
+                        echo '        <img data-toggle="tooltip" data-placement="top" title="Организатор" class="organization-logo position-absolute '.$value->org_style.'" src="data:image/png;base64,'.base64_encode($value->org_logo).'" alt="wr">';
+                    }
+                    //sponsor logos
+                    $sponsors = get_sponsors_by_event_id($value->event_id);
+                    foreach ($sponsors as &$sponsor) {
+                        echo '       <a  href="'.$sponsor->sponsor_link.'" target="_blank"> <img data-toggle="tooltip" data-placement="top" title="Спонсор" class="sponsor-logo-'.$sponsor->position_on_card.' position-absolute '.$sponsor->sponsor_style.'" src="data:image/png;base64,'.base64_encode($sponsor->image).'" alt="'.$sponsor->description.'"></a>';
+                    }
                     echo '    </div>';
                     echo '    <!-- Card content -->';
                     echo '    <a href="event/?event_id=' . $value->event_id . '" class="card-body card-body-cascade text-center card-body-custom">';

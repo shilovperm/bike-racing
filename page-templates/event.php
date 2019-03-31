@@ -22,13 +22,27 @@ get_header(); ?>
         $videoLinks = get_video_links_by_event_id($par_event_id);
         $photoLinks = get_photo_links_by_event_id($par_event_id);
         $thirdRider = get_third_time_by_event_id($par_event_id);
+        $sponsors = get_sponsors_by_event_id($par_event_id);
 
         foreach ($event as &$eventValue)
         {
           echo '<h3>'. $eventValue->event_title .'</h3>';
           echo '<h4>'. $eventValue->event_subtitle .'</h4>';
-          echo '<h5> Организатор: '. $eventValue->org_name .'<img  class="img-logo yellow-background ml-1" src="data:image/png;base64,'.base64_encode($eventValue->org_logo).'" alt="wr"></h5>';
+          if ($eventValue->org_logo == NULL) {
+              echo '<h5> Организатор: '. $eventValue->org_name .'</h5>';
+          } else {
+              echo '<h5> Организатор: '. $eventValue->org_name .'<img data-toggle="tooltip" data-placement="top" title="Организатор" class="img-logo '.$eventValue->org_style.' ml-1" src="data:image/png;base64,'.base64_encode($eventValue->org_logo).'" alt="wr"></h5>';
+          }
           echo '<h5> Дата: '. date("d.m.Y", strtotime( $eventValue->event_date)) .'</h5>';
+
+          if (count($sponsors)>0) {
+              echo '<h5> Спонсоры:';
+              foreach ($sponsors as &$sponsor) {
+                  /*echo '       <a  href="'.$sponsor->sponsor_link.'" target="_blank"> <img data-toggle="tooltip" data-placement="top" title="Спонсор" class="sponsor-logo '.$sponsor->sponsor_style.'" src="data:image/png;base64,'.base64_encode($sponsor->image).'" alt="'.$sponsor->description.'"></a>';*/
+                  echo '<a  href="'.$sponsor->sponsor_link.'" target="_blank"><img data-toggle="tooltip" data-placement="top" title="Спонсор" class="img-logo ml-1 '.$sponsor->sponsor_style.'" src="data:image/png;base64,'.base64_encode($sponsor->image).'" alt="'.$sponsor->description.'"></a>';
+              }
+              echo '</h5>';
+          }
           echo '<h6> Тип соревнования: '. $eventValue->race_type_name .' ('. $eventValue->race_type_short_name . ')</h6>';
           if ($eventValue->event_status_id == 2) {
             echo '<a  href="'.$eventValue->event_registration_link.'" target="_blank" class="btn btn-success m-1">Зарегистрироваться</a>';

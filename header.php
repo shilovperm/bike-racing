@@ -30,6 +30,7 @@
 	<?php
 	/*Добавляем метаданные динамически в зависимости от страницы*/
 	$currentPage = get_page_uri();
+	
 	if ($currentPage == 'events' or $currentPage == '') {
 		echo '<meta property="og:title" content="Велосипедные гонки в Перми"/>';
 		echo '<meta property="og:description" content="Гонки, рейтинги участников, протоколы гонок"/>';
