@@ -607,7 +607,7 @@ $result = add_role( 'rider', 'Гонщик' ,array( ) );
 
 
 
-/*function remove_admin_bar() {
+function remove_admin_bar() {
 	$cur_user = wp_get_current_user();
 	if ($cur_user->ID > 0){
 			if ((current_user_can('administrator')) or (is_verified($current_user->ID)==2)) {
@@ -618,4 +618,4 @@ $result = add_role( 'rider', 'Гонщик' ,array( ) );
 	}
 }
 
-add_action('after_setup_theme', 'remove_admin_bar');*/
+add_action('after_setup_theme', 'remove_admin_bar');
