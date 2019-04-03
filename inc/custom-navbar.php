@@ -19,8 +19,11 @@ class WP_bootstrap_4_walker_nav_menu extends Walker_Nav_menu {
 
         $current_user = wp_get_current_user();
         $is_on_verification = 0;
+        $is_verified = 0;
         if ($current_user->ID > 0) {
             $is_on_verification = is_on_verification($current_user->ID);
+            $is_verified = is_verified($current_user->ID);
+            $rider = get_rider_info_by_WP_user_id($current_user->ID);
         }
 
         if( $args->walker->has_children && $depth == 0 ) {
@@ -37,8 +40,20 @@ class WP_bootstrap_4_walker_nav_menu extends Walker_Nav_menu {
         } elseif (($title=='Верификация' && is_user_logged_in() && $is_on_verification==0)||($title=='Верификация' && !is_user_logged_in()))
         {
             /*Верификация для вошедших пользователей скрыта*/
+        } elseif ($title=='Профиль' && $is_verified == 0)
+        {
+           /*меню профиль скрыто для неверифицированных участников*/
         } else
         {
+
+          if ($title=='Профиль') {
+            $title = $rider[0]->rider_name;
+            $permalink = home_url().'/rider?rider_id='. $rider[0]->rider_id;
+          }
+
+          if ($title=='Участник') {
+            $permalink = home_url().'/rider?rider_id='. $rider[0]->rider_id;            
+          }
 
           $output .= "<li class='nav-item $active_class $dropdown_class " .  implode(" ", $item->classes) . "'>";
 

@@ -9,14 +9,11 @@ get_header(); ?>
   <div class="col-md-8 wp-bp-content-width">
     <?php
     // define variables and set to empty values
-
-
     $current_user = wp_get_current_user();
-
+    $is_verified = is_verified($current_user->ID);
     //echo $current_user->ID;
-
-        if (is_verified($current_user->ID)==1) {
-          $name = 'Вифицированный поцик';
+        /*Для верифицированных участников*/
+        if ($is_verified==1) {
           $rider = get_rider_info_by_WP_user_id($current_user->ID);
           foreach ($rider as &$rider_value) {
             $name = $rider_value->rider_name;
@@ -30,9 +27,9 @@ get_header(); ?>
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            if (empty($_POST["riderName"])) {
+            if (empty($_POST["riderName"]) and $is_verified==0) {
               $nameErr = "Поле Имя обязательно";
-            } else {
+            } elseif ($is_verified==0) {
               $name = test_input($_POST["riderName"]);
               // check if name only contains letters and whitespace
               if (!preg_match("/[а-яА-ЯёЁ]/",$name)) {
@@ -74,7 +71,7 @@ get_header(); ?>
 
 
 
-            if (is_verified($current_user->ID)==1
+            if ($is_verified==1
                 && !empty($name)
                 && !empty($year)
                 && !empty($city)
@@ -115,7 +112,7 @@ get_header(); ?>
 
           <div class="form-group">
               <label for="riderName">Фамилия и имя участника*:</label>
-              <input class="form-control mb-3" type="text" id="riderName" name="riderName" value="<?php echo $name;?>" >
+              <input class="form-control mb-3" type="text" id="riderName" name="riderName" value="<?php echo $name;?>" <?php if ($is_verified==1) {echo 'disabled';}?> >
               <span class="error"><?php echo $nameErr;?></span>
           </div>
 
