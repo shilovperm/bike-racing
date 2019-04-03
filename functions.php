@@ -433,6 +433,7 @@ function set_wp_user_to_rider($wp_user_id,$rider_id)
 	global $wpdb_bike;
 	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
 			'CALL p_set_wp_user_to_rider(%d,%d)',$wp_user_id,$rider_id) );
+	update_user_option( $wp_user_id, 'show_admin_bar_front', false );
 	return $results;
 }
 
