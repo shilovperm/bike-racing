@@ -608,12 +608,12 @@ $result = add_role( 'rider', 'Гонщик' ,array( ) );
 
 
 function remove_admin_bar() {
-	$current_user = wp_get_current_user();
-	if ($current_user->ID > 0){
-			if (current_user_can('administrator') or is_verified($current_user->ID)==0) {
+	$cur_user = wp_get_current_user();
+	if ($cur_user->ID > 0){
+			if ((current_user_can('administrator')) or (is_verified($current_user->ID)==2)) {
 			  show_admin_bar(true);
 			} else {
-				show_admin_bar(false); 
+				show_admin_bar(false);
 			}
 	}
 }
