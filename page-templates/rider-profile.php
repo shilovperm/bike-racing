@@ -94,6 +94,7 @@ get_header(); ?>
                 && !preg_match("/[а-яА-ЯёЁ]/",$city)==0
               ) {
                 $results = add_rider($name,'D',$year,$city,$inStravaLink,$current_user->ID,1);
+                update_user_option( $current_user->ID, 'show_admin_bar_front', false );
                 echo '<div class="alert alert-success mt-1" role="alert">  Участник '.$name.' создан </div>';
             }
 
