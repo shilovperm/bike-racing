@@ -610,9 +610,7 @@ $result = add_role( 'rider', 'Гонщик' ,array( ) );
 function remove_admin_bar() {
 	$cur_user = wp_get_current_user();
 	if ($cur_user->ID > 0){
-			if (current_user_can('administrator') {
-			  show_admin_bar(true);
-			} else {
+			if (!current_user_can('administrator') {
 				show_admin_bar(false);
 			}
 	}
