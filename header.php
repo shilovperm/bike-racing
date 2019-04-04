@@ -30,7 +30,7 @@
 	<?php
 	/*Добавляем метаданные динамически в зависимости от страницы*/
 	$currentPage = get_page_uri();
-	
+
 	if ($currentPage == 'events' or $currentPage == '') {
 		echo '<meta property="og:title" content="Велосипедные гонки в Перми"/>';
 		echo '<meta property="og:description" content="Гонки, рейтинги участников, протоколы гонок"/>';
@@ -99,7 +99,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="site">
+<div id="page" class="site position-relative">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'wp-bootstrap-4' ); ?></a>
 
 	<header id="masthead" class="site-header <?php if ( get_theme_mod( 'sticky_header', 0 ) ) : echo 'sticky-top'; endif; ?>">
