@@ -644,3 +644,10 @@ ul.timeline > li:before {
   width:20px;
   height:20px;
 }
+
+.icon-social {
+  width:32px;
+  height:32px;
+  margin-right:5px;
+  margin-bottom: 2px;
+}
