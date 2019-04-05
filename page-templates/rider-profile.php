@@ -70,13 +70,12 @@ get_header(); ?>
 
 
 
-            echo $name.'<br>'.$year.'<br>'.$city.'<br>'.$stravaLink;
+
 
             if ($is_verified==1
                 && !empty($name)
                 && !empty($year)
                 && !empty($city)
-                && !empty($stravaLink)
                 && !preg_match("/[а-яА-ЯёЁ]/",$name)==0
                 && !preg_match("/[а-яА-ЯёЁ]/",$city)==0
               ) {
@@ -86,8 +85,7 @@ get_header(); ?>
             } elseif ($current_user->ID>0
                 && !empty($name)
                 && !empty($year)
-                && !empty($city)
-                && !empty($stravaLink)
+                && !empty($city)                
                 && !preg_match("/[а-яА-ЯёЁ]/",$name)==0
                 && !preg_match("/[а-яА-ЯёЁ]/",$city)==0
               ) {
