@@ -46,7 +46,11 @@ get_header(); ?>
                 $stravaLinkErr = "Ошибочный URL strava";
               }
             }
-            $inStravaLink = 'https://www.strava.com/athletes/'.$stravaLink;
+            if ($stravaLink =='') {
+                $inStravaLink = '';
+              } else {
+                $inStravaLink = 'https://www.strava.com/athletes/'.$stravaLink;
+              }
 
             if (empty($_POST["riderBirthYear"])) {
               $yearErr = "Поле Год рождения обязательно";
@@ -79,13 +83,12 @@ get_header(); ?>
                 && !preg_match("/[а-яА-ЯёЁ]/",$name)==0
                 && !preg_match("/[а-яА-ЯёЁ]/",$city)==0
               ) {
-
                 $results = update_rider_by_WP_user($name, $year, $inStravaLink , $city, $current_user->ID);
                 echo '<div class="alert alert-success mt-1" role="alert">  Изменения сохранены! </div>';
             } elseif ($current_user->ID>0
                 && !empty($name)
                 && !empty($year)
-                && !empty($city)                
+                && !empty($city)
                 && !preg_match("/[а-яА-ЯёЁ]/",$name)==0
                 && !preg_match("/[а-яА-ЯёЁ]/",$city)==0
               ) {
