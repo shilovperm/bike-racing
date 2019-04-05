@@ -70,8 +70,8 @@ get_header(); ?>
 
 
 
-            echo $name <br> $year <br> $city <br> $stravaLink;
-            
+            echo $name.'<br>'.$year.'<br>'.$city.'<br>'.$stravaLink;
+
             if ($is_verified==1
                 && !empty($name)
                 && !empty($year)
