@@ -441,9 +441,11 @@ html, body, #intro {
 
 .velta-sport {
 	background-color: #FDFB00;
+  padding: 2px;
 }
 .parma {
 	background-color: #FF0000;
+  padding: 2px;
 }
 
 .format {
@@ -512,7 +514,6 @@ html, body, #intro {
   left: 5px;
 	bottom: 5px;
   z-index: 1;
-  padding: 2px;
   border-radius: 0.25rem;
 }
 
@@ -522,7 +523,6 @@ html, body, #intro {
   right: 5px;
 	bottom: 5px;
   z-index: 1;
-  padding: 2px;
   border-radius: 0.25rem;
 }
 
@@ -532,7 +532,6 @@ html, body, #intro {
   left: 5px;
 	bottom: 65px;
   z-index: 1;
-  padding: 2px;
   border-radius: 0.25rem;
 }
 
@@ -542,7 +541,6 @@ html, body, #intro {
   right: 5px;
 	bottom: 65px;
   z-index: 1;
-  padding: 2px;
   border-radius: 0.25rem;
 }
 
