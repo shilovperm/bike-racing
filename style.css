@@ -449,9 +449,16 @@ html, body, #intro {
 }
 
 .format {
-	background-color: #F1F1F1;
+	background-color: #F3F3F3;
   padding-top: 14px;
   padding-bottom: 14px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.moveup {
+	background-color: #EF7C29;
+  padding:4px;
 }
 
 .absolute-top-left {
