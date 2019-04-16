@@ -530,7 +530,7 @@ html, body, #intro {
   max-width:110px;
   max-height:50px;
   left: 5px;
-	bottom: 65px;
+	bottom: 55px;
   z-index: 1;
   border-radius: 0.25rem;
 }
@@ -539,7 +539,7 @@ html, body, #intro {
   max-width:110px;
   max-height:50px;
   right: 5px;
-	bottom: 65px;
+	bottom: 55px;
   z-index: 1;
   border-radius: 0.25rem;
 }
