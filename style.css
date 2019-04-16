@@ -447,7 +447,9 @@ html, body, #intro {
 }
 
 .format {
-	background-color: #D1D1D1;
+	background-color: #F1F1F1;
+  padding-top: 14px;
+  padding-bottom: 14px;
 }
 
 .absolute-top-left {
