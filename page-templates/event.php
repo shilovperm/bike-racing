@@ -37,7 +37,7 @@ get_header(); ?>
       <?php if (count($sponsors)>0) { ?>
           <h5> Спонсоры:
           <?php foreach ($sponsors as &$sponsor) { ?>
-              <a  href="<?php echo $sponsor->sponsor_link?>" target="_blank"><img data-toggle="tooltip" data-placement="top" title="Спонсор" class="img-logo ml-1 <?php echo $sponsor->sponsor_style?>" src="data:image/png;base64,<?php echo base64_encode($sponsor->image)?>" alt="<?php echo $sponsor->description?>"></a>
+              <a  href="<?php echo $sponsor->sponsor_link?>" target="_blank"><img data-toggle="tooltip" data-placement="top" title="Спонсор" class=" ml-1 <?php echo $sponsor->sponsor_style?> img-logo" src="data:image/png;base64,<?php echo base64_encode($sponsor->image)?>" alt="<?php echo $sponsor->description?>"></a>
           <?php } ?>
           </h5>
       <?php } ?>

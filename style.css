@@ -442,23 +442,31 @@ html, body, #intro {
 .velta-sport {
 	background-color: #FDFB00;
   padding: 2px;
+  max-width:100px;
+  max-height:40px;
 }
 .parma {
 	background-color: #FF0000;
   padding: 2px;
+  max-width:100px;
+  max-height:40px;
 }
 
 .format {
 	background-color: #F3F3F3;
-  padding-top: 14px;
-  padding-bottom: 14px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   padding-left: 2px;
   padding-right: 2px;
+  max-width:100px;
+  max-height:40px;
 }
 
 .moveup {
 	background-color: #EF7C29;
-  padding:4px;
+  padding: 6px;
+  max-width:100px;
+  max-height:40px;
 }
 
 .absolute-top-left {
@@ -516,8 +524,8 @@ html, body, #intro {
 
 
 .sponsor-logo-1 {
-  max-width:110px;
-  max-height:50px;
+  max-width:100px;
+  max-height:40px;
   left: 5px;
 	bottom: 5px;
   z-index: 1;
@@ -525,8 +533,8 @@ html, body, #intro {
 }
 
 .sponsor-logo-2 {
-  max-width:110px;
-  max-height:50px;
+  max-width:100px;
+  max-height:40px;
   right: 5px;
 	bottom: 5px;
   z-index: 1;
@@ -534,19 +542,19 @@ html, body, #intro {
 }
 
 .sponsor-logo-3 {
-  max-width:110px;
-  max-height:50px;
+  max-width:100px;
+  max-height:40px;
   left: 5px;
-	bottom: 55px;
+	bottom: 45px;
   z-index: 1;
   border-radius: 0.25rem;
 }
 
 .sponsor-logo-4 {
-  max-width:110px;
-  max-height:50px;
+  max-width:100px;
+  max-height:40px;
   right: 5px;
-	bottom: 55px;
+	bottom: 45px;
   z-index: 1;
   border-radius: 0.25rem;
 }
@@ -572,7 +580,6 @@ html, body, #intro {
   /*top: 15px;
 	right: 15px;*/
   border-radius: 0.25rem;
-  padding: 3px;
 }
 
 .table-logo {
