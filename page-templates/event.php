@@ -64,7 +64,7 @@ get_header(); ?>
               <ul>
               <?php foreach ($categoriesCat as &$categoriesValue) { ?>
                   <li class="list-style-type-none">
-                      <span class="'. $categoriesValue->style .' rounded cp-1">'<?php echo $categoriesValue->category_name?></span> - <?php echo $categoriesValue->description?>
+                      <span class="'. $categoriesValue->style .' rounded cp-1"><?php echo $categoriesValue->category_name?></span> - <?php echo $categoriesValue->description?>
                   </li>
               <?php } ?>
               </ul>
