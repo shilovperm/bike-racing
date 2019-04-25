@@ -50,7 +50,7 @@ get_header(); ?>
           <ul>
               <li class="list-style-type-none">Получатель: <b>Чертков Дмитрий Сергеевич</b></li>
               <li class="list-style-type-none">Карта Сбербанка: <b>4276 4900 2134 0734</b></li>
-              <li class="list-style-type-none">Сообщение: <b>Кубок весны</b></li>
+              <li class="list-style-type-none">Сообщение: <b>ФИО участника</b></li>
           </ul>
       <?php } elseif ($eventValue->event_regulation_link != null && $eventValue->event_status_id <> 3) {?>
           <a  href="<?php echo $eventValue->event_regulation_link?>" class="btn btn-info m-1"> Положение гонки </a>
