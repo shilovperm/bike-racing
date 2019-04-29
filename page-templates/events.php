@@ -32,7 +32,7 @@ get_header(); ?>
                 //sponsor logos
                 $sponsors = get_sponsors_by_event_id($value->event_id);
                 foreach ($sponsors as &$sponsor) {
-                    echo '       <a  href="'.$sponsor->sponsor_link.'" target="_blank"> <img data-toggle="tooltip" data-placement="top" title="Спонсор" class="sponsor-logo-'.$sponsor->position_on_card.' position-absolute '.$sponsor->sponsor_style.'" src="data:image/png;base64,'.base64_encode($sponsor->image).'" alt="'.$sponsor->description.'"></a>';
+                    echo '       <a  href="'.$sponsor->sponsor_link.'" target="_blank"> <img data-toggle="tooltip" data-placement="top" title="Спонсор: '.$sponsor->sponsor_name.'" class="sponsor-logo-'.$sponsor->position_on_card.' position-absolute '.$sponsor->sponsor_style.'" src="data:image/png;base64,'.base64_encode($sponsor->image).'" alt="'.$sponsor->description.'"></a>';
                 }
                 echo '    </div>';
                 // Card content
@@ -81,7 +81,7 @@ get_header(); ?>
                     //sponsor logos
                     $sponsors = get_sponsors_by_event_id($value->event_id);
                     foreach ($sponsors as &$sponsor) {
-                        echo '       <a  href="'.$sponsor->sponsor_link.'" target="_blank"> <img data-toggle="tooltip" data-placement="top" title="Спонсор" class="sponsor-logo-'.$sponsor->position_on_card.' position-absolute '.$sponsor->sponsor_style.'" src="data:image/png;base64,'.base64_encode($sponsor->image).'" alt="'.$sponsor->description.'"></a>';
+                        echo '       <a  href="'.$sponsor->sponsor_link.'" target="_blank"> <img data-toggle="tooltip" data-placement="top" title="Спонсор: '.$sponsor->sponsor_name.'" class="sponsor-logo-'.$sponsor->position_on_card.' position-absolute '.$sponsor->sponsor_style.'" src="data:image/png;base64,'.base64_encode($sponsor->image).'" alt="'.$sponsor->description.'"></a>';
                     }
                     echo '    </div>';
                     echo '    <!-- Card content -->';

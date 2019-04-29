@@ -570,12 +570,21 @@ function set_wp_user_verified($rider_id)
 		return $results;
 	}
 
-	//Список пользователей по событию
+	//Список спонсоров по событию
 	function get_sponsors_by_event_id($event_id)
 	{
 		global $wpdb_bike;
 		$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
 				'CALL p_get_sponsors_by_event_id(%d)',$event_id) );
+		return $results;
+	}
+
+	//Список партнеров по событию
+	function get_partners_by_event_id($event_id)
+	{
+		global $wpdb_bike;
+		$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+				'CALL p_get_partners_by_event_id(%d)',$event_id) );
 		return $results;
 	}
 

@@ -23,6 +23,7 @@ get_header(); ?>
     $photoLinks = get_photo_links_by_event_id($par_event_id);
     $thirdRider = get_third_time_by_event_id($par_event_id);
     $sponsors = get_sponsors_by_event_id($par_event_id);
+    $partners = get_partners_by_event_id($par_event_id);
     ?>
     <?php foreach ($event as &$eventValue)  { ?>
       <h3><?php echo $eventValue->event_title ?></h3>
@@ -37,10 +38,11 @@ get_header(); ?>
       <?php if (count($sponsors)>0) { ?>
           <h5> Спонсоры:
           <?php foreach ($sponsors as &$sponsor) { ?>
-              <a  href="<?php echo $sponsor->sponsor_link?>" target="_blank"><img data-toggle="tooltip" data-placement="top" title="Спонсор" class=" ml-1 <?php echo $sponsor->sponsor_style?> img-logo" src="data:image/png;base64,<?php echo base64_encode($sponsor->image)?>" alt="<?php echo $sponsor->description?>"></a>
+              <a  href="<?php echo $sponsor->sponsor_link?>" target="_blank"><img data-toggle="tooltip" data-placement="top" title="Спонсор: <?php echo $sponsor->sponsor_name?>" class=" ml-1 <?php echo $sponsor->sponsor_style?> img-logo" src="data:image/png;base64,<?php echo base64_encode($sponsor->image)?>" alt="<?php echo $sponsor->description?>"></a>
           <?php } ?>
           </h5>
       <?php } ?>
+
       <h6> Тип соревнования: <?php echo $eventValue->race_type_name ?> (<?php echo $eventValue->race_type_short_name?>)</h6>
       <?php if ($eventValue->event_status_id == 2) {?>
           <a  href="<?php echo $eventValue->event_registration_link?>" target="_blank" class="btn btn-success m-1">Зарегистрироваться</a>
@@ -114,6 +116,14 @@ get_header(); ?>
               echo $videoLinksValue->link;
           }
       } ?>
+
+      <?php if (count($partners)>0) { ?>
+          <h5> Партнеры:
+          <?php foreach ($partners as &$partner) { ?>
+              <a  href="<?php echo $partner->partner_link?>" target="_blank"><img data-toggle="tooltip" data-placement="top" title="Партнер: <?php echo $partner->partner_name?>" class=" ml-1 <?php echo $partner->partner_style?> img-logo" src="data:image/png;base64,<?php echo base64_encode($partner->image)?>" alt="<?php echo $partner->description?>"></a>
+          <?php } ?>
+          </h5>
+      <?php } ?>
 
       <!--Добавляем таб для результатов по категориям и возрастам-->
 
