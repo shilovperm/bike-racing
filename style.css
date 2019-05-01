@@ -559,6 +559,24 @@ html, body, #intro {
   border-radius: 0.25rem;
 }
 
+.sponsor-logo-5 {
+  max-width:100px;
+  max-height:40px;
+  left: 5px;
+	bottom: 85px;
+  z-index: 1;
+  border-radius: 0.25rem;
+}
+
+.sponsor-logo-6 {
+  max-width:100px;
+  max-height:40px;
+  right: 5px;
+	bottom: 85px;
+  z-index: 1;
+  border-radius: 0.25rem;
+}
+
 .sponsor-logo-1:hover {
   opacity: 0.8;
 }
