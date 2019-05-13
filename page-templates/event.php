@@ -198,7 +198,7 @@ get_header(); ?>
           <?php } ?>
           <!--Вывод результата по Возрастам -->
           <?php if (count($riderResultAge)>0) { ?>
-              <div class="tab-pane fade" id="Age" role="tabpanel" aria-labelledby="Age-tab">
+              <div class="tab-pane fade <?php if (count($riderResultCat)==0) {echo "show active";}?>" id="Age" role="tabpanel" aria-labelledby="Age-tab">
                   <div class="btn-group p-1 d-inline-block ">
                       <?php foreach ($categoriesAge as &$categoriesValue) {?>
                           <button type="button" class="btn btn-<?php echo $categoriesValue->style?> btn-filter m-1" data-target="<?php echo $categoriesValue->category_short_name ?>" ><?php echo $categoriesValue->category_name?></button>
