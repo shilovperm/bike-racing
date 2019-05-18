@@ -71,12 +71,11 @@ $ratings = get_ratings();
       echo '                <span data-toggle="tooltip" data-placement="top" title="Позиция в категории" class="ml-0 badge badge-' . $ratingValue->style . ' d-inline">' . $ratingValue->num  . '</span>';
       echo '            </td>';
       echo '            <td class="position-relative"> <span data-toggle="tooltip" data-placement="top" title="Категория" class="ml-0 badge badge-' . $ratingValue->style . ' d-inline">' . $ratingValue->category_short_name . '</span> <a href="'. home_url() .'/rider?rider_id='. $ratingValue->rider_id .'">'. $ratingValue->rider_name .'</a></td>';
-      /*echo '   <td>'.$riderResultValue->team_name.' </td>';*/
-      echo '            <td>'.$ratingValue->result1.' </td>';
-      echo '            <td>'.$ratingValue->result2.' </td>';
-      echo '            <td>'.$ratingValue->result3.' </td>';
-      echo '            <td>'.$ratingValue->result4.' </td>';
-      echo '            <td>'.$ratingValue->result5.' </td>';
+      
+      for ($i = 1; $i <= $ratingInfo[0]->event_count; $i++) {
+        $fieldName = "result".$i;
+        echo '            <td>'.$ratingValue->{$fieldName}.' </td>';
+      }
       echo '            <td>'.$ratingValue->result_points.' </td>';
       echo '        </tr>';
   }
