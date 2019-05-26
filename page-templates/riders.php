@@ -28,7 +28,11 @@ get_header(); ?>
               echo '  </td>';
               echo '  <td>';
               if (strlen($rider_value->team_name)>0){
-                echo '<a data-toggle="tooltip" data-placement="top" title="Профиль команды в STRAVA" href="'.$rider_value->team_strava_link.'" target="_blank"><img  class="table-logo ml-1 p-0" src="data:image/png;base64,'.base64_encode($rider_value->team_image).'" alt="'.$rider_value->team_name.'"></a>';
+                  if (strlen($rider_value->team_strava_link)>0 and $rider_value->team_image) {
+                      echo '<a data-toggle="tooltip" data-placement="top" title="Профиль команды" href="'.$rider_value->team_strava_link.'" target="_blank"><img  class="table-logo ml-1 p-0" src="data:image/png;base64,'.base64_encode($rider_value->team_image).'" alt="'.$rider_value->team_name.'"></a>';
+                  } else {
+                      echo '<b>'.$rider_value->team_name.'</b>';
+                  }
               }
 
               echo '  </td>';

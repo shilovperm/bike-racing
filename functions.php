@@ -249,6 +249,28 @@ function get_all_future_events()
 }
 
 /*
+Возвращает список всех событий для админки
+*/
+function get_all_events()
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_all_events();','events_info') );
+	return $results;
+}
+
+/*
+Возвращает список всех статусов событий для админки
+*/
+function get_spr_event_status()
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_spr_event_status();','events_info') );
+	return $results;
+}
+
+/*
 Возвращает общую информацию о мероприятии
 */
 function get_event_info_by_event_id($event_id)

@@ -23,7 +23,7 @@ get_header(); ?>
       $current_user = wp_get_current_user();
 
       foreach ($rider as &$rider_value) {
-        echo '<br>';        
+        echo '<br>';
         if ($rider_value->rider_photo) {
             echo '<img  class="" src="data:image/webp;base64,'.base64_encode($rider_value->rider_photo).'" height="400" width="300" alt="rider_image">';
         } elseif (substr(get_avatar_url($rider_value->wp_user_id), 35, 1) != "?") {
@@ -53,10 +53,14 @@ get_header(); ?>
           }
         }
 
-
         if (strlen($rider_value->team_name)>0){
-          echo '<h4> Команда: <a data-toggle="tooltip" data-placement="top" title="Профиль команды в STRAVA" href="'.$rider_value->team_strava_link.'" target="_blank"><img  class="img-logo ml-1" src="data:image/png;base64,'.base64_encode($rider_value->team_photo).'" alt="wr"></a></h4>';
+            if (strlen($rider_value->team_strava_link)>0 and $rider_value->team_photo) {
+                echo '<h4> Команда: <a data-toggle="tooltip" data-placement="top" title="Профиль команды" href="'.$rider_value->team_strava_link.'" target="_blank"><img  class="img-logo ml-1" src="data:image/png;base64,'.base64_encode($rider_value->team_photo).'" alt="wr"></a></h4>';
+            } else {
+                echo '<h4> Команда: '.$rider_value->team_name.'</h4>';
+            }
         }
+
         if (strlen($rider_value->birth_year)>0){
           echo '<h5> Год рождения: '.$rider_value->birth_year.'</h5>';
         }
