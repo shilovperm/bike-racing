@@ -462,6 +462,16 @@ html, body, #intro {
   max-height:40px;
 }
 
+.smglube {
+	background-color: #F3F3F3;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  max-width:100px;
+  max-height:40px;
+}
+
 .moveup {
 	background-color: #EF7C29;
   padding: 6px;
