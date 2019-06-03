@@ -472,6 +472,16 @@ html, body, #intro {
   max-height:40px;
 }
 
+.novomet {
+	background-color: #F3F3F3;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 4px;
+  padding-right: 4px;
+  max-width:100px;
+  max-height:40px;
+}
+
 .moveup {
 	background-color: #EF7C29;
   padding: 6px;
@@ -573,7 +583,7 @@ html, body, #intro {
   max-width:100px;
   max-height:40px;
   left: 5px;
-	bottom: 85px;
+	bottom: 88px;
   z-index: 1;
   border-radius: 0.25rem;
 }
@@ -582,7 +592,7 @@ html, body, #intro {
   max-width:100px;
   max-height:40px;
   right: 5px;
-	bottom: 85px;
+	bottom: 88px;
   z-index: 1;
   border-radius: 0.25rem;
 }
