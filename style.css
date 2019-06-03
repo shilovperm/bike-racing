@@ -441,53 +441,60 @@ html, body, #intro {
 
 .velta-sport {
 	background-color: #FDFB00;
-  padding: 2px;
+  padding: 4px 2px;
+  max-width:80px;
+  max-height:35px;
+}
+
+.veloclub {
+	background-color: #F3F3F3;
+  padding: 3px 2px;
   max-width:100px;
   max-height:40px;
 }
+
 .parma {
 	background-color: #FF0000;
-  padding: 2px;
-  max-width:100px;
-  max-height:40px;
+  padding: 4px 2px;
+  max-width:80px;
+  max-height:35px;
 }
 
 .format {
 	background-color: #F3F3F3;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 2px;
-  padding-right: 2px;
-  max-width:100px;
-  max-height:40px;
+  padding: 14px 2px;
+  max-width:80px;
+  max-height:35px;
 }
 
 .smglube {
 	background-color: #F3F3F3;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-left: 4px;
-  padding-right: 4px;
-  max-width:100px;
-  max-height:40px;
+  padding: 3px 3px;
+  max-width:80px;
+  max-height:35px;
 }
 
 .novomet {
 	background-color: #F3F3F3;
-  padding-top: 14px;
-  padding-bottom: 14px;
-  padding-left: 4px;
-  padding-right: 4px;
-  max-width:100px;
-  max-height:40px;
+  padding:13px 4px;
+  max-width:80px;
+  max-height:35px;
 }
 
 .moveup {
 	background-color: #EF7C29;
-  padding: 6px;
-  max-width:100px;
-  max-height:40px;
+  padding: 6px 1px;
+  max-width:80px;
+  max-height:35px;
 }
+
+.velo59 {
+	background-color: #F3F3F3;
+  padding: 7px 1px;
+  max-width:80px;
+  max-height:35px;
+}
+
 
 .absolute-top-left {
 	top:5px;
@@ -544,8 +551,8 @@ html, body, #intro {
 
 
 .sponsor-logo-1 {
-  max-width:100px;
-  max-height:40px;
+  max-width:80px;
+  max-height:35px;
   left: 5px;
 	bottom: 5px;
   z-index: 1;
@@ -553,8 +560,8 @@ html, body, #intro {
 }
 
 .sponsor-logo-2 {
-  max-width:100px;
-  max-height:40px;
+  max-width:80px;
+  max-height:35px;
   right: 5px;
 	bottom: 5px;
   z-index: 1;
@@ -562,37 +569,37 @@ html, body, #intro {
 }
 
 .sponsor-logo-3 {
-  max-width:100px;
-  max-height:40px;
+  max-width:80px;
+  max-height:35px;
   left: 5px;
-	bottom: 45px;
+	bottom: 41px;
   z-index: 1;
   border-radius: 0.25rem;
 }
 
 .sponsor-logo-4 {
-  max-width:100px;
-  max-height:40px;
+  max-width:80px;
+  max-height:35px;
   right: 5px;
-	bottom: 45px;
+	bottom: 41px;
   z-index: 1;
   border-radius: 0.25rem;
 }
 
 .sponsor-logo-5 {
-  max-width:100px;
-  max-height:40px;
+  max-width:80px;
+  max-height:35px;
   left: 5px;
-	bottom: 88px;
+	bottom: 78px;
   z-index: 1;
   border-radius: 0.25rem;
 }
 
 .sponsor-logo-6 {
-  max-width:100px;
-  max-height:40px;
+  max-width:80px;
+  max-height:35px;
   right: 5px;
-	bottom: 88px;
+	bottom: 78px;
   z-index: 1;
   border-radius: 0.25rem;
 }
