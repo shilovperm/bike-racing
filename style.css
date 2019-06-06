@@ -742,6 +742,12 @@ ul.timeline > li:before {
   margin-bottom: 2px;
 }
 
+.js-cardcopybtn {
+  padding:0px 2px;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
 #colophon {
   position: absolute;
   bottom: 0;

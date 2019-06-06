@@ -51,7 +51,8 @@ get_header(); ?>
           <h6> Оплата участия:</h6>
           <ul>
               <li class="list-style-type-none">Получатель: <b>Чертков Дмитрий Сергеевич</b></li>
-              <li class="list-style-type-none">Карта Сбербанка: <b>4276 4900 2134 0734</b></li>
+              <li class="list-style-type-none d-inline">Карта Сбербанка: <b class="js-cardnumber">4276 4900 2134 0734</b></li>            
+              <button  class="js-cardcopybtn d-inline btn btn-info">Скопировать</button>
               <li class="list-style-type-none">Сообщение: <b>ФИО участника</b></li>
           </ul>
       <?php } elseif ($eventValue->event_regulation_link != null && $eventValue->event_status_id <> 3) {?>
