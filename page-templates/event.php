@@ -260,15 +260,15 @@ get_header(); ?>
       <?php if (strlen($eventValue->event_segment_link)>0) { ?>
           <h6> Сегмент в Strava:*</h6>
           <?php echo $eventValue->event_segment_link?>
-          <p><i>*Примечание: трек трассы может быть изменен организатором в день гонки</i></p>
       <?php } ?>
       <?php if (strlen($eventValue->event_segment_link_extra)>0) { ?>
           <h6> Сегмент в Strava для новичков:*</h6>
-          <?php echo $eventValue->event_segment_link_extra?>
-          <p><i>*Примечание: трек трассы может быть изменен организатором в день гонки</i></p>
+          <?php echo $eventValue->event_segment_link_extra?>          
       <?php } ?>
 
-
+      <?php if (strlen($eventValue->event_segment_link)>0 or strlen($eventValue->event_segment_link_extra)>0) { ?>
+          <p><i>*Примечание: трек трассы может быть изменен организатором в день гонки</i></p>
+      <?php } ?>
 
 </div>
 <?php
