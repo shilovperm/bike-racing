@@ -47,11 +47,13 @@ get_header(); ?>
       <?php if ($eventValue->event_status_id == 2) {?>
           <a  href="<?php echo $eventValue->event_registration_link?>" target="_blank" class="btn btn-success m-1">Зарегистрироваться</a>
           <a  href="<?php echo $eventValue->event_participants_link?>" target="_blank" class="btn btn-info m-1"> Зарегистрированные участники </a>
-          <a  href="<?php echo $eventValue->event_regulation_link?>" class="btn btn-info m-1"> Положение гонки </a>
+          <?php if (strlen($eventValue->event_regulation_link)>0) { ?>
+              <a  href="<?php echo $eventValue->event_regulation_link?>" class="btn btn-info m-1"> Положение гонки </a>
+          <?php } ?>
           <h6> Оплата участия:</h6>
           <ul>
               <li class="list-style-type-none">Получатель: <b>Чертков Дмитрий Сергеевич</b></li>
-              <li class="list-style-type-none d-inline">Карта Сбербанка: <b class="js-cardnumber">4276 4900 2134 0734</b></li>            
+              <li class="list-style-type-none d-inline">Карта Сбербанка: <b class="js-cardnumber">4276 4900 2134 0734</b></li>
               <button  class="js-cardcopybtn d-inline btn btn-info">Скопировать</button>
               <li class="list-style-type-none">Сообщение: <b>ФИО участника</b></li>
           </ul>
@@ -258,6 +260,11 @@ get_header(); ?>
       <?php if (strlen($eventValue->event_segment_link)>0) { ?>
           <h6> Сегмент в Strava:*</h6>
           <?php echo $eventValue->event_segment_link?>
+          <p><i>*Примечание: трек трассы может быть изменен организатором в день гонки</i></p>
+      <?php } ?>
+      <?php if (strlen($eventValue->event_segment_link_extra)>0) { ?>
+          <h6> Сегмент в Strava для новичков:*</h6>
+          <?php echo $eventValue->event_segment_link_extra?>
           <p><i>*Примечание: трек трассы может быть изменен организатором в день гонки</i></p>
       <?php } ?>
 
