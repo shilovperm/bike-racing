@@ -46,17 +46,21 @@ get_header(); ?>
       <h6> Тип соревнования: <?php echo $eventValue->race_type_name ?> (<?php echo $eventValue->race_type_short_name?>)</h6>
       <?php if ($eventValue->event_status_id == 2) {?>
           <a  href="<?php echo $eventValue->event_registration_link?>" target="_blank" class="btn btn-success m-1">Зарегистрироваться</a>
-          <a  href="<?php echo $eventValue->event_participants_link?>" target="_blank" class="btn btn-info m-1"> Зарегистрированные участники </a>
+          <?php if (strlen($eventValue->event_participants_link) > 0) {?>
+              <a  href="<?php echo $eventValue->event_participants_link?>" target="_blank" class="btn btn-info m-1"> Зарегистрированные участники </a>
+          <?php } ?>
           <?php if (strlen($eventValue->event_regulation_link)>0) { ?>
               <a  href="<?php echo $eventValue->event_regulation_link?>" class="btn btn-info m-1"> Положение гонки </a>
           <?php } ?>
-          <h6> Оплата участия:</h6>
-          <ul>
-              <li class="list-style-type-none">Получатель: <b>Чертков Дмитрий Сергеевич</b></li>
-              <li class="list-style-type-none d-inline">Карта Сбербанка: <b class="js-cardnumber">4276 4900 2134 0734</b></li>
-              <button  class="js-cardcopybtn d-inline btn btn-info">Скопировать</button>
-              <li class="list-style-type-none">Сообщение: <b>ФИО участника</b></li>
-          </ul>
+          <?php if ($eventValue->org_name =='ШКОЛА ЧЕ') { ?>
+              <h6> Оплата участия:</h6>
+              <ul>
+                  <li class="list-style-type-none">Получатель: <b>Чертков Дмитрий Сергеевич</b></li>
+                  <li class="list-style-type-none d-inline">Карта Сбербанка: <b class="js-cardnumber">4276 4900 2134 0734</b></li>
+                  <button  class="js-cardcopybtn d-inline btn btn-info">Скопировать</button>
+                  <li class="list-style-type-none">Сообщение: <b>ФИО участника</b></li>
+              </ul>
+          <?php } ?>
       <?php } elseif ($eventValue->event_regulation_link != null && $eventValue->event_status_id <> 3) {?>
           <a  href="<?php echo $eventValue->event_regulation_link?>" class="btn btn-info m-1"> Положение гонки </a>
           <?php } ?>
@@ -263,7 +267,7 @@ get_header(); ?>
       <?php } ?>
       <?php if (strlen($eventValue->event_segment_link_extra)>0) { ?>
           <h6> Сегмент в Strava для новичков:*</h6>
-          <?php echo $eventValue->event_segment_link_extra?>          
+          <?php echo $eventValue->event_segment_link_extra?>
       <?php } ?>
 
       <?php if (strlen($eventValue->event_segment_link)>0 or strlen($eventValue->event_segment_link_extra)>0) { ?>
