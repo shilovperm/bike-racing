@@ -61,6 +61,15 @@ get_header(); ?>
                   <li class="list-style-type-none">Сообщение: <b>ФИО участника</b></li>
               </ul>
           <?php } ?>
+          <?php if ($eventValue->org_name =='Perm MTB Cup') { ?>
+              <h6> Оплата участия:</h6>
+              <ul>
+                  <li class="list-style-type-none">Получатель: <b>Владислав Сергеевич К.</b></li>
+                  <li class="list-style-type-none d-inline">По телефону: <b class="js-cardnumber">+79194870777</b></li>
+                  <button  class="js-cardcopybtn d-inline btn btn-info">Скопировать</button>
+                  <li class="list-style-type-none">Сообщение: <b>ФИО участника</b></li>
+              </ul>
+          <?php } ?>
       <?php } elseif ($eventValue->event_regulation_link != null && $eventValue->event_status_id <> 3) {?>
           <a  href="<?php echo $eventValue->event_regulation_link?>" class="btn btn-info m-1"> Положение гонки </a>
           <?php } ?>
