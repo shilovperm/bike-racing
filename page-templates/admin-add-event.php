@@ -1,6 +1,6 @@
 <?php
 /*
-* Template Name: admin-add-eventfgfdg
+* Template Name: admin-add-event
 */
 
 get_header(); ?>
