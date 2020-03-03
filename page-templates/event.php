@@ -13,12 +13,14 @@ get_header(); ?>
     };
 
     $event      = get_event_info_by_event_id($par_event_id);
-    $categoriesCat = get_event_categories_by_event_id($par_event_id,'Category');
-    $categoriesAge = get_event_categories_by_event_id($par_event_id,'Age');
+    $categoriesCat      = get_event_categories_by_event_id($par_event_id,'Category');
+    $categoriesAge      = get_event_categories_by_event_id($par_event_id,'Age');
+    $categoriesAbsolute = get_event_categories_by_event_id($par_event_id,'Absolute');
     $timeLine   = get_event_timeline_by_event_id($par_event_id);
     $costRules  = get_event_cost_rules_by_event_id($par_event_id);
-    $riderResultCat = get_event_result_by_event_id($par_event_id,'Category');
-    $riderResultAge = get_event_result_by_event_id($par_event_id,'Age');
+    $riderResultCat       = get_event_result_by_event_id($par_event_id,'Category');
+    $riderResultAge       = get_event_result_by_event_id($par_event_id,'Age');
+    $riderResultAbsolute  = get_event_result_by_event_id($par_event_id,'Absolute');
     $videoLinks = get_video_links_by_event_id($par_event_id);
     $photoLinks = get_photo_links_by_event_id($par_event_id);
     $thirdRider = get_third_time_by_event_id($par_event_id);
@@ -144,26 +146,23 @@ get_header(); ?>
       <!--Добавляем таб для результатов по категориям и возрастам-->
 
       <ul class="nav nav-tabs" id="myTab" role="tablist">
-          <?php if (count($riderResultCat)>0 && count($riderResultAge)>0) { ?>
+          <?php if (count($riderResultCat)>0) { ?>
               <li class="nav-item">
                   <a class="nav-link active" id="Category-tab" data-toggle="tab" href="#Category" role="tab" aria-controls="Category" aria-selected="true">По категориям</a>
               </li>
+          <?php } if (count($riderResultAge)>0){ ?>
               <li class="nav-item">
-                  <a class="nav-link" id="Age-tab" data-toggle="tab" href="#Age" role="tab" aria-controls="Age" aria-selected="false">По возрастам</a>
+                  <a class="nav-link <?php if (count($riderResultCat)==0) {echo 'active';}?>" id="Age-tab" data-toggle="tab" href="#Age" role="tab" aria-controls="Age" aria-selected="true">По возрастам</a>
               </li>
-              <?php } elseif (count($riderResultCat)>0){ ?>
-                  <li class="nav-item">
-                      <a class="nav-link active" id="Category-tab" data-toggle="tab" href="#Category" role="tab" aria-controls="Category" aria-selected="true">По категориям</a>
-                  </li>
-              <?php } else if (count($riderResultAge)>0) { ?>
-                  <li class="nav-item">
-                      <a class="nav-link active" id="Age-tab" data-toggle="tab" href="#Age" role="tab" aria-controls="Age" aria-selected="true">По возрастам</a>
-                  </li>
-              <?php } ?>
+          <?php } if (count($riderResultAbsolute)>0) { ?>
+              <li class="nav-item">
+                  <a class="nav-link <?php if (count($riderResultCat)==0 && (count($riderResultAge)==0)) {echo 'active';}?>" id="Absolute-tab" data-toggle="tab" href="#Absolute" role="tab" aria-controls="Absolute" aria-selected="true">Абсолют</a>
+              </li>
+          <?php } ?>
       </ul>
 
       <div class="tab-content" id="myTabContent">
-      <!--Вывод результата по Категориям-->
+          <!--Вывод результата по Категориям-->
           <?php if (count($riderResultCat)>0) { ?>
               <div class="tab-pane fade show active" id="Category" role="tabpanel" aria-labelledby="Category-tab">
           		    <div class="btn-group p-1 d-inline-block ">
@@ -213,8 +212,8 @@ get_header(); ?>
               </div>
           <?php } ?>
           <!--Вывод результата по Возрастам -->
-          <?php if (count($riderResultAge)>0) { ?>
-              <div class="tab-pane fade <?php if (count($riderResultCat)==0) {echo "show active";}?>" id="Age" role="tabpanel" aria-labelledby="Age-tab">
+          <?php if (count($riderResultAbsolute)>0) { ?>
+              <div class="tab-pane fade <?php if (count($riderResultCat)==0)  {echo "show active";}?>" id="Age" role="tabpanel" aria-labelledby="Age-tab">
                   <div class="btn-group p-1 d-inline-block ">
                       <?php foreach ($categoriesAge as &$categoriesValue) {?>
                           <button type="button" class="btn btn-<?php echo $categoriesValue->style?> btn-filter m-1" data-target="<?php echo $categoriesValue->category_short_name ?>" ><?php echo $categoriesValue->category_name?></button>
@@ -235,6 +234,56 @@ get_header(); ?>
                           </thead>
                           <tbody>
                           <?php foreach ($riderResultAge as &$riderResultValue) { ?>
+                              <tr data-status="<?php echo $riderResultValue->category_short_name ?>">
+                                  <td>
+                                      <span data-toggle="tooltip" data-placement="top" title="Позиция в абсолюте" class="badge badge-default d-inline m-0"><?php echo $riderResultValue->result_absolute_place ?></span>
+                                      <span data-toggle="tooltip" data-placement="top" title="Позиция в категории" class="ml-0 badge badge-<?php echo $riderResultValue->style ?> d-inline"><?php echo $riderResultValue->result_category_place ?></span>
+                                  </td>
+                                  <td class="position-relative">
+                                      <span data-toggle="tooltip" data-placement="top" title="Категория" class="badge badge-<?php echo $riderResultValue->style ?> d-inline"><?php echo $riderResultValue->category_short_name ?></span>
+                                      <a href="<?php echo home_url() ?>/rider?rider_id=<?php echo $riderResultValue->rider_id ?>"><?php echo $riderResultValue->rider_name ?></a>
+                                  </td>
+                                  <?php $third_seconds = strtotime("1970-01-01 ".$thirdRider[0]->result_time." UTC");
+                                  $rider_seconds = strtotime("1970-01-01 ".$riderResultValue->result_time. "UTC");
+                                  if ($riderResultValue->lap_is_equal) { ?>
+                                      <td> <?php echo $riderResultValue->result_time.' '.get_rider_span_lag_percent($third_seconds,$thirdRider[0]->result_laps,$rider_seconds,$riderResultValue->result_laps,$riderResultValue->rule_min,$riderResultValue->rule_max)?></td>
+                                  <?php } else { ?>
+                                      <td> <?php echo $riderResultValue->result_time ?></td>
+                                  <?php } ?>
+                                  <td><?php echo $riderResultValue->result_laps?> </td>
+                                  <td>
+                                      <span data-toggle="tooltip" data-placement="top" title="Очки в категории"> <?php echo $riderResultValue->result_points?> </span>
+                                  </td>
+                              </tr>
+                          <?php } ?>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          <?php } ?>
+          <!--Вывод результата по Абсолюту -->
+          <?php if (count($riderResultAbsolute)>0) { ?>
+              <div class="tab-pane fade <?php if ((count($riderResultCat)==0) && (count($riderResultAge)==0)) {echo "show active";}?>" id="Absolute" role="tabpanel" aria-labelledby="Absolute-tab">
+                  <div class="btn-group p-1 d-inline-block ">
+                      <?php foreach ($categoriesAbsolute as &$categoriesValue) {?>
+                          <button type="button" class="btn btn-<?php echo $categoriesValue->style?> btn-filter m-1" data-target="<?php echo $categoriesValue->category_short_name ?>" ><?php echo $categoriesValue->category_name?></button>
+                      <?php } ?>
+                      <button type="button" class="btn btn-default  btn-filter m-1" data-target="all" >Все категории</button>
+                  </div>
+
+                  <div class="table-container">
+                      <table class="table table-striped table-bordered action-table" style="width:100%">
+                          <thead>
+                              <tr>
+                                  <th>№</th>
+                                  <th>Имя</th>
+                                  <th>Время</th>
+                                  <th>Круги</th>
+                                  <th>Очки</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                          <?php foreach ($riderResultAbsolute as &$riderResultValue) { ?>
                               <tr data-status="<?php echo $riderResultValue->category_short_name ?>">
                                   <td>
                                       <span data-toggle="tooltip" data-placement="top" title="Позиция в абсолюте" class="badge badge-default d-inline m-0"><?php echo $riderResultValue->result_absolute_place ?></span>
