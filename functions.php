@@ -445,6 +445,17 @@ function get_start_rating()
 	return $results;
 }
 
+/*
+Возвращает стартовый рейтинг по типам категорий
+*/
+
+function get_start_rating_by_category_type($rating_id,$category_type)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_start_rating_by_category_type(%d,%s)',$rating_id,$category_type) );
+	return $results;
+}
 
 /*
 Привязка пользователя WP к участнику

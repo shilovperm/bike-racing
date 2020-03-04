@@ -1,6 +1,6 @@
 <?php
 /*
-* Template Name: start-rating
+* Template Name: start-rating-category
 */
 
   get_header();
@@ -8,11 +8,17 @@
   if (isset($_GET["rating_id"])) {
       $p_rating_id = $_GET["rating_id"];
   } else {
-      $p_rating_id = 3;
+      $p_rating_id = 4;
+  };
+  /*Тип категорий стартового рейтинга*/
+  if (isset($_GET["category_type"])) {
+      $p_category_type = $_GET["category_type"];
+  } else {
+      $p_category_type = 'Absolute';
   };
   // обращение к БД
   $categories   = get_categories_by_rating_id($p_rating_id);
-  $rating       = get_start_rating();
+  $rating       = get_start_rating_by_category_type(4,'Absolute');
   $ratingInfo   = get_rating_info_by_rating_id($p_rating_id);
   $ratingEvents = get_rating_event_consist_by_rating_id($p_rating_id);
 
