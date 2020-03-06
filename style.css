@@ -108,7 +108,15 @@ embed, iframe, object { max-width: 100%; }
 /*--------------------------------------------------------------
 # Custom
 --------------------------------------------------------------*/
-body { -ms-word-wrap: break-word; word-wrap: break-word; -webkit-font-smoothing: auto; text-rendering: optimizeLegibility !important; -moz-osx-font-smoothing: grayscale; font-smoothing: auto; }
+body {
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+  -webkit-font-smoothing: auto;
+  text-rendering: optimizeLegibility !important;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: auto;
+}
+
 
 a, button, input { -webkit-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease; }
 
@@ -426,7 +434,7 @@ html, body, #intro {
   /*background-color: #eeeeee !important;*/
 }
 
-.card-custom {
+  .card-custom {
 	min-width: 230px;
 	max-width: 300px;
 	min-height: 300px;
@@ -437,6 +445,26 @@ html, body, #intro {
   border:0;
 }
 
+.card-month:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5) !important;
+  /*opacity: 0.75;*/
+}
+
+  .card-month {
+  min-width: 310px;
+  max-width: 310px;
+  min-height: 10px;
+  max-height: 400px;
+  margin: 10px;
+  color: dark;
+  opacity: 1;
+  border:0;
+}
+
+.card-calendar:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5) !important;
+  /*opacity: 1;  */
+}
 
 
 .velta-sport {
@@ -549,7 +577,6 @@ html, body, #intro {
   font-weight: bold;
 }
 
-
 .sponsor-logo-1 {
   max-width:80px;
   max-height:35px;
@@ -641,6 +668,16 @@ html, body, #intro {
   background-color:#E9E9E9;
   font-weight: bold;
 }
+
+.race-type-calendar {
+  z-index: 1;
+  padding: 0px 10px;
+  border-radius: 5px;
+  color: #343a40;
+  background-color:#E9E9E9;
+  font-weight: bold;
+}
+
 
 .dataTables_wrapper {
   margin-top:5px;
