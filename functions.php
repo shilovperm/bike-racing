@@ -378,6 +378,39 @@ function get_rider_years_of_events($rider_id)
 }
 
 /*
+Возвращает список сезонов в которых есть события
+*/
+function get_years_of_events()
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_years_of_events()','events_info') );
+	return $results;
+}
+
+/*
+Возвращает список месяцев в которые были события в году
+*/
+function get_months_of_events_by_year($year)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_months_of_events_by_year(%d)',$year) );
+	return $results;
+}
+
+/*
+Возвращает список событий в выбранном месяце выбранного года
+*/
+function get_events_by_year_month($year, $month)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_events_by_year_month(%d,%d)',$year,$month) );
+	return $results;
+}
+
+/*
 Возвращает список результатов в рамках сезона у участника
 */
 function get_rider_results_by_year($rider_id, $year)

@@ -4,83 +4,46 @@
 */
 
 get_header(); ?>
+    <?php
+      $years = get_years_of_events();
+      $month_name = array('Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь','Октябрь','Ноябрь','Декабрь');
+    ?>
 
     <div class="container">
       <h2 class="text-center">Календарь событий</h2>
-      <!--  <div class="block-label">next-events</div>-->
+      <!--  <div class="block-label">next-events</div> bg-secondary bg-success bg-info-->
       <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link active show" id="2019-tab" data-toggle="tab" href="#YEAR2019" role="tab" aria-controls="2019" aria-selected="true">2019</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="2018-tab" data-toggle="tab" href="#YEAR2018" role="tab" aria-controls="2018" aria-selected="false">2018</a>
-        </li>
+        <?php foreach ($years as &$value) { ?>
+          <li class="nav-item">
+            <a class="nav-link <?php if ($value->year == $years[0]->year) { echo 'active show';} ?>" id="<?php echo $value->year?>-tab" data-toggle="tab" href="#YEAR<?php echo $value->year?>" role="tab" aria-controls="<?php echo $value->year?>" aria-selected="true"><?php echo $value->year?></a>
+          </li>
+        <?php } ?>
       </ul>
       <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade active show" id="YEAR2019" role="tabpanel" aria-labelledby="2019-tab">
-          <div class="card card-cascade card-month  position-relative blue-grey-text">
-            <p class="mb-0 text-center"><b>Февраль</b></p>
-            <div class="card card-calendar text-white bg-secondary m-1 ml-3 mr-3" style="max-width: 18rem;">
-              <div class="card-header p-0 d-flex justify-content-center">Perm MTB Cup 2020</div>
-              <div class="card-body p-0">
-                <div class="d-flex justify-content-between p-0 pl-1 pr-2">
-                  <p class="card-text m-0">08.03.2019</p>
-                  <p class="card-text m-0">XCO</p>
+        <?php foreach ($years as &$value) {
+          $months = get_months_of_events_by_year($value->year);
+        ?>
+          <div class="tab-pane fade <?php if ($value->year == $years[0]->year) { echo 'active show';} ?>" id="YEAR<?php echo $value->year?>" role="tabpanel" aria-labelledby="<?php echo $value->year?>-tab">
+            <?php foreach ($months as &$month_value) { ?>
+                <div class="card card-cascade card-month  position-relative blue-grey-text">
+                  <p class="mb-0 text-center"><b><?php echo $month_name[$month_value->month_num-1] ?></b></p>
+                  <?php $events = get_events_by_year_month($value->year, $month_value->month_num);
+                    foreach ($events as &$event_value) { ?>
+                    <div class="card card-calendar text-white bg-secondary m-1 ml-3 mr-3" style="max-width: 18rem;">
+                      <div class="card-header p-0 d-flex justify-content-center"><?php echo $event_value->event_title?></div>
+                      <div class="card-body p-0">
+                        <div class="d-flex justify-content-between p-0 pl-1 pr-2">
+                          <p class="card-text m-0"><?php echo $event_value->event_date?></p>
+                          <p class="card-text m-0"><?php echo $event_value->race_type_short_name?></p>
+                        </div>
+                      </div>
+                    </div>
+                  <?php } ?>
                 </div>
-              </div>
-            </div>
-            <div class="card card-calendar text-white bg-success m-1 ml-3 mr-3" style="max-width: 18rem;">
-              <div class="card-header p-0 d-flex justify-content-center">Perm MTB Cup 2020</div>
-              <div class="card-body p-0">
-                <div class="d-flex justify-content-between p-0 pl-1 pr-2">
-                  <p class="card-text m-0">08.03.2019</p>
-                  <p class="card-text m-0">XCO</p>
-                </div>
-              </div>
-            </div>
-            <div class="card card-calendar text-white bg-info m-1 ml-3 mr-3" style="max-width: 18rem;">
-              <div class="card-header p-0 d-flex justify-content-center">Perm MTB Cup 2020</div>
-              <div class="card-body p-0">
-                <div class="d-flex justify-content-between p-0 pl-1 pr-2">
-                  <p class="card-text m-0">08.03.2019</p>
-                  <p class="card-text m-0">XCO</p>
-                </div>
-              </div>
-            </div>
+            <?php } ?>
           </div>
-        </div>
-        <div class="tab-pane fade" id="YEAR2018" role="tabpanel" aria-labelledby="2019-tab">
-          <div class="card card-cascade card-month  position-relative blue-grey-text">
-            <p class="mb-0 text-center"><b>Февраль</b></p>
-            <div class="card card-calendar text-white bg-secondary m-1 ml-3 mr-3" style="max-width: 18rem;">
-              <div class="card-header p-0 d-flex justify-content-center">Perm MTB Cup 2020</div>
-              <div class="card-body p-0">
-                <div class="d-flex justify-content-between p-0 pl-1 pr-2">
-                  <p class="card-text m-0">08.03.2018</p>
-                  <p class="card-text m-0">XCO</p>
-                </div>
-              </div>
-            </div>
-            <div class="card card-calendar text-white bg-success m-1 ml-3 mr-3" style="max-width: 18rem;">
-              <div class="card-header p-0 d-flex justify-content-center">Perm MTB Cup 2020</div>
-              <div class="card-body p-0">
-                <div class="d-flex justify-content-between p-0 pl-1 pr-2">
-                  <p class="card-text m-0">08.03.2018</p>
-                  <p class="card-text m-0">XCO</p>
-                </div>
-              </div>
-            </div>
-            <div class="card card-calendar text-white bg-info m-1 ml-3 mr-3" style="max-width: 18rem;">
-              <div class="card-header p-0 d-flex justify-content-center">Perm MTB Cup 2020</div>
-              <div class="card-body p-0">
-                <div class="d-flex justify-content-between p-0 pl-1 pr-2">
-                  <p class="card-text m-0">08.03.2018</p>
-                  <p class="card-text m-0">XCO</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <?php } ?>
+
       </div>
 
 
