@@ -453,7 +453,7 @@ html, body, #intro {
   .card-month {
   min-width: 310px;
   max-width: 310px;
-  min-height: 10px;
+  min-height: 200px;
   max-height: 400px;
   margin: 10px;
   color: dark;
@@ -463,8 +463,10 @@ html, body, #intro {
 
 .card-calendar:hover {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5) !important;
+  text-decoration: none;
   /*opacity: 1;  */
 }
+
 
 
 .velta-sport {

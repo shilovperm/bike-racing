@@ -3959,6 +3959,13 @@ input[type="button"].btn-block {
   display: block;
 }
 
+.tab-content > .active .calendar-events {
+  display: flex;
+  flex-wrap: wrap;
+  margin:10px;
+  justify-content: flex-start;
+}
+
 .navbar {
   position: relative;
   display: -ms-flexbox;
