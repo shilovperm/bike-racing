@@ -212,7 +212,7 @@ get_header(); ?>
               </div>
           <?php } ?>
           <!--Вывод результата по Возрастам -->
-          <?php if (count($riderResultAbsolute)>0) { ?>
+          <?php if (count($riderResultAge)>0) { ?>
               <div class="tab-pane fade <?php if (count($riderResultCat)==0)  {echo "show active";}?>" id="Age" role="tabpanel" aria-labelledby="Age-tab">
                   <div class="btn-group p-1 d-inline-block ">
                       <?php foreach ($categoriesAge as &$categoriesValue) {?>
