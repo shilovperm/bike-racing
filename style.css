@@ -454,7 +454,7 @@ html, body, #intro {
   min-width: 310px;
   max-width: 310px;
   min-height: 200px;
-  max-height: 400px;
+  /*max-height: 600px;*/
   margin: 10px;
   color: dark;
   opacity: 1;
@@ -466,8 +466,6 @@ html, body, #intro {
   text-decoration: none;
   /*opacity: 1;  */
 }
-
-
 
 .velta-sport {
 	background-color: #FDFB00;

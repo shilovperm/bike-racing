@@ -37,7 +37,7 @@ get_header(); ?>
                           elseif ($event_value->status_id == 4) {echo 'bg-muted';}
                           elseif ($event_value->status_id == 5) {echo 'bg-danger';}
                     ?>
-                    m-1 ml-3 mr-3" style="max-width: 18rem;">
+                    m-0 ml-3 mr-3 mb-2" style="max-width: 18rem;">
                       <div class="card-header p-0 d-block justify-content-center">
                         <p class="mb-0 text-center"><?php echo $event_value->event_title?></p>
                         <p class="mb-0 text-center"><?php echo $event_value->event_subtitle?></p>
