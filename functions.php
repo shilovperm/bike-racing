@@ -654,6 +654,15 @@ function set_wp_user_verified($rider_id)
 		return $results;
 	}
 
+	//Регистрация участника на событие
+	function register_rider($rider_name, $category_short_name, $birth_year, $city, $event_id)
+	{
+		global $wpdb_bike;
+		$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+				'CALL p_register_rider(%s,%s,%s,%s,%d)',$rider_name, $category_short_name, $birth_year, $city, $event_id) );
+		return $results;
+	}
+
 	//Преобразование даты в русское наименование
 	function russian_date($event_date){
 		$date=explode(".", date("j.m.Y", strtotime($event_date)));
