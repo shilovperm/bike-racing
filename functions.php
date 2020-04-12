@@ -293,6 +293,17 @@ function get_event_categories_by_event_id($event_id, $category_type)
 }
 
 /*
+Возвращает зарегистрированных участников мероприятия
+*/
+function get_registered_riders_by_event($event_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_registered_riders_by_event(%d)',$event_id) );
+	return $results;
+}
+
+/*
 Возвращает расписание мероприятия
 */
 function get_event_timeline_by_event_id($event_id)
@@ -655,11 +666,47 @@ function set_wp_user_verified($rider_id)
 	}
 
 	//Регистрация участника на событие
-	function register_rider($rider_name, $category_short_name, $birth_year, $city, $event_id)
+	function register_rider($rider_name, $category_id, $birth_year, $city, $event_id)
 	{
 		global $wpdb_bike;
 		$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-				'CALL p_register_rider(%s,%s,%s,%s,%d)',$rider_name, $category_short_name, $birth_year, $city, $event_id) );
+				'CALL p_register_rider(%s,%s,%s,%s,%d)',$rider_name, $category_id, $birth_year, $city, $event_id) );
+		return $results;
+	}
+
+	// Функция подтверждает оплату участника
+	function paymentAccept($reg_id)
+	{
+	  global $wpdb_bike;
+	  $results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+	      'CALL p_payment_accept(%d);',$reg_id) );
+	  return $results;
+	}
+
+	// Функция подтверждает оплату участника
+	function paymentReject($reg_id)
+	{
+		global $wpdb_bike;
+		$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+				'CALL p_payment_reject(%d);',$reg_id) );
+		return $results;
+	}
+
+	//функция отменяет регистрацию участника
+	function registrationOut($reg_id)
+	{
+	  global $wpdb_bike;
+	  $results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+	      'CALL p_registration_out(%d);',$reg_id) );
+	  return $results;
+	}
+
+	//функция возвращает в статус зарегистрировано участника
+	function registrationIn($reg_id)
+	{
+		global $wpdb_bike;
+		$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+				'CALL p_registration_in(%d);',$reg_id) );
 		return $results;
 	}
 

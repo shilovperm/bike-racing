@@ -9,7 +9,7 @@ if (isset($_GET["event_id"])) {
     $par_event_id = $_GET["event_id"];
 };
 $event          = get_event_info_by_event_id($par_event_id);
-$categoriesAge  = get_event_categories_by_event_id(15, 'Age');
+$categoriesAge  = get_event_categories_by_event_id($par_event_id, 'Age');
 /*echo '<pre>'.print_r($categoriesAge).'</pre>';
 echo '<pre>'.print_r($event).'</pre>';*/
 
@@ -32,7 +32,7 @@ if ($event[0]->event_title != NULL) {
             <select name="category" id="category" onkeyup="checkParams()">
                 <option value="none">Катеория не выбрана</option>
                 <?php foreach ($categoriesAge as &$categoriesValue) { ?>
-                    <option value="<?php echo $categoriesValue->category_short_name ?>"><?php echo $categoriesValue->category_name ?></option>
+                    <option value="<?php echo $categoriesValue->category_id ?>"><?php echo $categoriesValue->category_name ?></option>
                 <?php } ?>
             </select>
         </div>

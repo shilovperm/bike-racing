@@ -12,6 +12,12 @@ echo 'category: ', $_POST['category'],'<br>';
 echo 'city: ', $_POST['city'],'<br>';
 echo 'event_id: ', $_POST['event_id'],'<br>';
 */
+$name         = htmlspecialchars($_POST['name']);
+$year         = htmlspecialchars($_POST['year']);
+$category_id  = htmlspecialchars($_POST['category']);
+$city         = htmlspecialchars($_POST['city']);
+$event_id     = htmlspecialchars($_POST['event_id']);
+
 if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
         $url = "https://";
 }  else  {
@@ -21,7 +27,7 @@ if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
 $url.= $_SERVER['HTTP_HOST'];
 
 
-if ($_POST['category'] == 'none') {
+if ($category_id == 'none') {
     //$param_header = 'Refresh: 5; URL='.$url.'/bike-racing/event-registration';
     $param_header = 'Refresh: 5; URL='.$url.'/event-registration';
     header($param_header);
@@ -32,10 +38,10 @@ if ($_POST['category'] == 'none') {
     Через 5 секунд вы вернетесь на страницу регистрации.</p>');
     $title = 'Ошибка!';
 } else {
-  $out_answer = register_rider($_POST['name'], $_POST['category'], $_POST['year'], $_POST['city'], $_POST['event_id']);
+  $out_answer = register_rider($name, $category_id, $year, $city, $event_id);
   if ($out_answer[0]->result == 'Регистрация прошла успешно!') {
     //$param_header = 'Refresh: 5; URL='.$url.'/bike-racing/event?event_id='.$_POST['event_id'];
-    $param_header = 'Refresh: 5; URL='.$url.'/event?event_id='.$_POST['event_id'];
+    $param_header = 'Refresh: 5; URL='.$url.'/event?event_id='.$event_id;
     header($param_header);
     echo '
         <head>
@@ -48,13 +54,13 @@ if ($_POST['category'] == 'none') {
     $title = 'Регистрация завершена';
   } elseif ($out_answer[0]->result == 'Вы уже зарегистрированы') {
     //$param_header = 'Refresh: 5; URL='.$url.'/bike-racing/event?event_id='.$_POST['event_id'];
-    $param_header = 'Refresh: 5; URL='.$url.'/event?event_id='.$_POST['event_id'];
+    $param_header = 'Refresh: 5; URL='.$url.'/event?event_id='.$event_id;
     header($param_header);
     echo ('
       <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       </head>
-      <h1 class="red">Ошибка регистрации!</h1>
+      <h1 class="red">Ошибка повторной регистрации!</h1>
       <p>Вы уже зарегистрированы<br>
       Через 5 секунд вы вернетесь на страницу события.</p>');
     $title = 'Ошибка!';

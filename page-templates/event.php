@@ -12,20 +12,40 @@ get_header(); ?>
         $par_event_id = $_GET["event_id"];
     };
 
-    $event      = get_event_info_by_event_id($par_event_id);
-    $categoriesCat      = get_event_categories_by_event_id($par_event_id,'Category');
-    $categoriesAge      = get_event_categories_by_event_id($par_event_id,'Age');
-    $categoriesAbsolute = get_event_categories_by_event_id($par_event_id,'Absolute');
-    $timeLine   = get_event_timeline_by_event_id($par_event_id);
-    $costRules  = get_event_cost_rules_by_event_id($par_event_id);
+    switch ( $_GET["action"] )
+    {
+      case "paymentAccept":    // Подтвердить Оплату
+        paymentAccept($_GET['id']);
+        break;
+      case "registrationOut":     // отмена регистрации
+        registrationOut($_GET['id']);
+        break;
+      case "paymentReject":     // отмена оплаты
+        paymentReject($_GET['id']);
+        break;
+      case "registrationIn":     // возврат регистрации
+        registrationIn($_GET['id']);
+        break;
+      default:
+        break;
+    }
+    /*echo var_dump($_SERVER);*/
+
+    $event                = get_event_info_by_event_id($par_event_id);
+    $categoriesCat        = get_event_categories_by_event_id($par_event_id,'Category');
+    $categoriesAge        = get_event_categories_by_event_id($par_event_id,'Age');
+    $categoriesAbsolute   = get_event_categories_by_event_id($par_event_id,'Absolute');
+    $timeLine             = get_event_timeline_by_event_id($par_event_id);
+    $costRules            = get_event_cost_rules_by_event_id($par_event_id);
+    $registeredRiders     = get_registered_riders_by_event($par_event_id);
     $riderResultCat       = get_event_result_by_event_id($par_event_id,'Category');
     $riderResultAge       = get_event_result_by_event_id($par_event_id,'Age');
     $riderResultAbsolute  = get_event_result_by_event_id($par_event_id,'Absolute');
-    $videoLinks = get_video_links_by_event_id($par_event_id);
-    $photoLinks = get_photo_links_by_event_id($par_event_id);
-    $thirdRider = get_third_time_by_event_id($par_event_id);
-    $sponsors = get_sponsors_by_event_id($par_event_id);
-    $partners = get_partners_by_event_id($par_event_id);
+    $videoLinks           = get_video_links_by_event_id($par_event_id);
+    $photoLinks           = get_photo_links_by_event_id($par_event_id);
+    $thirdRider           = get_third_time_by_event_id($par_event_id);
+    $sponsors             = get_sponsors_by_event_id($par_event_id);
+    $partners             = get_partners_by_event_id($par_event_id);
     ?>
     <?php foreach ($event as &$eventValue)  { ?>
       <h3><?php echo $eventValue->event_title ?></h3>
@@ -141,6 +161,58 @@ get_header(); ?>
               <a  href="<?php echo $partner->partner_link?>" target="_blank"><img data-toggle="tooltip" data-placement="top" title="Партнер: <?php echo $partner->partner_name?>" class=" ml-1 <?php echo $partner->partner_style?> img-logo" src="data:image/png;base64,<?php echo base64_encode($partner->image)?>" alt="<?php echo $partner->description?>"></a>
           <?php } ?>
           </h5>
+      <?php } ?>
+
+      <!--Список зарегистрированных участников-->
+
+      <?php if (count($registeredRiders)>0) { ?>
+          <div class="tab-content" id="myTabContent">
+              <a class="btn btn-primary mt-2 mb-2" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  Зарегистрированные участники
+              </a>
+              <div class="collapse" id="collapseExample">
+                  <div class="btn-group p-1 d-inline-block ">
+                      <?php foreach ($categoriesAge as &$categoriesValue) {?>
+                          <button type="button" class="btn btn-<?php echo $categoriesValue->style?> btn-filter m-1" data-target="<?php echo $categoriesValue->category_name ?>" ><?php echo $categoriesValue->category_name?></button>
+                      <?php } ?>
+                      <button type="button" class="btn btn-default  btn-filter m-1" data-target="all" >Все категории</button>
+                  </div>
+                  <div class="table-container mt-1 mb-1" >
+                      <table class="table table-striped table-bordered action-table" style="width:100%">
+                          <thead>
+                              <tr>
+                                  <th>Имя</th>
+                                  <th>Категория</th>
+                                  <th>Статус</th>
+                                  <th>Управление</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <?php foreach ($registeredRiders as &$registeredRidersValue) { ?>
+                                  <tr data-status="<?php echo $registeredRidersValue->category_name ?>">
+                                      <td><?php echo $registeredRidersValue->rider_name ?> </td>
+                                      <td><?php echo $registeredRidersValue->category_name ?> </td>
+                                      <td><?php echo $registeredRidersValue->status_name ?> </td>
+                                      <td>
+                                          <?php if ($registeredRidersValue->status_id == 1) { ?>
+                                              <a class="btn btn-success"  href="<?php echo $_SERVER["REDIRECT_URL"] . '?event_id='. $par_event_id .'&action=paymentAccept&id='. $registeredRidersValue->reg_id ?>"> Подтвердить оплату </a>
+                                              <a class="btn btn-danger"   href="<?php echo $_SERVER["REDIRECT_URL"] . '?event_id='. $par_event_id .'&action=registrationOut&id='. $registeredRidersValue->reg_id ?>"> Отмена регистрации </a>
+                                          <?php } ?>
+                                          <?php if ($registeredRidersValue->status_id == 2) { ?>
+                                              <a class="btn btn-info"     href="<?php echo $_SERVER["REDIRECT_URL"] . '?event_id='. $par_event_id .'&action=paymentReject&id='. $registeredRidersValue->reg_id ?>"> Отклонить оплату </a>
+                                              <a class="btn btn-danger"   href="<?php echo $_SERVER["REDIRECT_URL"] . '?event_id='. $par_event_id .'&action=registrationOut&id='. $registeredRidersValue->reg_id ?>"> Отмена регистрации </a>
+                                          <?php } ?>
+                                          <?php if ($registeredRidersValue->status_id == 3) { ?>
+                                              <a class="btn btn-success"  href="<?php echo $_SERVER["REDIRECT_URL"] . '?event_id='. $par_event_id .'&action=registrationIn&id='. $registeredRidersValue->reg_id ?>"> Вернуть регистрацию </a>
+                                          <?php } ?>
+                                      </td>
+                                  </tr>
+                              <?php } ?>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
       <?php } ?>
 
       <!--Добавляем таб для результатов по категориям и возрастам-->
@@ -333,5 +405,10 @@ get_header(); ?>
       <?php } ?>
 
 </div>
+
+
+
 <?php
+
+
 get_footer();
