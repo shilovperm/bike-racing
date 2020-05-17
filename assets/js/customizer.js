@@ -29,25 +29,28 @@ $(document).ready(function () {
  $(document).ready(function () {
              $('[data-toggle="tooltip"]').tooltip();
          });
+ $(document).ready(function () {
 
- var copyCardBtn = document.querySelector('.js-cardcopybtn');
- copyCardBtn.addEventListener('click', function(event) {
-   // Выборка номера карты
-   var cardNumber = document.querySelector('.js-cardnumber');
-   var range = document.createRange();
-   range.selectNode(cardNumber);
-   window.getSelection().addRange(range);
+     var copyCardBtn = document.querySelector('.js-cardcopybtn');
+     copyCardBtn.addEventListener('click', function(event) {
+       // Выборка номера карты
+       var cardNumber = document.querySelector('.js-cardnumber');
+       var range = document.createRange();
+       range.selectNode(cardNumber);
+       window.getSelection().addRange(range);
 
-   try {
-     // Теперь, когда мы выбрали текст ссылки, выполним команду копирования
-     var successful = document.execCommand('copy');
-     var msg = successful ? 'successful' : 'unsuccessful';
-     console.log('Copy card number command was ' + msg);
-   } catch(err) {
-     console.log('Oops, unable to copy');
-   }
+       try {
+         // Теперь, когда мы выбрали текст ссылки, выполним команду копирования
+         var successful = document.execCommand('copy');
+         var msg = successful ? 'successful' : 'unsuccessful';
+         console.log('Copy card number command was ' + msg);
+       } catch(err) {
+         console.log('Oops, unable to copy');
+       }
 
-   // Снятие выделения - ВНИМАНИЕ: вы должны использовать
-   // removeRange(range) когда это возможно
-   window.getSelection().removeAllRanges();
+       // Снятие выделения - ВНИМАНИЕ: вы должны использовать
+       // removeRange(range) когда это возможно
+       window.getSelection().removeAllRanges();
+     });
+
  });

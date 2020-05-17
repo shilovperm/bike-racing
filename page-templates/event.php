@@ -46,6 +46,8 @@ get_header(); ?>
     $thirdRider           = get_third_time_by_event_id($par_event_id);
     $sponsors             = get_sponsors_by_event_id($par_event_id);
     $partners             = get_partners_by_event_id($par_event_id);
+    $wp_user_id           = get_current_user_id();
+    $is_organisator       = is_organisation($wp_user_id, $par_event_id);    
     ?>
     <?php foreach ($event as &$eventValue)  { ?>
       <h3><?php echo $eventValue->event_title ?></h3>
@@ -165,7 +167,7 @@ get_header(); ?>
 
       <!--Список зарегистрированных участников-->
 
-      <?php if (count($registeredRiders)>0) { ?>
+      <?php if (count($registeredRiders)>0 and $eventValue->event_status_id == 2) { ?>
           <div class="tab-content" id="myTabContent">
               <a class="btn btn-primary mt-2 mb-2" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                   Зарегистрированные участники
@@ -184,7 +186,7 @@ get_header(); ?>
                                   <th>Имя</th>
                                   <th>Категория</th>
                                   <th>Статус</th>
-                                  <th>Управление</th>
+                                  <?php if ($is_organisator==1) { ?> <th>Управление</th> <?php } ?>
                               </tr>
                           </thead>
                           <tbody>
@@ -193,19 +195,21 @@ get_header(); ?>
                                       <td><?php echo $registeredRidersValue->rider_name ?> </td>
                                       <td><?php echo $registeredRidersValue->category_name ?> </td>
                                       <td><?php echo $registeredRidersValue->status_name ?> </td>
-                                      <td>
-                                          <?php if ($registeredRidersValue->status_id == 1) { ?>
-                                              <a class="btn btn-success"  href="<?php echo $_SERVER["REDIRECT_URL"] . '?event_id='. $par_event_id .'&action=paymentAccept&id='. $registeredRidersValue->reg_id ?>"> Подтвердить оплату </a>
-                                              <a class="btn btn-danger"   href="<?php echo $_SERVER["REDIRECT_URL"] . '?event_id='. $par_event_id .'&action=registrationOut&id='. $registeredRidersValue->reg_id ?>"> Отмена регистрации </a>
-                                          <?php } ?>
-                                          <?php if ($registeredRidersValue->status_id == 2) { ?>
-                                              <a class="btn btn-info"     href="<?php echo $_SERVER["REDIRECT_URL"] . '?event_id='. $par_event_id .'&action=paymentReject&id='. $registeredRidersValue->reg_id ?>"> Отклонить оплату </a>
-                                              <a class="btn btn-danger"   href="<?php echo $_SERVER["REDIRECT_URL"] . '?event_id='. $par_event_id .'&action=registrationOut&id='. $registeredRidersValue->reg_id ?>"> Отмена регистрации </a>
-                                          <?php } ?>
-                                          <?php if ($registeredRidersValue->status_id == 3) { ?>
-                                              <a class="btn btn-success"  href="<?php echo $_SERVER["REDIRECT_URL"] . '?event_id='. $par_event_id .'&action=registrationIn&id='. $registeredRidersValue->reg_id ?>"> Вернуть регистрацию </a>
-                                          <?php } ?>
-                                      </td>
+                                      <?php if ($is_organisator==1) { ?>
+                                          <td>
+                                              <?php if ($registeredRidersValue->status_id == 1) { ?>
+                                                  <a class="btn btn-success"  href="<?php echo $_SERVER["REDIRECT_URL"] . '?event_id='. $par_event_id .'&action=paymentAccept&id='. $registeredRidersValue->reg_id ?>"> Подтвердить оплату </a>
+                                                  <a class="btn btn-danger"   href="<?php echo $_SERVER["REDIRECT_URL"] . '?event_id='. $par_event_id .'&action=registrationOut&id='. $registeredRidersValue->reg_id ?>"> Отмена регистрации </a>
+                                              <?php } ?>
+                                              <?php if ($registeredRidersValue->status_id == 2) { ?>
+                                                  <a class="btn btn-info"     href="<?php echo $_SERVER["REDIRECT_URL"] . '?event_id='. $par_event_id .'&action=paymentReject&id='. $registeredRidersValue->reg_id ?>"> Отклонить оплату </a>
+                                                  <a class="btn btn-danger"   href="<?php echo $_SERVER["REDIRECT_URL"] . '?event_id='. $par_event_id .'&action=registrationOut&id='. $registeredRidersValue->reg_id ?>"> Отмена регистрации </a>
+                                              <?php } ?>
+                                              <?php if ($registeredRidersValue->status_id == 3) { ?>
+                                                  <a class="btn btn-success"  href="<?php echo $_SERVER["REDIRECT_URL"] . '?event_id='. $par_event_id .'&action=registrationIn&id='. $registeredRidersValue->reg_id ?>"> Вернуть регистрацию </a>
+                                              <?php } ?>
+                                          </td>
+                                      <?php } ?>
                                   </tr>
                               <?php } ?>
                           </tbody>

@@ -1,10 +1,15 @@
+
+
 <?php
 /*
 * Template Name: event-registration-form
 */
 
 get_header();
-
+$jquery_path = get_template_directory_uri() . '/assets/js/jquery-3.3.1.js';
+?>
+<script src='<?php echo $jquery_path ?>'></script>
+<?php
 if (isset($_GET["event_id"])) {
     $par_event_id = $_GET["event_id"];
 };
@@ -13,15 +18,26 @@ $categoriesAge  = get_event_categories_by_event_id($par_event_id, 'Age');
 /*echo '<pre>'.print_r($categoriesAge).'</pre>';
 echo '<pre>'.print_r($event).'</pre>';*/
 
+/*подготовка автозаполнения*/
+$results = get_riders_for_registry();
+$riders='[';
+foreach ($results as &$resultvalue) {
+        $riders .= '{ "label" : "' . $resultvalue->rider_name . '", "value" : "' . $resultvalue->rider_name . '"},';
+}
+$riders = substr($riders,0,-1) . ']';
+/*окончание подготовки */
+
+
+
 if ($event[0]->event_title != NULL) {
 ?>
+
   <div class="container">
     <h2>Регистрация на <?php echo $event[0]->event_title.' '.$event[0]->event_subtitle ?></h2>
     <form class="form" method="post" action="<?php echo get_template_directory_uri()?>/page-templates/event-registration-action.php">
-
-        <div class="form-group">
+        <div class="form-group ui-widget">
             <label for="name">Фамилия и Имя: <span style="color: red">*</span></label>
-            <input type="text" name="name" id="name" onkeyup="checkParams()" placeholder="Фамилия и Имя участника" required />
+            <input type="text" name="name" id="name" autocomplete="off" onkeyup="checkParams()" placeholder="Фамилия и Имя участника" required />
         </div>
         <div class="form-group">
             <label for="year">Год рождения: <span style="color: red">*</span></label>
@@ -72,6 +88,13 @@ if ($event[0]->event_title != NULL) {
             $('#submit').attr('disabled', 'disabled');
         }
     }
+    $( function() {
+        var rider_list = <?php echo $riders ?>;
+        console.log(rider_list);
+        $( "#name" ).autocomplete({
+          source: rider_list
+        });
+     } );
 </script>
 
 <?php

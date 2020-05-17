@@ -142,16 +142,18 @@ add_action( 'widgets_init', 'wp_bootstrap_4_widgets_init' );
  */
 function wp_bootstrap_4_scripts() {
 	wp_enqueue_style( 'open-iconic-bootstrap', get_template_directory_uri() . '/assets/css/open-iconic-bootstrap.css', array(), 'v4.0.0', 'all' );
+	wp_enqueue_style( 'jquery-ui', get_template_directory_uri() . '/assets/css/jquery-ui.css', array(), 'v4.0.0', 'all' );
 	wp_enqueue_style( 'bootstrap-4', get_template_directory_uri() . '/assets/css/bootstrap.css', array(), 'v4.0.0', 'all' );
 	wp_enqueue_style( 'wp-bootstrap-4-style', get_stylesheet_uri(), array(), '1.0.2', 'all' );
 
-	wp_enqueue_script( 'jquery-3.3.1-js', get_template_directory_uri() . '/assets/js/jquery-3.3.1.js', array('jquery'), 'v3.3.1', true );
-	wp_enqueue_script( 'jquery-dataTables-min-js', get_template_directory_uri() . '/assets/js/jquery.dataTables.min.js', array('jquery'), 'v3.3.1', true );
-	wp_enqueue_script( 'popper-js', get_template_directory_uri() . '/assets/js/popper.js', array('jquery'), 'v0', true );
-	wp_enqueue_script( 'bootstrap-4-js', get_template_directory_uri() . '/assets/js/bootstrap.js', array('jquery'), 'v4.0.0', true );
+	wp_enqueue_script( 'jquery-3.3.1-js', 					get_template_directory_uri() . '/assets/js/jquery-3.3.1.js', array('jquery'), 'v3.3.1', true );
+	wp_enqueue_script( 'jquery-ui-js', 							get_template_directory_uri() . '/assets/js/jquery-ui.js', array('jquery'), 'v1.12.1', true );
+	wp_enqueue_script( 'jquery-dataTables-min-js', 	get_template_directory_uri() . '/assets/js/jquery.dataTables.min.js', array('jquery'), 'v3.3.1', true );
+	wp_enqueue_script( 'popper-js', 								get_template_directory_uri() . '/assets/js/popper.js', array('jquery'), 'v0', true );
+	wp_enqueue_script( 'bootstrap-4-js', 						get_template_directory_uri() . '/assets/js/bootstrap.js', array('jquery'), 'v4.0.0', true );
 	wp_enqueue_script( 'dataTables-bootstrap-4-js', get_template_directory_uri() . '/assets/js/dataTables.bootstrap4.min.js', array('jquery'), 'v4.0.0', true );
-	wp_enqueue_script( 'jquery-fancybox-js', get_template_directory_uri() . '/assets/js/jquery.fancybox.min.js', array('jquery'), 'v3.5.6', true );
-  wp_enqueue_script( 'customizer-js', get_template_directory_uri() . '/assets/js/customizer.js', array('jquery'), 'v1.0', true );
+	wp_enqueue_script( 'jquery-fancybox-js', 				get_template_directory_uri() . '/assets/js/jquery.fancybox.min.js', array('jquery'), 'v3.5.6', true );
+  wp_enqueue_script( 'customizer-js', 						get_template_directory_uri() . '/assets/js/customizer.js', array('jquery'), 'v1.0', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -214,6 +216,16 @@ function get_riders()
 	return $results;
 }
 
+/*
+Возвращает список наименований участников
+*/
+function get_riders_for_registry()
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_riders_for_registry();','rider_info') );
+	return $results;
+}
 
 /*
 Возвращает рейтинг участников в категории
@@ -376,6 +388,14 @@ function is_verified($wp_user_id)
 	return $results;
 }
 
+/*Проверка на организатора*/
+function is_organisation($wp_user_id, $event_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_var( $wpdb_bike->prepare(
+			'SELECT  f_is_organisation(%d,%d)',$wp_user_id,$event_id) );
+	return $results;
+}
 
 /*
 Возвращает список сезонов в которые были результаты у участника
