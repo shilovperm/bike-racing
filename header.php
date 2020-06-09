@@ -43,7 +43,7 @@
 		if (isset($_GET["rider_id"])) {
 				$par_rider_id = $_GET["rider_id"];
 		};
-		$rider = get_rider_info($par_rider_id);
+		$rider = get_rider_info_by_rider_id($par_rider_id);
 		echo '<meta property="og:title" content="Профиль участника: '.$rider[0]->rider_name.'"/>';
 		echo '<meta property="og:description" content="Рейтинги и статистика выступлений участника '.$rider[0]->rider_name.'"/>';
 		echo '<meta property="og:image" content="'.get_avatar_url($rider_value->wp_user_id).'">';

@@ -22,8 +22,7 @@
 							<a href="https://vk.com/cyclingche" target="_blank" style="color:white!important;"><img class="icon-social" src="<?php echo get_template_directory_uri()?>/images/vk-logo.png">МТБ Велошкола Че</a>
 						</div>
 						<div class="col-sm">
-							<h6 style="color:white!important;">Обратная связь</h6>
-							<a href="https://t.me/bike_racing_ru" target="_blank"><img class="d-inline icon-social" src="<?php echo get_template_directory_uri()?>/images/telegram_logo.png"> </a>
+							<h6 style="color:white!important;">Обратная связь</h6>							
 							<a href="https://vk.com/bike_racing_ru" target="_blank"><img class="d-inline icon-social" src="<?php echo get_template_directory_uri()?>/images/vk-logo.png"></a>
 						</div>
 						<div class="col-sm">

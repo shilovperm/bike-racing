@@ -47,9 +47,9 @@ get_header(); ?>
                         - Добавлена страница Календарь в меню<br>
                         </p>
                     </li>
-                    <li>
-                        <a href="#">Онлайн-регистрация на гонки</a>
-                        <a href="#" class="float-right">Март, 2020</a>
+                    <li class="resolved">
+                        <a href="#" class="resolved">Онлайн-регистрация на гонки</a>
+                        <a href="#" class="float-right resolved">Март, 2020</a>
                         <p class="text-dark">Добавить возможность онлайн-регистрации участника на гонку</p>
                     </li>
                     <li>

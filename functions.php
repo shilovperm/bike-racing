@@ -206,15 +206,412 @@ if ( class_exists( 'WooCommerce' ) ) {
 }
 
 /*
+**************************************************************************************************
+Пакет pack_admin
+**************************************************************************************************
+*/
+/*
+Возвращает список всех событий для админки
+*/
+
+function add_event($par_org_id,
+	                      $par_event_title,
+	                      $par_event_subtitle,
+	                      $par_event_date,
+	                      $par_event_description,
+	                      $par_event_status_id,
+	                      $par_event_type_id ,
+	                      $par_event_image_id,
+	                      $par_event_category_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_admin.p_add_event(%d,%s,%s,%s,%s,%d,%d,%d,%d);',	$par_org_id,
+																						                      $par_event_title,
+																						                      $par_event_subtitle,
+																						                      $par_event_date,
+																						                      $par_event_description,
+																						                      $par_event_status_id,
+																						                      $par_event_type_id ,
+																						                      $par_event_image_id,
+																						                      $par_event_category_id));
+	return $results;
+}
+
+
+
+function get_all_events()
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_admin.p_get_all_events();','events_info') );
+	return $results;
+}
+
+/*
+Возвращает список всех статусов событий для админки
+*/
+function get_spr_category_types()
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_admin.get_spr_category_types();','events_info') );
+	return $results;
+}
+
+/*
+Возвращает список всех загруженных картинок для админки
+*/
+function get_spr_images()
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_admin.p_get_spr_images();','events_info') );
+	return $results;
+}
+
+/*
+Возвращает список всех статусов событий для админки
+*/
+function get_spr_event_status()
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_admin.p_get_spr_event_status();','events_info') );
+	return $results;
+}
+
+
+/*
+Возвращает список всех типов событий для админки
+*/
+function get_spr_race_types()
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_admin.p_get_spr_race_types();','events_info') );
+	return $results;
+}
+
+/*
+Возвращает список всех организаторов событий для админки
+*/
+function get_spr_organizations()
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_admin.p_get_spr_organizations();','events_info') );
+	return $results;
+}
+
+
+
+/*
+--------------------------------------------------------------------------------------------------
+Окончание пакета pack_admin
+--------------------------------------------------------------------------------------------------
+*/
+
+/*
+**************************************************************************************************
+Пакет pack_calendar
+**************************************************************************************************
+*/
+/*
+Возвращает список сезонов в которых есть события
+*/
+function get_years_of_events()
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_calendar.p_get_years_of_events();','events_info') );
+	return $results;
+}
+
+/*
+Возвращает список месяцев в которые были события в году
+*/
+function get_months_of_events_by_year($year)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_calendar.p_get_months_of_events_by_year(%d)',$year) );
+	return $results;
+}
+
+/*
+Возвращает список событий в выбранном месяце выбранного года
+*/
+function get_events_by_year_month($year, $month)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_calendar.p_get_events_by_year_month(%d,%d)',$year,$month) );
+	return $results;
+}
+
+/*
+--------------------------------------------------------------------------------------------------
+Окончание пакета pack_calendar
+--------------------------------------------------------------------------------------------------
+*/
+
+/*
+**************************************************************************************************
+Пакет pack_events
+**************************************************************************************************
+*/
+/*
+Возвращает список всех будущих событий
+*/
+function get_all_future_events()
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_events.p_get_all_future_events();','events_info') );
+	return $results;
+}
+
+/*
+Возвращает список всех прошедших и отмененных событий
+*/
+function get_all_past_events()
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_events.p_get_all_past_events();','events_info') );
+	return $results;
+}
+
+/*
+Возвращает категории мероприятия
+*/
+function get_event_categories_by_event_id($event_id, $category_type)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_events.p_get_event_categories_by_event_id(%d,%s)',$event_id, $category_type) );
+	return $results;
+}
+
+/*
+Возвращает правила ценообразования
+*/
+function get_event_cost_rules_by_event_id($event_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_events.p_get_event_cost_rules_by_event_id(%d)',$event_id) );
+	return $results;
+}
+
+/*
+Возвращает общую информацию о мероприятии
+*/
+function get_event_info_by_event_id($event_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_events.p_get_event_info_by_event_id(%d)',$event_id) );
+	return $results;
+}
+
+/*
+Возвращает результаты гонки
+*/
+function get_event_result_by_event_id($event_id,$category_type)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_events.p_get_event_result_by_event_id(%d,%s)',$event_id, $category_type) );
+	return $results;
+}
+
+/*
+Возвращает расписание мероприятия
+*/
+function get_event_timeline_by_event_id($event_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_events.p_get_event_timeline_by_event_id(%d)',$event_id) );
+	return $results;
+}
+
+//Список партнеров по событию
+function get_partners_by_event_id($event_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_events.p_get_partners_by_event_id(%d)',$event_id) );
+	return $results;
+}
+
+/*
+Список ссылок на фото для события
+*/
+
+function get_photo_links_by_event_id($event_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_events.p_get_photo_links_by_event_id(%d)',$event_id) );
+	return $results;
+}
+
+/*
+Возвращает зарегистрированных участников мероприятия
+*/
+function get_registered_riders_by_event($event_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_events.p_get_registered_riders_by_event(%d)',$event_id) );
+	return $results;
+}
+
+//Список спонсоров по событию
+function get_sponsors_by_event_id($event_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_events.p_get_sponsors_by_event_id(%d)',$event_id) );
+	return $results;
+}
+
+/*
+Время и количество кругов третьего участника в событии
+*/
+
+function get_third_time_by_event_id($event_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_events.p_get_third_time_by_event_id(%d)',$event_id) );
+	return $results;
+}
+
+/*
+Список ссылок на видео для события
+*/
+
+function get_video_links_by_event_id($event_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_events.p_get_video_links_by_event_id(%d)',$event_id) );
+	return $results;
+}
+
+/*Проверка на организатора*/
+function is_organisation($wp_user_id, $event_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_var( $wpdb_bike->prepare(
+			'SELECT  pack_events.f_is_organisation(%d,%d)',$wp_user_id,$event_id) );
+	return $results;
+}
+
+/*
+--------------------------------------------------------------------------------------------------
+Окончание пакета pack_events
+--------------------------------------------------------------------------------------------------
+*/
+
+
+/*
+**************************************************************************************************
+Пакет pack_rider
+**************************************************************************************************
+*/
+
+/*
+Возвращает список рейтингов в рамках сезона у участника
+*/
+function get_rating_by_rider_id($rider_id, $year)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_rider.p_get_rating_by_rider_id(%d,%d)',$rider_id,$year) );
+	return $results;
+}
+
+/*
 Возвращает список участников с категориями
 */
 function get_riders()
 {
 	global $wpdb_bike;
 	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_get_riders_all();','rider_info') );
+			'CALL pack_rider.p_get_riders_all();','rider_info') );
 	return $results;
 }
+
+/*
+Возвращает общуую информацию об участнике
+*/
+function get_rider_info_by_rider_id($rider_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_rider.p_get_rider_info_by_rider_id(%d)',$rider_id) );
+	return $results;
+}
+
+/*
+Возвращает общуую информацию об участнике по идентификатору WP пользователя
+*/
+function get_rider_info_by_WP_user_id($WP_user_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_rider.p_get_rider_info_by_WP_user_id(%d)',$WP_user_id) );
+	return $results;
+}
+
+/*
+Возвращает список результатов в рамках сезона у участника
+*/
+function get_rider_results_by_year($rider_id, $year)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_rider.p_get_rider_results_by_year(%d,%d)',$rider_id,$year) );
+	return $results;
+}
+
+/*
+Возвращает список сезонов в которые были результаты у участника
+*/
+function get_rider_years_of_events($rider_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_rider.p_get_rider_years_of_events(%d)',$rider_id) );
+	return $results;
+}
+
+/*
+Привязка пользователя WP к участнику
+*/
+
+function set_wp_user_to_rider($wp_user_id,$rider_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_rider.p_set_wp_user_to_rider(%d,%d)',$wp_user_id,$rider_id) );
+	update_user_option( $wp_user_id, 'show_admin_bar_front', false );
+	return $results;
+}
+
+/*
+--------------------------------------------------------------------------------------------------
+Окончание пакета pack_rider
+--------------------------------------------------------------------------------------------------
+*/
+
+
+
 
 /*
 Возвращает список наименований участников
@@ -238,137 +635,23 @@ function get_rating_list_by_category($category)
 	return $results;
 }
 
-/*
-Возвращает список всех прошедших и отмененных событий
-*/
-function get_all_past_events()
-{
-	global $wpdb_bike;
-	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_get_all_past_events();','events_info') );
-	return $results;
-}
 
-/*
-Возвращает список всех будущих событий
-*/
-function get_all_future_events()
-{
-	global $wpdb_bike;
-	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_get_all_future_events();','events_info') );
-	return $results;
-}
 
-/*
-Возвращает список всех событий для админки
-*/
-function get_all_events()
-{
-	global $wpdb_bike;
-	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_get_all_events();','events_info') );
-	return $results;
-}
 
-/*
-Возвращает список всех статусов событий для админки
-*/
-function get_spr_event_status()
-{
-	global $wpdb_bike;
-	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_get_spr_event_status();','events_info') );
-	return $results;
-}
 
-/*
-Возвращает общую информацию о мероприятии
-*/
-function get_event_info_by_event_id($event_id)
-{
-	global $wpdb_bike;
-	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_get_event_info_by_event_id(%d)',$event_id) );
-	return $results;
-}
 
-/*
-Возвращает категории мероприятия
-*/
-function get_event_categories_by_event_id($event_id, $category_type)
-{
-	global $wpdb_bike;
-	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_get_event_categories_by_event_id(%d,%s)',$event_id, $category_type) );
-	return $results;
-}
 
-/*
-Возвращает зарегистрированных участников мероприятия
-*/
-function get_registered_riders_by_event($event_id)
-{
-	global $wpdb_bike;
-	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_get_registered_riders_by_event(%d)',$event_id) );
-	return $results;
-}
 
-/*
-Возвращает расписание мероприятия
-*/
-function get_event_timeline_by_event_id($event_id)
-{
-	global $wpdb_bike;
-	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_get_event_timeline_by_event_id(%d)',$event_id) );
-	return $results;
-}
 
-/*
-Возвращает правила ценообразования
-*/
-function get_event_cost_rules_by_event_id($event_id)
-{
-	global $wpdb_bike;
-	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_get_event_cost_rules_by_event_id(%d)',$event_id) );
-	return $results;
-}
 
-/*
-Возвращает результаты гонки
-*/
-function get_event_result_by_event_id($event_id,$category_type)
-{
-	global $wpdb_bike;
-	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_get_event_result_by_event_id(%d,%s)',$event_id, $category_type) );
-	return $results;
-}
 
-/*
-Возвращает общуую информацию об участнике
-*/
-function get_rider_info($rider_id)
-{
-	global $wpdb_bike;
-	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_get_rider_info_by_rider_id(%d)',$rider_id) );
-	return $results;
-}
 
-/*
-Возвращает общуую информацию об участнике по идентификатору WP пользователя
-*/
-function get_rider_info_by_WP_user_id($WP_user_id)
-{
-	global $wpdb_bike;
-	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_get_rider_info_by_WP_user_id(%d)',$WP_user_id) );
-	return $results;
-}
+
+
+
+
+
+
 
 /*Проверка на верификацию (проверка привязки WP пользователю участника)*/
 function is_on_verification($wp_user_id)
@@ -388,80 +671,19 @@ function is_verified($wp_user_id)
 	return $results;
 }
 
-/*Проверка на организатора*/
-function is_organisation($wp_user_id, $event_id)
-{
-	global $wpdb_bike;
-	$results = $wpdb_bike->get_var( $wpdb_bike->prepare(
-			'SELECT  f_is_organisation(%d,%d)',$wp_user_id,$event_id) );
-	return $results;
-}
 
-/*
-Возвращает список сезонов в которые были результаты у участника
-*/
-function get_rider_years_of_events($rider_id)
-{
-	global $wpdb_bike;
-	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_get_rider_years_of_events(%d)',$rider_id) );
-	return $results;
-}
 
-/*
-Возвращает список сезонов в которых есть события
-*/
-function get_years_of_events()
-{
-	global $wpdb_bike;
-	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_get_years_of_events()','events_info') );
-	return $results;
-}
 
-/*
-Возвращает список месяцев в которые были события в году
-*/
-function get_months_of_events_by_year($year)
-{
-	global $wpdb_bike;
-	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_get_months_of_events_by_year(%d)',$year) );
-	return $results;
-}
 
-/*
-Возвращает список событий в выбранном месяце выбранного года
-*/
-function get_events_by_year_month($year, $month)
-{
-	global $wpdb_bike;
-	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_get_events_by_year_month(%d,%d)',$year,$month) );
-	return $results;
-}
 
-/*
-Возвращает список результатов в рамках сезона у участника
-*/
-function get_rider_results_by_year($rider_id, $year)
-{
-	global $wpdb_bike;
-	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_get_rider_results_by_year(%d,%d)',$rider_id,$year) );
-	return $results;
-}
 
-/*
-Возвращает список рейтингов в рамках сезона у участника
-*/
-function get_rating_by_rider_id($rider_id, $year)
-{
-	global $wpdb_bike;
-	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_get_rating_by_rider_id(%d,%d)',$rider_id,$year) );
-	return $results;
-}
+
+
+
+
+
+
+
 
 /*
 Возвращает список рейтингов по годам
@@ -521,19 +743,6 @@ function get_start_rating_by_category_type($rating_id,$category_type)
 	return $results;
 }
 
-/*
-Привязка пользователя WP к участнику
-*/
-
-function set_wp_user_to_rider($wp_user_id,$rider_id)
-{
-	global $wpdb_bike;
-	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL p_set_wp_user_to_rider(%d,%d)',$wp_user_id,$rider_id) );
-	update_user_option( $wp_user_id, 'show_admin_bar_front', false );
-	return $results;
-}
-
 
 /*
 Список участников на верификации
@@ -559,29 +768,9 @@ function set_wp_user_verified($rider_id)
 	return $results;
 }
 
-	/*
-	Список ссылок на видео для события
-	*/
 
-	function get_video_links_by_event_id($event_id)
-	{
-		global $wpdb_bike;
-		$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-				'CALL p_get_video_links_by_event_id(%d)',$event_id) );
-		return $results;
-	}
 
-	/*
-	Список ссылок на фото для события
-	*/
 
-	function get_photo_links_by_event_id($event_id)
-	{
-		global $wpdb_bike;
-		$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-				'CALL p_get_photo_links_by_event_id(%d)',$event_id) );
-		return $results;
-	}
 
 	/*
 	Общая информация о рейтинге
@@ -643,17 +832,7 @@ function set_wp_user_verified($rider_id)
 	}
 
 
-	/*
-	Время и количество кругов третьего участника в событии
-	*/
 
-	function get_third_time_by_event_id($event_id)
-	{
-		global $wpdb_bike;
-		$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-				'CALL p_get_third_time_by_event_id(%d)',$event_id) );
-		return $results;
-	}
 
 	/*
 	Обновление параметров профиля участника
@@ -667,23 +846,9 @@ function set_wp_user_verified($rider_id)
 		return $results;
 	}
 
-	//Список спонсоров по событию
-	function get_sponsors_by_event_id($event_id)
-	{
-		global $wpdb_bike;
-		$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-				'CALL p_get_sponsors_by_event_id(%d)',$event_id) );
-		return $results;
-	}
 
-	//Список партнеров по событию
-	function get_partners_by_event_id($event_id)
-	{
-		global $wpdb_bike;
-		$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-				'CALL p_get_partners_by_event_id(%d)',$event_id) );
-		return $results;
-	}
+
+
 
 	//Регистрация участника на событие
 	function register_rider($rider_name, $category_id, $birth_year, $city, $event_id)
