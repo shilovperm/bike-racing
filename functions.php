@@ -238,8 +238,43 @@ function add_event($par_org_id,
 	return $results;
 }
 
+function update_event($par_event_id,
+											$par_org_id,
+	                    $par_event_title,
+	                    $par_event_subtitle,
+	                    $par_event_date,
+	                    $par_event_description,
+	                    $par_event_status_id,
+	                    $par_event_type_id ,
+	                    $par_event_image_id,
+	                    $par_event_category_type_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_admin.p_update_event(%d,%d,%s,%s,%s,%s,%d,%d,%d,%d);',	$par_event_id,
+																																	$par_org_id,
+																						                      $par_event_title,
+																						                      $par_event_subtitle,
+																						                      $par_event_date,
+																						                      $par_event_description,
+																						                      $par_event_status_id,
+																						                      $par_event_type_id ,
+																						                      $par_event_image_id,
+																						                      $par_event_category_type_id));
+	return $results;
+}
+
+function update_image($par_image_id,
+											$par_description)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_admin.p_update_image(%d,%s);',	$par_image_id, $par_description));
+	return $results;
+}
 
 
+/*Возвращает все события*/
 function get_all_events()
 {
 	global $wpdb_bike;
@@ -248,6 +283,25 @@ function get_all_events()
 	return $results;
 }
 
+/*Возвращает всю информацю по изображениям*/
+function get_all_images_info()
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_admin.p_get_all_images_info();','events_info') );
+	return $results;
+}
+
+/*Возвращает всю информацю по изображению*/
+function get_image_info_by_image_id($par_image_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_admin.p_get_image_info_by_image_id(%d);',$par_image_id) );
+	return $results;
+}
+
+
 /*
 Возвращает список всех статусов событий для админки
 */
@@ -255,7 +309,7 @@ function get_spr_category_types()
 {
 	global $wpdb_bike;
 	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-			'CALL pack_admin.get_spr_category_types();','events_info') );
+			'CALL pack_admin.p_get_spr_category_types();','events_info') );
 	return $results;
 }
 
@@ -610,9 +664,6 @@ function set_wp_user_to_rider($wp_user_id,$rider_id)
 --------------------------------------------------------------------------------------------------
 */
 
-
-
-
 /*
 Возвращает список наименований участников
 */
@@ -635,24 +686,6 @@ function get_rating_list_by_category($category)
 	return $results;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*Проверка на верификацию (проверка привязки WP пользователю участника)*/
 function is_on_verification($wp_user_id)
 {
@@ -670,19 +703,6 @@ function is_verified($wp_user_id)
 			'SELECT  f_is_verified(%d)',$wp_user_id) );
 	return $results;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*
@@ -767,10 +787,6 @@ function set_wp_user_verified($rider_id)
 			'CALL p_set_wp_user_verified(%d)',$rider_id) );
 	return $results;
 }
-
-
-
-
 
 	/*
 	Общая информация о рейтинге
