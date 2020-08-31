@@ -47,7 +47,7 @@ get_header(); ?>
     $sponsors             = get_sponsors_by_event_id($par_event_id);
     $partners             = get_partners_by_event_id($par_event_id);
     $wp_user_id           = get_current_user_id();
-    $is_organisator       = is_organisation($wp_user_id, $par_event_id);    
+    $is_organisator       = is_organisation($wp_user_id, $par_event_id);
     ?>
     <?php foreach ($event as &$eventValue)  { ?>
       <h3><?php echo $eventValue->event_title ?></h3>
@@ -88,8 +88,8 @@ get_header(); ?>
           <?php if ($eventValue->org_name =='Perm MTB Cup') { ?>
               <h6> Оплата участия:</h6>
               <ul>
-                  <li class="list-style-type-none">Получатель: <b>Владислав Сергеевич К.</b></li>
-                  <li class="list-style-type-none d-inline">По телефону: <b class="js-cardnumber">+79194870777</b></li>
+                  <li class="list-style-type-none">Получатель: <b>Чертков Дмитрий Сергеевич</b></li>
+                  <li class="list-style-type-none d-inline">Карта Сбербанка: <b class="js-cardnumber">4276 4900 2134 0734</b></li>
                   <button  class="js-cardcopybtn d-inline btn btn-info">Скопировать</button>
                   <li class="list-style-type-none">Сообщение: <b>ФИО участника</b></li>
               </ul>
