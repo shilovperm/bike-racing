@@ -29,7 +29,7 @@ get_header(); ?>
       default:
         break;
     }
-    echo var_dump($_SERVER);
+    /*echo var_dump($_SERVER);*/
 
     $event                = get_event_info_by_event_id($par_event_id);
     $categoriesCat        = get_event_categories_by_event_id($par_event_id,'Category');
@@ -47,8 +47,7 @@ get_header(); ?>
     $partners             = get_partners_by_event_id($par_event_id);
     $wp_user_id           = get_current_user_id();
     $is_organisator       = is_organisation($wp_user_id, $par_event_id);
-    /*$registeredRiders     = get_registered_riders_by_event($par_event_id, $is_organisator);*/
-    $registeredRiders     = get_registered_riders_by_event($par_event_id);
+    $registeredRiders     = get_registered_riders_by_event($par_event_id, $is_organisator);    
     ?>
     <?php foreach ($event as &$eventValue)  { ?>
       <h3><?php echo $eventValue->event_title ?></h3>
