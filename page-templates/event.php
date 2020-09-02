@@ -37,7 +37,6 @@ get_header(); ?>
     $categoriesAbsolute   = get_event_categories_by_event_id($par_event_id,'Absolute');
     $timeLine             = get_event_timeline_by_event_id($par_event_id);
     $costRules            = get_event_cost_rules_by_event_id($par_event_id);
-    $registeredRiders     = get_registered_riders_by_event($par_event_id);
     $riderResultCat       = get_event_result_by_event_id($par_event_id,'Category');
     $riderResultAge       = get_event_result_by_event_id($par_event_id,'Age');
     $riderResultAbsolute  = get_event_result_by_event_id($par_event_id,'Absolute');
@@ -48,6 +47,7 @@ get_header(); ?>
     $partners             = get_partners_by_event_id($par_event_id);
     $wp_user_id           = get_current_user_id();
     $is_organisator       = is_organisation($wp_user_id, $par_event_id);
+    $registeredRiders     = get_registered_riders_by_event($par_event_id, $is_organisator);
     ?>
     <?php foreach ($event as &$eventValue)  { ?>
       <h3><?php echo $eventValue->event_title ?></h3>
@@ -183,6 +183,7 @@ get_header(); ?>
                       <table class="table table-striped table-bordered action-table" style="width:100%">
                           <thead>
                               <tr>
+                                  <th>№</th>
                                   <th>Имя</th>
                                   <th>Категория</th>
                                   <th>Статус</th>
@@ -192,6 +193,7 @@ get_header(); ?>
                           <tbody>
                               <?php foreach ($registeredRiders as &$registeredRidersValue) { ?>
                                   <tr data-status="<?php echo $registeredRidersValue->category_name ?>">
+                                      <td><?php echo $registeredRidersValue->row_num ?> </td>
                                       <td><?php echo $registeredRidersValue->rider_name ?> </td>
                                       <td><?php echo $registeredRidersValue->category_name ?> </td>
                                       <td><?php echo $registeredRidersValue->status_name ?> </td>
