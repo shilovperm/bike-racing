@@ -48,7 +48,7 @@ get_header(); ?>
     $wp_user_id           = get_current_user_id();
     $is_organisator       = is_organisation($wp_user_id, $par_event_id);
     /*$registeredRiders     = get_registered_riders_by_event($par_event_id, $is_organisator);*/
-    $registeredRiders     = get_registered_riders_by_event($par_event_id);
+    $registeredRiders     = get_registered_riders_by_event($par_event_id);   
     ?>
     <?php foreach ($event as &$eventValue)  { ?>
       <h3><?php echo $eventValue->event_title ?></h3>
