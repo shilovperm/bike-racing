@@ -516,11 +516,19 @@ function get_photo_links_by_event_id($event_id)
 /*
 Возвращает зарегистрированных участников мероприятия
 */
-function get_registered_riders_by_event($event_id, $is_organisator)
+/*function get_registered_riders_by_event($event_id, $is_organisator)
 {
 	global $wpdb_bike;
 	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
 			'CALL pack_events.p_get_registered_riders_by_event(%d, %d)',$event_id, $is_organisator) );
+	return $results;
+}*/
+
+function get_registered_riders_by_event($event_id)
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL pack_events.p_get_registered_riders_by_event(%d)',$event_id) );
 	return $results;
 }
 
