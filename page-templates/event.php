@@ -169,7 +169,7 @@ get_header(); ?>
 
       <?php if (count($registeredRiders)>0 and $eventValue->event_status_id == 2) { ?>
           <div class="tab-content" id="myTabContent">
-              <a class="btn btn-primary mt-2 mb-2" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              <a class="btn btn-success mt-2 mb-2" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                   Зарегистрированные участники
               </a>
               <div class="collapse" id="collapseExample">
