@@ -388,6 +388,11 @@ html, body, #intro {
 .hr-light {
       border-top: 1px solid #fff; }
 
+/*Премиальный пакет*/
+.is_premium {
+  background-color:gold !important;
+}
+
 /*Разметка блоков для помощи*/
 .bordered {
 	border:1px dashed #aaaaaa;

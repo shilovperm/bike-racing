@@ -47,7 +47,7 @@ get_header(); ?>
     $partners             = get_partners_by_event_id($par_event_id);
     $wp_user_id           = get_current_user_id();
     $is_organisator       = is_organisation($wp_user_id, $par_event_id);
-    $registeredRiders     = get_registered_riders_by_event($par_event_id, $is_organisator);       
+    $registeredRiders     = get_registered_riders_by_event($par_event_id, $is_organisator);
     ?>
     <?php foreach ($event as &$eventValue)  { ?>
       <h3><?php echo $eventValue->event_title ?></h3>
@@ -192,7 +192,7 @@ get_header(); ?>
                           </thead>
                           <tbody>
                               <?php foreach ($registeredRiders as &$registeredRidersValue) { ?>
-                                  <tr data-status="<?php echo $registeredRidersValue->category_name ?>">
+                                  <tr data-status="<?php echo $registeredRidersValue->category_name ?>"  <?php if ($registeredRidersValue->is_premium==1) { ?> class="is_premium" <?php } ?>>
                                       <td><?php echo $registeredRidersValue->row_num ?> </td>
                                       <td><?php echo $registeredRidersValue->rider_name ?> </td>
                                       <td><?php echo $registeredRidersValue->category_name ?> </td>
