@@ -167,7 +167,7 @@ get_header(); ?>
 
       <!--Список зарегистрированных участников-->
 
-      <?php if (count($registeredRiders)>0 and $eventValue->event_status_id == 2) { ?>
+      <?php if (count($registeredRiders)>0 and ($eventValue->event_status_id == 2 or $eventValue->event_status_id == 5)) { ?>
           <div class="tab-content" id="myTabContent">
               <a class="btn btn-success mt-2 mb-2" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                   Зарегистрированные участники
