@@ -17,7 +17,6 @@ $year         = htmlspecialchars($_POST['year']);
 $category_id  = htmlspecialchars($_POST['category']);
 $city         = htmlspecialchars($_POST['city']);
 $event_id     = htmlspecialchars($_POST['event_id']);
-$team         = htmlspecialchars($_POST['team']);
 
 if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
         $url = "https://";
@@ -39,7 +38,7 @@ if ($category_id == 'none') {
     Через 5 секунд вы вернетесь на страницу регистрации.</p>');
     $title = 'Ошибка!';
 } else {
-  $out_answer = register_rider($name, $category_id, $year, $city, $event_id, $team);
+  $out_answer = register_rider($name, $category_id, $year, $city, $event_id);
   if ($out_answer[0]->result == 'Регистрация прошла успешно!') {
     //$param_header = 'Refresh: 5; URL='.$url.'/bike-racing/event?event_id='.$_POST['event_id'];
     $param_header = 'Refresh: 5; URL='.$url.'/event?event_id='.$event_id;
