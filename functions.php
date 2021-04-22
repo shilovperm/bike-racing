@@ -678,6 +678,17 @@ function get_riders_for_registry()
 }
 
 /*
+Возвращает список наименований команд
+*/
+function get_teams_for_registry()
+{
+	global $wpdb_bike;
+	$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+			'CALL p_get_teams_for_registry();','rider_info') );
+	return $results;
+}
+
+/*
 Возвращает рейтинг участников в категории
 */
 function get_rating_list_by_category($category)
@@ -864,16 +875,12 @@ function set_wp_user_verified($rider_id)
 		return $results;
 	}
 
-
-
-
-
 	//Регистрация участника на событие
-	function register_rider($rider_name, $category_id, $birth_year, $city, $event_id)
+	function register_rider($rider_name, $category_id, $birth_year, $city, $event_id, $team)
 	{
 		global $wpdb_bike;
 		$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-				'CALL p_register_rider(%s,%s,%s,%s,%d)',$rider_name, $category_id, $birth_year, $city, $event_id) );
+				'CALL p_register_rider(%s,%s,%s,%s,%d,%s)',$rider_name, $category_id, $birth_year, $city, $event_id, $team) );
 		return $results;
 	}
 

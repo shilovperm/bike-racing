@@ -52,7 +52,7 @@ class WP_bootstrap_4_walker_nav_menu extends Walker_Nav_menu {
           }
 
           if ($title=='Участник') {
-            $permalink = home_url().'/rider?rider_id='. $rider[0]->rider_id;            
+            $permalink = home_url().'/rider?rider_id='. $rider[0]->rider_id;
           }
 
           $output .= "<li class='nav-item $active_class $dropdown_class " .  implode(" ", $item->classes) . "'>";
@@ -80,6 +80,7 @@ class WP_bootstrap_4_walker_nav_menu extends Walker_Nav_menu {
     }
 
     function end_el( &$output, $item, $depth = 0, $args = array() ) {
+      $title = $item->title;
     	if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
     		$t = '';
     		$n = '';

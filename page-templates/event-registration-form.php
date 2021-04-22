@@ -18,14 +18,23 @@ $categoriesAge  = get_event_categories_by_event_id($par_event_id, 'Age');
 /*echo '<pre>'.print_r($categoriesAge).'</pre>';
 echo '<pre>'.print_r($event).'</pre>';*/
 
-/*подготовка автозаполнения*/
+/*подготовка автозаполнения участников*/
 $results = get_riders_for_registry();
 $riders='[';
 foreach ($results as &$resultvalue) {
         $riders .= '{ "label" : "' . $resultvalue->rider_name . '", "value" : "' . $resultvalue->rider_name . '"},';
 }
 $riders = substr($riders,0,-1) . ']';
-/*окончание подготовки */
+/*окончание подготовки участников*/
+
+/*подготовка автозаполнения команд*/
+$results = get_teams_for_registry();
+$teams='[';
+foreach ($results as &$resultvalue) {
+        $teams .= '{ "label" : "' . $resultvalue->team_name . '", "value" : "' . $resultvalue->team_name . '"},';
+}
+$teams = substr($teams,0,-1) . ']';
+/*окончание автозаполнения команд*/
 
 
 
@@ -38,6 +47,10 @@ if ($event[0]->event_title != NULL) {
         <div class="form-group ui-widget">
             <label for="name">Фамилия и Имя: <span style="color: red">*</span></label>
             <input type="text" name="name" id="name" autocomplete="off" onkeyup="checkParams()" placeholder="Фамилия и Имя участника" required />
+        </div>
+        <div class="form-group ui-widget">
+            <label for="team">Команда:</label>
+            <input type="text" name="team" id="team" autocomplete="off" onkeyup="checkParams()" placeholder="Наименование команды"/>
         </div>
         <div class="form-group">
             <label for="year">Год рождения: <span style="color: red">*</span></label>
@@ -80,7 +93,7 @@ if ($event[0]->event_title != NULL) {
         var name      = $('#name').val();
         var year      = $('#year').val();
         var category  = $('#category').val();
-        var city  = $('#city').val();
+        var city      = $('#city').val();
 
         if (name.length != 0 && year.length == 4 && city.length != 0)  {
             $('#submit').removeAttr('disabled');
@@ -90,9 +103,14 @@ if ($event[0]->event_title != NULL) {
     }
     $( function() {
         var rider_list = <?php echo $riders ?>;
+        var team_list  = <?php echo $teams  ?>;
         console.log(rider_list);
         $( "#name" ).autocomplete({
           source: rider_list
+        });
+        console.log(team_list);
+        $( "#team" ).autocomplete({
+          source: team_list
         });
      } );
 </script>
