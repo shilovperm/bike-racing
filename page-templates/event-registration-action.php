@@ -54,7 +54,7 @@ if ($category_id == 'none') {
         </body>';
     $title = 'Регистрация завершена';
   } elseif ($out_answer[0]->result == 'Вы уже зарегистрированы') {
-    $param_header = 'Refresh: 5; URL='.$url.'/bike-racing/event?event_id='.$_POST['event_id'];
+    $param_header = 'Refresh: 5; URL='.$url.'/event?event_id='.$_POST['event_id'];
     //$param_header = 'Refresh: 5; URL='.$url.'/event?event_id='.$event_id;
     header($param_header);
     echo ('
