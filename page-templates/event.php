@@ -185,6 +185,8 @@ get_header(); ?>
                               <tr>
                                   <th>№</th>
                                   <th>Имя</th>
+                                  <th>Год рождения</th>
+                                  <th>Команда</th>
                                   <th>Категория</th>
                                   <th>Статус</th>
                                   <?php if ($is_organisator==1) { ?> <th>Управление</th> <?php } ?>
@@ -195,6 +197,8 @@ get_header(); ?>
                                   <tr data-status="<?php echo $registeredRidersValue->category_name ?>"  <?php if ($registeredRidersValue->is_premium==1) { ?> class="is_premium" <?php } ?>>
                                       <td><?php echo $registeredRidersValue->row_num ?> </td>
                                       <td><?php echo $registeredRidersValue->rider_name ?> </td>
+                                      <td><?php echo $registeredRidersValue->rider_birth_year ?> </td>
+                                      <td><?php echo $registeredRidersValue->team_name ?> </td>
                                       <td><?php echo $registeredRidersValue->category_name ?> </td>
                                       <td><?php echo $registeredRidersValue->status_name ?> </td>
                                       <?php if ($is_organisator==1) { ?>
