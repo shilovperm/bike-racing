@@ -897,7 +897,7 @@ function set_wp_user_verified($rider_id)
 	  return $results;
 	}
 
-	// Функция подтверждает оплату участника
+	// Функция отменяет оплату участника
 	function paymentReject($reg_id)
 	{
 		global $wpdb_bike;
@@ -923,6 +923,25 @@ function set_wp_user_verified($rider_id)
 				'CALL p_registration_in(%d);',$reg_id) );
 		return $results;
 	}
+
+	//функция устанавливает признак премиум пакета
+	function premiumPackAccept($reg_id)
+	{
+		global $wpdb_bike;
+		$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+				'CALL p_premium_pack_accept(%d);',$reg_id) );
+		return $results;
+	}
+
+	//функция снимает признак премиум пакета
+	function premiumPackReject($reg_id)
+	{
+		global $wpdb_bike;
+		$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
+				'CALL p_premium_pack_reject(%d);',$reg_id) );
+		return $results;
+	}
+
 
 	//Преобразование даты в русское наименование
 	function russian_date($event_date){

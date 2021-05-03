@@ -26,6 +26,12 @@ get_header(); ?>
       case "registrationIn":     // возврат регистрации
         registrationIn($_GET['id']);
         break;
+      case "premiumPackAccept":     // установка премиум пакета
+        premiumPackAccept($_GET['id']);
+        break;
+      case "premiumPackReject":     // установка премиум пакета
+        premiumPackReject($_GET['id']);
+        break;
       default:
         break;
     }
@@ -209,7 +215,12 @@ get_header(); ?>
                                               <?php } ?>
                                               <?php if ($registeredRidersValue->status_id == 2) { ?>
                                                   <a class="btn btn-info"     href="<?php echo $_SERVER["REDIRECT_URL"] . '?event_id='. $par_event_id .'&action=paymentReject&id='. $registeredRidersValue->reg_id ?>"> Отклонить оплату </a>
-                                                  <a class="btn btn-danger"   href="<?php echo $_SERVER["REDIRECT_URL"] . '?event_id='. $par_event_id .'&action=registrationOut&id='. $registeredRidersValue->reg_id ?>"> Отмена регистрации </a>
+                                                  <?php if ($registeredRidersValue->is_premium == 0) { ?>
+                                                    <a class="btn btn-success"     href="<?php echo $_SERVER["REDIRECT_URL"] . '?event_id='. $par_event_id .'&action=premiumPackAccept&id='. $registeredRidersValue->reg_id ?>"> Премиум пак </a>
+                                                  <?php } ?>
+                                                  <?php if ($registeredRidersValue->is_premium == 1) { ?>
+                                                    <a class="btn btn-danger"     href="<?php echo $_SERVER["REDIRECT_URL"] . '?event_id='. $par_event_id .'&action=premiumPackReject&id='. $registeredRidersValue->reg_id ?>"> Отмена Премиум пак </a>
+                                                  <?php } ?>
                                               <?php } ?>
                                               <?php if ($registeredRidersValue->status_id == 3) { ?>
                                                   <a class="btn btn-success"  href="<?php echo $_SERVER["REDIRECT_URL"] . '?event_id='. $par_event_id .'&action=registrationIn&id='. $registeredRidersValue->reg_id ?>"> Вернуть регистрацию </a>
