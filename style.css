@@ -152,7 +152,23 @@ blockquote p { font-size: 1.15rem; }
 
 blockquote p:last-child { margin-bottom: 0; }
 
-.navbar-dark .navbar-nav .dropdown-menu a { display: block; width: 100%; padding: .25rem 1.5rem; clear: both; font-weight: 400; color: #212529; text-align: inherit; white-space: nowrap; background-color: transparent; border: 0; }
+.navbar-dark .navbar-nav .dropdown-menu a {
+  display: block;
+  width: 100%;
+  padding: .25rem 1.5rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+
+.dropdown-menu {
+  right: 0;
+  left: auto;
+}
 
 .site-footer { padding-top: 1rem; padding-bottom: 1rem; }
 
