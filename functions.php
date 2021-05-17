@@ -880,11 +880,11 @@ function set_wp_user_verified($rider_id)
 
 
 	//Регистрация участника на событие
-	function register_rider($rider_name, $category_id, $birth_year, $city, $event_id, $team)
+	function register_rider($rider_name, $category_id, $birth_year, $city, $event_id, $team, $team_id)
 	{
 		global $wpdb_bike;
 		$results = $wpdb_bike->get_results( $wpdb_bike->prepare(
-				'CALL p_register_rider(%s,%s,%s,%s,%d,%s)',$rider_name, $category_id, $birth_year, $city, $event_id, $team) );
+				'CALL p_register_rider(%s,%s,%s,%s,%d,%s,%d)',$rider_name, $category_id, $birth_year, $city, $event_id, $team, $team_id) );
 		return $results;
 	}
 

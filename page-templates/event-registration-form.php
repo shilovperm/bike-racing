@@ -20,20 +20,18 @@ echo '<pre>'.print_r($event).'</pre>';*/
 
 /*подготовка автозаполнения участников*/
 $results = get_riders_for_registry();
-$riders='[';
-foreach ($results as &$resultvalue) {
-        $riders .= '{ "label" : "' . $resultvalue->rider_name . '", "value" : "' . $resultvalue->rider_name . '"},';
+$riders = [];
+foreach ($results as $resultvalue) {
+	$riders[] = $resultvalue->rider_name;
 }
-$riders = substr($riders,0,-1) . ']';
 /*окончание подготовки участников*/
 
 /*подготовка автозаполнения команд*/
-$results = get_teams_for_registry();
-$teams='[';
-foreach ($results as &$resultvalue) {
-        $teams .= '{ "label" : "' . $resultvalue->team_name . '", "value" : "' . $resultvalue->team_name . '"},';
+$team_res = get_teams_for_registry();
+$teams = [];
+foreach ($team_res as &$resultvalue) {
+        $teams[] = $resultvalue->team_name;
 }
-$teams = substr($teams,0,-1) . ']';
 /*окончание автозаполнения команд*/
 
 if ($event[0]->event_title != NULL) {
@@ -46,10 +44,24 @@ if ($event[0]->event_title != NULL) {
             <label for="name">Фамилия и Имя: <span style="color: red">*</span></label>
             <input type="text" name="name" id="name" autocomplete="off" onkeyup="checkParams()" placeholder="Фамилия и Имя участника" required />
         </div>
-        <div class="form-group ui-widget">
+        <!--<div class="form-group ui-widget">
             <label for="team">Команда:</label>
             <input type="text" name="team" id="team" autocomplete="off" onkeyup="checkParams()" placeholder="Наименование команды"/>
-        </div>
+        </div> -->
+        <div class="form-group ui-widget">
+    			<label for="team">Команда:</label>
+    			<select name="team_id" id="team_id">
+            <option disabled selected value> -- Выберите команду -- </option>
+            <option value="new"><b> -- Новая команда -- </b></option>
+    				<?php foreach ($team_res as $team) { ?>
+    					<option value="<?php echo $team->team_id; ?>"><?php echo $team->team_name; ?></option>
+    				<?php } ?>
+    			</select>
+    		</div>
+        <div class="form-group" id="new_team" style="display: none;">
+    			<label for="custom-team">Добавить команду:</label>
+    			<input type="text" id="new_team" name="new_team" autocomplete="off" placeholder="Наименование команды"/>
+    		</div>
         <div class="form-group">
             <label for="year">Год рождения: <span style="color: red">*</span></label>
             <input type="text" name="year" id="year" onkeyup="checkParams()" placeholder="Введите год" />
@@ -91,28 +103,35 @@ if ($event[0]->event_title != NULL) {
         var name      = $('#name').val();
         var year      = $('#year').val();
         var category  = $('#category').val();
-        var city  = $('#city').val();
+        var city      = $('#city').val();
+        var disabled  = !name.length || !city.length || year.length != 4;
 
-        if (name.length != 0 && year.length == 4 && city.length != 0)  {
+        /*if (name.length != 0 && year.length == 4 && city.length != 0)  {
             $('#submit').removeAttr('disabled');
         } else {
             $('#submit').attr('disabled', 'disabled');
-        }
+        }*/
+        $('#submit').prop('disabled', disabled);
     }
     $( function() {
         var rider_list, team_list;
-        rider_list = <?php echo $riders ?>;
-        team_list  = <?php echo $teams ?>;
+        rider_list = <?php echo json_encode($riders); ?>;
+        team_list  = <?php echo json_encode($teams); ?>;
 
-        console.log(rider_list);
+        $(document).on('change', '#team_id', function () {
+    			const method = $(this).val() === 'new' ? 'show' : 'hide';
+    			$('#new_team')[method]();
+    		});
+
+        //console.log(rider_list);
         $( "#name" ).autocomplete({
-          source: rider_list
+			       source: rider_list.map(e => ({ label: e, value: e }))
         });
 
-        console.log(team_list);
-        $( "#team" ).autocomplete({
-          source: team_list
-        });
+        //console.log(team_list);
+        /*$( "#team" ).autocomplete({
+            source: team_list.map(e => ({ label: e, value: e }))
+        });*/
      } );
 </script>
 
